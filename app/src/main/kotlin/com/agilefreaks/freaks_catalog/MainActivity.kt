@@ -16,15 +16,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupNavigation()
-
-        val navHostFragment =
-        supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
-        val navController = navHostFragment.navController
-        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        navigation.setupWithNavController(navController)
     }
 
     private fun setupNavigation() {
-
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
+        val navController = navHostFragment.navController
+        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navigation.setupWithNavController(navController)
     }
 }
