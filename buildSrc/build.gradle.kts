@@ -32,6 +32,11 @@ object PluginsVersions {
 dependencies {
     implementation("com.android.tools.build:gradle:${PluginsVersions.GRADLE_ANDROID}")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginsVersions.KOTLIN}")
+    implementation("com.github.ben-manes:gradle-versions-plugin:${PluginsVersions.GRADLE_VERSIONS}")
+
 
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginsVersions.NAVIGATION}")
+    implementation("com.pinterest:ktlint:${PluginsVersions.KTLINT}")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:${PluginsVersions.SPOTLESS}")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${PluginsVersions.DETEKT}")
 }

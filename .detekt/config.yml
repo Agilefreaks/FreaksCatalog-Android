@@ -333,7 +333,7 @@ naming:
     excludeClassPattern: '$^'
     ignoreOverriddenFunctions: true
   InvalidPackageDeclaration:
-    active: true
+    active: false
     rootPackage: ''
   MatchingDeclarationName:
     active: true
@@ -349,7 +349,7 @@ naming:
   PackageNaming:
     active: true
     excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
-    packagePattern: '^[a-z]+(\.[a-z][A-Za-z0-9]*)*$'
+    packagePattern: '^[a-z]+(\.[a-z][A-Za-z0-9_]*)*$'
   TopLevelPropertyNaming:
     active: true
     excludes: "**/test/**,**/androidTest/**,**/*.Test.kt,**/*.Spec.kt,**/*.Spek.kt"
