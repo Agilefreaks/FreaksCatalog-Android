@@ -18,6 +18,5 @@ class AboutFragment : Fragment() {
     ): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_about, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
-        return viewBinding.root
     }
 }
