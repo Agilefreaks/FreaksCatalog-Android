@@ -7,7 +7,7 @@ data class Freak(
     val norm: String,
     val level: String,
     val description: String,
-    val image: Int,
+    var image: Int,
     val skills: List<String>,
     val projects: List<String>
 )
