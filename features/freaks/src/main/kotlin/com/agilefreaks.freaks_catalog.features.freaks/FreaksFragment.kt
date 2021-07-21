@@ -4,10 +4,10 @@ import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,6 +27,7 @@ class FreaksFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentFreaksBinding
 
+    @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
