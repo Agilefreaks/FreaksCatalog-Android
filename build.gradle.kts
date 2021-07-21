@@ -12,6 +12,7 @@ allprojects {
 }
 
 buildscript {
+    val kotlin_version by extra("1.5.21")
     repositories {
         google()
         mavenCentral()
