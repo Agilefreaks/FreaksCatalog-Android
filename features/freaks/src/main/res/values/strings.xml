@@ -1,3 +1,5 @@
 <resources>
     <string name="freaks_title">Freaks screen</string>
+    <string name="skills_btn">Skills</string>
+    <string name="projects_btn">Projects</string>
 </resources>

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 
 class FreaksFragment : Fragment() {
-    lateinit var viewBinding: FragmentFreaksBinding
+    private lateinit var viewBinding: FragmentFreaksBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
