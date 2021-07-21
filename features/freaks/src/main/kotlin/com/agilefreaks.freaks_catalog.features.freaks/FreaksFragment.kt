@@ -31,7 +31,7 @@ class FreaksFragment : Fragment() {
             GridLayoutManager(context, 3)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = ItemAdapter (myDataset)
+        recyclerView.adapter = ItemAdapter (context, myDataset)
 
         return viewBinding.root
     }
