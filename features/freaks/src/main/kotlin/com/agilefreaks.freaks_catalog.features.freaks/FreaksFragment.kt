@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -23,6 +24,7 @@ class FreaksFragment : Fragment() {
         private const val MIN_TABLET_DISPLAY = 6.5
         private const val FREAKS_COUNT = 10
     }
+
     private lateinit var viewBinding: FragmentFreaksBinding
 
     override fun onCreateView(
