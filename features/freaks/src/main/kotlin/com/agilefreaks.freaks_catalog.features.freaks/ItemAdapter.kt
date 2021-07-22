@@ -36,6 +36,9 @@ class ItemAdapter(private val context: Context?, private val dataset: List<Freak
             val name: String = item.firstName+ " " + item.lastName
             intent.putExtra("name", name);
             intent.putExtra("image", item.image)
+
+            intent.putExtra("Freak", item)
+
             context?.startActivity(intent)
         }
     }

@@ -1,5 +1,7 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
+import java.io.Serializable
+
 data class Freak(
     val firstName: String,
     val lastName: String,
@@ -10,4 +12,4 @@ data class Freak(
     var image: Int,
     val skills: List<String>,
     val projects: List<String>
-)
+):Serializable
