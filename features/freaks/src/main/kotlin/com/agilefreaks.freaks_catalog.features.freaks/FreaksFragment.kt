@@ -50,10 +50,8 @@ class FreaksFragment : Fragment() {
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = ItemAdapter(freaksList)
-
         return viewBinding.root
     }
-
     private fun isTablet(): Boolean {
         val metrics = DisplayMetrics()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
