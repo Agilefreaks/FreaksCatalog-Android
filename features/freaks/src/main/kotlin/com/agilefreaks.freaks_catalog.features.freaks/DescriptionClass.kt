@@ -20,9 +20,7 @@ class DescriptionClass : AppCompatActivity(){
         imageView.setImageResource(intent.getIntExtra("image", 0))
         textView.text = intent.getStringExtra("name")
 
-        Log.d("Testtt", intent.getIntExtra("image", 0).toString())
-        Log.d("Testtt", intent.getStringExtra("name").toString())
-
+        Log.d("Testtt", intent.getSerializableExtra("Freak").toString())
     }
 
 }
