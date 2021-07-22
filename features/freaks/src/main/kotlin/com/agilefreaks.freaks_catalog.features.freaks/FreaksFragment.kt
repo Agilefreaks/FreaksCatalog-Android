@@ -21,23 +21,24 @@ class FreaksFragment : Fragment() {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_freaks, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
 
-        val myDataset = loadFreaks()
+        // Initializes data
+        val freaksList = loadFreaks()
 
-        val recyclerView = viewBinding.recycleView
-
+        //Splits the screen in 2 columns if the device is in Portrait or in 3 columns otherwise
         val layoutManager = if(this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             GridLayoutManager(context, 2)
         } else
             GridLayoutManager(context, 3)
-
+        val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = ItemAdapter (context, myDataset)
+        recyclerView.adapter = ItemAdapter (context, freaksList)
 
         return viewBinding.root
     }
 
+    // Populates the freakList with dummy data
     private fun loadFreaks(): List<Freak> {
-        return listOf<Freak>(
+        return listOf(
             Freak("Ciprian","Hotea","Android Intern", "Full time", "Beginner", "Description1",0, listOf("Kotlin"), listOf("Freaks Catalog")),
             Freak("Andreea","Matei","Android Intern", "Full time", "Beginner", "Description2",0, listOf("Kotlin"), listOf("Freaks Catalog")),
             Freak("Robert","Solymosi","Android Intern", "Full time", "Beginner", "Description3",0, listOf("Kotlin"), listOf("Freaks Catalog")),

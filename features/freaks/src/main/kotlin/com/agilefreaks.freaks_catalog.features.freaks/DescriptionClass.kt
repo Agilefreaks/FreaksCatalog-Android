@@ -6,10 +6,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * Dummy class to check if the right [Freak] objects is passed
+ * Will be modified later, when more functionality is added
+ */
 class DescriptionClass : AppCompatActivity(){
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.description_layout)
@@ -17,10 +18,15 @@ class DescriptionClass : AppCompatActivity(){
         val imageView: ImageView = findViewById(R.id.description_item_image)
         val textView: TextView = findViewById(R.id.description_item_title)
 
-        imageView.setImageResource(intent.getIntExtra("image", 0))
-        textView.text = intent.getStringExtra("name")
+        // Gets the [Freak] objects passed with the Intent
+        val freak = intent.getSerializableExtra("Freak") as Freak
 
-        Log.d("Testtt", intent.getSerializableExtra("Freak").toString())
+        // Updates views
+        textView.text = freak.printFreak()
+        imageView.setImageResource(freak.image)
+
+        // Used for debug purposes
+        Log.d("ObjectPass", intent.getSerializableExtra("Freak").toString())
     }
 
 }
