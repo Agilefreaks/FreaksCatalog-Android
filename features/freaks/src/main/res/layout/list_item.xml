@@ -9,7 +9,6 @@
     android:layout_marginTop="24dp"
     android:background="@drawable/customborder"
     app:cardCornerRadius="8dp"
-    app:cardBackgroundColor="@color/teal_200"
     >
         <ImageView
             android:id="@+id/item_image"
