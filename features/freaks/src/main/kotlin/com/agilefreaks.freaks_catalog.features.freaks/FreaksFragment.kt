@@ -1,9 +1,7 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,45 +26,28 @@ class FreaksFragment : Fragment() {
         viewBinding.lifecycleOwner = viewLifecycleOwner
         val btShow: Button = viewBinding.skillsBtn
         btShow.setOnClickListener{
-            //val intent = Intent(context, TestActivity::class.java)
-            //startActivity(intent)
             val dialog = BottomSheetDialog(requireContext())
-
-            // on below line we are inflating a layout file which we have created.
-            var view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
-
-            // on below line we are creating a variable for our button
-            // which we are using to dismiss our dialog.
-
-            // below line is use to set cancelable to avoid
-            // closing of dialog box when clicking on the screen.
-            dialog.setCancelable(false)
-
-            // on below line we are setting
-            // content view to our view.
+            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+            dialog.setCancelable(true)
             dialog.setContentView(view)
-
-
-            // on below line we are calling
-            // a show method to display a dialog.
             dialog.show()
+            var checkedBoxes: List<Button> = mutableListOf()
 
             val cb: CheckBox? = view.findViewById(R.id.skill1)
-            Log.d("Testing", cb.toString())
             cb?.setOnClickListener{
-                if(cb.isChecked) Toast.makeText(this.context, "Merge", Toast.LENGTH_SHORT).show()
+                if(cb.isChecked) {
+                    checkedBoxes.plus(cb)
+                    Toast.makeText(context, checkedBoxes.toString(), Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
+        val btApply: Button? =  view?.findViewById(R.id.apply_btn)
+        btApply?.setOnClickListener {
 
+        }
 
         return viewBinding.root
     }
-
-    //private fun onClick(){
-       // val bottomSheetDialog = BottomSheetDialog(requireContext())
-       // bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog)
-
-    //}
 
 }

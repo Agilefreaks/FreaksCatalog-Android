@@ -7,8 +7,10 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <LinearLayout
+        android:id="@+id/checkboxes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
         <CheckBox
             android:id="@+id/skill1"
@@ -16,7 +18,6 @@
             android:layout_height="match_parent"
             android:checked="false"
             android:text="Android"
-            android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -26,7 +27,6 @@
             android:layout_height="match_parent"
             android:checked="false"
             android:text="IOs"
-            android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill1"/>
 
@@ -36,7 +36,6 @@
             android:layout_height="match_parent"
             android:checked="false"
             android:text="Ceva"
-            android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill1"/>
 
@@ -46,9 +45,19 @@
             android:layout_height="match_parent"
             android:checked="false"
             android:text="Altceva"
-            android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill1"/>
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Apply"
+        android:textAllCaps="false">
+
+    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
