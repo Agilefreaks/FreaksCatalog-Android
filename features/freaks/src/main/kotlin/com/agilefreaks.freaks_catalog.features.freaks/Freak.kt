@@ -18,6 +18,6 @@ data class Freak(
 ) : Serializable {
     // Function for better readability
     fun printFreak(): String {
-        return "$firstName $lastName \n$role : $norm, $level \n$description \nskills: $skills \nprojects: $projects"
+        return "$firstName $lastName \n$role : $norm \n$description \nskills: $skills \nprojects: $projects \nlevel: $level"
     }
 }
