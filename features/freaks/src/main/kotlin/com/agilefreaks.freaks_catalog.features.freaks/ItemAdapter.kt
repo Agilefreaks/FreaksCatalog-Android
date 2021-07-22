@@ -41,9 +41,6 @@ class ItemAdapter(private val context: Context?, private val freaksList: List<Fr
         holder.textView.text = item.firstName
         holder.imageView.setImageResource(item.image)
 
-        // Used for debug purposes
-        Log.d("Testing", "$position $item");
-
         // Opens new activity when image is clicked
         holder.imageView.setOnClickListener{
             val intent = Intent(context, DescriptionClass::class.java)
