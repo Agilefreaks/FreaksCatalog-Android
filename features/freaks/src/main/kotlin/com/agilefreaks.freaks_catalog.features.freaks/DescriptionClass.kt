@@ -27,6 +27,7 @@ class DescriptionClass : AppCompatActivity(){
 
         // Used for debug purposes
         Log.d("ObjectPass", intent.getSerializableExtra("Freak").toString())
+
     }
 
 }
