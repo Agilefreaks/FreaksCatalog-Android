@@ -7,4 +7,5 @@
     <string name="iosCheckBox">iOS</string>
     <string name="cevaCheckBox">Ceva</string>
     <string name="altcevaCheckBox">Altceva</string>
+    <string name="applyFiltersBtn">Apply</string>
 </resources>
