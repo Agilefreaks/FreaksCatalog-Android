@@ -46,7 +46,6 @@ class FreaksFragment : Fragment() {
             isPortrait -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
             else -> GridLayoutManager(context, DISPLAY_IN_THREE_COLUMNS)
         }
-
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = ItemAdapter(freaksList)
