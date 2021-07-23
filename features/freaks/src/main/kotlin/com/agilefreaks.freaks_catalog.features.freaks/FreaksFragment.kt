@@ -2,6 +2,7 @@ package com.agilefreaks.freaks_catalog.features.freaks
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
+import com.google.gson.GsonBuilder
+import java.io.*
+import java.util.*
+
 
 class FreaksFragment : Fragment() {
     private lateinit var viewBinding: FragmentFreaksBinding
@@ -22,7 +27,7 @@ class FreaksFragment : Fragment() {
         viewBinding.lifecycleOwner = viewLifecycleOwner
 
         // Initializes data
-        val freaksList = loadFreaks()
+        val freaksList = loadFreaksFromJson()
 
         //Splits the screen in 2 columns if the device is in Portrait or in 3 columns otherwise
         val layoutManager = if(this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -34,6 +39,17 @@ class FreaksFragment : Fragment() {
         recyclerView.adapter = ItemAdapter (context, freaksList)
 
         return viewBinding.root
+    }
+
+    // Populate the freakList from a JSON file
+    private fun loadFreaksFromJson(): List<Freak> {
+        val inputStream: InputStream = resources.openRawResource(R.raw.dummy_data)
+        val inputReader = InputStreamReader(inputStream)
+        val bufferedReader = BufferedReader(inputReader)
+        val inputString = bufferedReader.use { it.readText() }
+
+        val gson2 = GsonBuilder().create()
+        return gson2.fromJson(inputString, Array<Freak>::class.java).toList()
     }
 
     // Populates the freakList with dummy data
