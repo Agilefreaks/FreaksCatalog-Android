@@ -6,7 +6,6 @@
     android:orientation="vertical"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-
     <LinearLayout
         android:id="@+id/checkboxes"
         android:layout_width="match_parent"
