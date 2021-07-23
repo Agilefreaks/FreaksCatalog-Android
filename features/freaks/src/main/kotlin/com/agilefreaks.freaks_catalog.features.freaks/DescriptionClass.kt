@@ -1,32 +1,36 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.agilefreaks.freaks_catalog.features.freaks.databinding.FreakDescriptionLayoutBinding
+import com.squareup.picasso.Picasso
 
-/**
- * Dummy class to check if the right [Freak] objects is passed
- * Will be modified later, when more functionality is added
- */
 class DescriptionClass : AppCompatActivity(){
+
+    private lateinit var binding: FreakDescriptionLayoutBinding
+    private lateinit var freak:Freak
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.description_layout)
+        binding = FreakDescriptionLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val imageView: ImageView = findViewById(R.id.description_item_image)
-        val textView: TextView = findViewById(R.id.description_item_title)
+        supportActionBar!!.hide()
 
-        // Gets the [Freak] objects passed with the Intent
-        val freak = intent.getSerializableExtra("Freak") as Freak
+        freak = intent.extras!!.getSerializable("Freak") as Freak
+        initViews()
 
-        // Updates views
-        textView.text = freak.printFreak()
-        imageView.setImageResource(freak.image)
-
-        // Used for debug purposes
-        Log.d("ObjectPass", intent.getSerializableExtra("Freak").toString())
     }
 
+    private fun initViews(){
+        binding.descriptionTV.text=freak.description
+        binding.skillsTV.text = getString(R.string.skills_template, freak.skills.joinToString(", "))
+        binding.projectsTV.text = getString(R.string.projects_template, freak.projects.joinToString(", "))
+        binding.titleTV.text = getString(R.string.title_template,freak.role,freak.norm)
+        binding.levelTV.text = getString(R.string.level_project,freak.level)
+        binding.nameTB.text=getString(R.string.name_template,freak.firstName,freak.lastName)
+        binding.backTB.setOnClickListener { finish() }
+        //getting the image
+        Picasso.get().load(freak.image).into(binding.profilePicture)
+    }
 }

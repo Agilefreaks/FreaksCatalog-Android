@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_dim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/customToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+
+            <TextView
+                android:id="@+id/nameTB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/description_horizontal_margin"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/name_template"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tspl_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/backTB"
+                app:layout_constraintStart_toEndOf="@+id/backTB"
+                app:layout_constraintTop_toTopOf="@+id/backTB" />
+
+            <ImageButton
+                android:id="@+id/backTB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:backgroundTint="#00FFFFFF"
+                android:contentDescription="@string/back_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="?attr/actionModeCloseDrawable" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/cv_margin_top"
+        android:layout_marginHorizontal="@dimen/cv_horizontal_margin"
+        android:layout_marginBottom="@dimen/cv_bottom_margin"
+        app:cardBackgroundColor="@color/gray"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titleTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/tspl_start_margin"
+                android:layout_marginTop="@dimen/title_top_margin"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/title_template"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/descriptionTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/description_horizontal_margin"
+                android:layout_marginVertical="@dimen/description_vertical_margin"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/description_template"
+                android:textColor="@color/white"
+                android:textSize="@dimen/description_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/skillsTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTV" />
+
+            <TextView
+                android:id="@+id/skillsTV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/tspl_start_margin"
+                android:layout_marginBottom="@dimen/ps_bot_margin"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/skills_template"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tspl_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/projectsTV"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/projectsTV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/tspl_start_margin"
+                android:layout_marginBottom="@dimen/ps_bot_margin"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/projects_template"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tspl_text_size"
+                app:layout_constraintBottom_toTopOf="@+id/levelTV"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/levelTV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/tspl_start_margin"
+                android:layout_marginBottom="@dimen/description_vertical_margin"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/level_project"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tspl_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="@dimen/photo_size"
+        android:layout_height="@dimen/photo_size"
+        android:layout_marginTop="@dimen/photo_top_margin"
+        android:adjustViewBounds="true"
+        android:background="@drawable/profile_pick_background"
+        android:contentDescription="@string/profile_picture"
+        android:elevation="@dimen/photo_elevation"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

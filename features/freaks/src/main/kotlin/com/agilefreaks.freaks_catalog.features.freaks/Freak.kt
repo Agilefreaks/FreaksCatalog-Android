@@ -3,7 +3,11 @@ package com.agilefreaks.freaks_catalog.features.freaks
 import java.io.Serializable
 
 /**
+<<<<<<< HEAD
 * Freak is the data class that represents the properties of a Freak object.
+=======
+ * Freak is the data class that represents the properties of a Freak object.
+>>>>>>> 5c5252c (Freaks details screen)
  */
 data class Freak(
     val firstName: String,
