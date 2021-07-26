@@ -63,21 +63,23 @@ class FreaksFragment : Fragment() {
             dialog.setContentView(view)
             dialog.show()
             var checkedBoxes: List<CheckBox> = listOf()
-            val btShowSkills: Button = viewBinding.skillsBtn
-            val btShowProjects: Button = viewBinding.projectsBtn
-            var btnList: List<Button> = listOf()
-            btnList = btnList.plus(btShowProjects)
-            btnList = btnList.plus(btShowSkills)
 
-            for (item in btnList) {
-                item.setOnClickListener {
-                    val dialog = BottomSheetDialog(requireContext())
-                    val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
-                    dialog.setCancelable(true)
-                    dialog.setContentView(view)
-                    dialog.show()
-                    var checkedBoxes: List<CheckBox> = listOf()
+        val btShowSkills: Button = viewBinding.skillsBtn
+        val btShowProjects: Button = viewBinding.projectsBtn
+        var activeFilter: String
+        var btnList: List<Button> = listOf()
+        btnList = btnList.plus(btShowProjects)
+        btnList = btnList.plus(btShowSkills)
 
+        for(item in btnList) {
+            item.setOnClickListener {
+                activeFilter = item.toString()
+                val dialog = BottomSheetDialog(requireContext())
+                val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+                dialog.setCancelable(true)
+                dialog.setContentView(view)
+                dialog.show()
+                var checkedBoxes: List<CheckBox> = listOf()
                     val cb1: CheckBox = view.findViewById(R.id.skill1)
                     val cb2: CheckBox = view.findViewById(R.id.skill2)
                     val cb3: CheckBox = view.findViewById(R.id.skill3)
