@@ -35,7 +35,6 @@ class FreaksFragment : Fragment() {
     ): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_freaks, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
-
         val freaksList = loadFreaks()
 
         val isPortrait =
