@@ -64,22 +64,22 @@ class FreaksFragment : Fragment() {
             dialog.show()
             var checkedBoxes: List<CheckBox> = listOf()
 
-        val btShowSkills: Button = viewBinding.skillsBtn
-        val btShowProjects: Button = viewBinding.projectsBtn
-        var activeFilter: String
-        var btnList: List<Button> = listOf()
-        btnList = btnList.plus(btShowProjects)
-        btnList = btnList.plus(btShowSkills)
+            val btShowSkills: Button = viewBinding.skillsBtn
+            val btShowProjects: Button = viewBinding.projectsBtn
+            var activeFilter: String
+            var btnList: List<Button> = listOf()
+            btnList = btnList.plus(btShowProjects)
+            btnList = btnList.plus(btShowSkills)
 
-        for(item in btnList) {
-            item.setOnClickListener {
-                activeFilter = item.toString()
-                val dialog = BottomSheetDialog(requireContext())
-                val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
-                dialog.setCancelable(true)
-                dialog.setContentView(view)
-                dialog.show()
-                var checkedBoxes: List<CheckBox> = listOf()
+            for (item in btnList) {
+                item.setOnClickListener {
+                    activeFilter = item.toString()
+                    val dialog = BottomSheetDialog(requireContext())
+                    val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+                    dialog.setCancelable(true)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    var checkedBoxes: List<CheckBox> = listOf()
                     val cb1: CheckBox = view.findViewById(R.id.skill1)
                     val cb2: CheckBox = view.findViewById(R.id.skill2)
                     val cb3: CheckBox = view.findViewById(R.id.skill3)
@@ -113,9 +113,24 @@ class FreaksFragment : Fragment() {
                     val btApply: Button? = view?.findViewById(R.id.apply_btn)
                     btApply?.setOnClickListener {
                         checkedBoxes = listOf()
+                        var activeFilter: String
                     }
                 }
             }
+
+
+            // Initializes data
+            val freaksList = loadFreaks()
+
+            //Splits the screen in 2 columns if the device is in Portrait or in 3 columns otherwise
+            val layoutManager =
+                if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    GridLayoutManager(context, 2)
+                } else
+                    GridLayoutManager(context, 3)
+            val recyclerView = viewBinding.recycleView
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = ItemAdapter(freaksList)
         }
         return viewBinding.root
     }
