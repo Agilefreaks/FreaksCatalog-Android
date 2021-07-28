@@ -40,7 +40,6 @@ class FreaksFragment : Fragment() {
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
         val layoutManager: RecyclerView.LayoutManager = when {
-            isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_THREE_COLUMNS)
             !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
             isPortrait -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
             else -> GridLayoutManager(context, DISPLAY_IN_THREE_COLUMNS)
@@ -75,7 +74,7 @@ class FreaksFragment : Fragment() {
             "Android Intern",
             "Full Time",
             "Beginner",
-            "Description1",
+            "Description",
             0,
             listOf("Kotlin"),
             listOf("Freaks Catalog")

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="freak_card_size">140dp</dimen>
+    <dimen name="freak_card_margin">24dp</dimen>
+    <dimen name="freak_card_corner_radius">8dp</dimen>
+</resources>

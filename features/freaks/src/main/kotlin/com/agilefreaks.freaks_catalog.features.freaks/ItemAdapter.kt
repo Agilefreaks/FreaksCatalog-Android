@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.agilefreaks.freaks_catalog.features.freaks.DescriptionClass.Companion.FREAK_KEY
 
 class ItemAdapter(private val context: Context?, private val freaksList: List<Freak>):
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
@@ -29,7 +30,7 @@ class ItemAdapter(private val context: Context?, private val freaksList: List<Fr
 
         holder.imageView.setOnClickListener{
             val intent = Intent(context, DescriptionClass::class.java)
-            intent.putExtra("Freak", item)
+            intent.putExtra(FREAK_KEY, item)
             context?.startActivity(intent)
         }
     }
