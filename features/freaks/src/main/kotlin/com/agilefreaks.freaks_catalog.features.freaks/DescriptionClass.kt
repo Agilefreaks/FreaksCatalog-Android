@@ -1,6 +1,7 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FreakDescriptionLayoutBinding
 import com.squareup.picasso.Picasso
@@ -12,14 +13,14 @@ class DescriptionClass : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.PhoneScreen)
         binding = FreakDescriptionLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        supportActionBar!!.hide()
-
         freak = intent.extras!!.getSerializable("Freak") as Freak
         initViews()
-
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(getString(R.string.name_template,freak.firstName,freak.lastName))
     }
 
     private fun initViews(){
@@ -28,9 +29,16 @@ class DescriptionClass : AppCompatActivity(){
         binding.projectsTV.text = getString(R.string.projects_template, freak.projects.joinToString(", "))
         binding.titleTV.text = getString(R.string.title_template,freak.role,freak.norm)
         binding.levelTV.text = getString(R.string.level_project,freak.level)
-        binding.nameTB.text=getString(R.string.name_template,freak.firstName,freak.lastName)
-        binding.backTB.setOnClickListener { finish() }
         //getting the image
-        Picasso.get().load(freak.image).into(binding.profilePicture)
+        Picasso.get().load(freak.image).into(binding.imageView)
+    }
+
+    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
+        when (menuItem.getItemId()) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(menuItem)
     }
 }
