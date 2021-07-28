@@ -1,16 +1,15 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-/**
- * Dummy class to check if the right [Freak] objects is passed
- * Will be modified later, when more functionality is added
- */
 class DescriptionClass : AppCompatActivity(){
+    companion object {
+        const val FREAK_KEY = "freak"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.description_layout)
@@ -18,16 +17,9 @@ class DescriptionClass : AppCompatActivity(){
         val imageView: ImageView = findViewById(R.id.description_item_image)
         val textView: TextView = findViewById(R.id.description_item_title)
 
-        // Gets the [Freak] objects passed with the Intent
-        val freak = intent.getSerializableExtra("Freak") as Freak
+        val freak = intent.getSerializableExtra(FREAK_KEY) as Freak
 
-        // Updates views
-        textView.text = freak.printFreak()
+        textView.text = freak.toString()
         imageView.setImageResource(freak.image)
-
-        // Used for debug purposes
-        Log.d("ObjectPass", intent.getSerializableExtra("Freak").toString())
-
     }
-
 }
