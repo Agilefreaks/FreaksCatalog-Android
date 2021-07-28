@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TabletScreen" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/toolbar_color</item>
+        <item name="colorPrimaryVariant">@color/toolbar_color</item>
+        <item name="android:statusBarColor">@color/toolbar_color</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textSize">@dimen/tablet_default_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColorPrimary">#FFF</item>
+    </style>
+</resources>
