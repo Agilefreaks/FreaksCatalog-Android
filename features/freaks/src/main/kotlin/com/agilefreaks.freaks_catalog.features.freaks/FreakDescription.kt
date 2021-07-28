@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FreakDescriptionLayoutBinding
 import com.squareup.picasso.Picasso
 
-class DescriptionClass : AppCompatActivity(){
+class FreakDescription : AppCompatActivity() {
 
     private lateinit var binding: FreakDescriptionLayoutBinding
-    private lateinit var freak:Freak
+    private lateinit var freak: Freak
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,20 +17,31 @@ class DescriptionClass : AppCompatActivity(){
         binding = FreakDescriptionLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
         freak = intent.extras!!.getSerializable("Freak") as Freak
+        initBar()
         initViews()
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle(getString(R.string.name_template,freak.firstName,freak.lastName))
     }
 
-    private fun initViews(){
-        binding.descriptionTV.text=freak.description
+    private fun initViews() {
+        binding.descriptionTV.text = freak.description
         binding.skillsTV.text = getString(R.string.skills_template, freak.skills.joinToString(", "))
-        binding.projectsTV.text = getString(R.string.projects_template, freak.projects.joinToString(", "))
-        binding.titleTV.text = getString(R.string.title_template,freak.role,freak.norm)
-        binding.levelTV.text = getString(R.string.level_project,freak.level)
+        binding.projectsTV.text =
+            getString(R.string.projects_template, freak.projects.joinToString(", "))
+        binding.titleTV.text = getString(R.string.title_template, freak.role, freak.norm)
+        binding.levelTV.text = getString(R.string.level_project, freak.level)
         //getting the image
         Picasso.get().load(freak.image).into(binding.imageView)
+    }
+
+    private fun initBar(){
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(
+            getString(
+                R.string.name_template,
+                freak.firstName,
+                freak.lastName
+            )
+        )
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {

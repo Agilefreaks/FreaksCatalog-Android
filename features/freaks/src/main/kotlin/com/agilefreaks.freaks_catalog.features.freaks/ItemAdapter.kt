@@ -2,7 +2,6 @@ package com.agilefreaks.freaks_catalog.features.freaks
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +42,7 @@ class ItemAdapter(private val context: Context?, private val freaksList: List<Fr
 
         // Opens new activity when image is clicked
         holder.imageView.setOnClickListener{
-            val intent = Intent(context, DescriptionClass::class.java)
+            val intent = Intent(context, FreakDescription::class.java)
             intent.putExtra("Freak", item)
             context?.startActivity(intent)
         }

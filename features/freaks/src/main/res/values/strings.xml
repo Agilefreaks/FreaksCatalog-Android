@@ -8,12 +8,10 @@
     <string name="cevaCheckBox">Ceva</string>
     <string name="altcevaCheckBox">Altceva</string>
     <string name="applyFiltersBtn">Apply</string>
-
     <string name="app_name">freaks-details-screen</string>
     <string name="description_template">
         Lorem ipsum dolor sit amet, consecte adipiscing elit. Aenean commodo eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis part montes, nascetur ridiculus mus.
     </string>
-
     <string name="title_template">%1$s - %2$s</string>
     <string name="skills_template">Skills: %1$s</string>
     <string name="projects_template">Projects: %1$s</string>

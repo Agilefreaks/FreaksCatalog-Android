@@ -14,8 +14,7 @@
     </dist:module>
 
     <application>
-        <activity android:name=".DescriptionClass">
-        </activity>
+        <activity android:name=".FreakDescription"></activity>
     </application>
 
 </manifest>
