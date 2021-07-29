@@ -1,8 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:context=".FreakDetailsFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/photoTopG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0564" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/photoBotG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2702" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/profile_pick_background"
+            android:contentDescription="@string/profile_picture"
+            android:elevation="@dimen/profile_photo_elevation"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/photoBotG"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/photoTopG" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/cardViewTopG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.18473" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/cardViewBotG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8473" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/cardViewStartG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.044" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/cardViewEndG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.956" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/card_view_color"
+            app:cardCornerRadius="@dimen/details_card_view_radius"
+            app:layout_constraintBottom_toTopOf="@id/cardViewBotG"
+            app:layout_constraintEnd_toEndOf="@id/cardViewEndG"
+            app:layout_constraintStart_toStartOf="@id/cardViewStartG"
+            app:layout_constraintTop_toBottomOf="@id/cardViewTopG">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/tsplStartG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.09756" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/titleTopG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.165898" />
+
+                <TextView
+                    android:id="@+id/titleTV"
+                    style="@style/FreakScreenTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_template"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/tsplStartG"
+                    app:layout_constraintTop_toTopOf="@id/titleTopG" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/skillsTopG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:orientation="horizontal"
+                    android:singleLine="true"
+                    app:layout_constraintGuide_percent="0.66129" />
+
+                <TextView
+                    android:id="@+id/skillsTV"
+                    style="@style/FreakScreenTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:maxLength="40"
+                    android:text="@string/skills_template"
+                    app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
+                    app:layout_constraintStart_toEndOf="@id/tsplStartG"
+                    app:layout_constraintTop_toTopOf="@id/skillsTopG" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/projectsTopG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.75576" />
+
+                <TextView
+                    android:id="@+id/projectsTV"
+                    style="@style/FreakScreenTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/projects_template"
+                    app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
+                    app:layout_constraintStart_toEndOf="@id/tsplStartG"
+                    app:layout_constraintTop_toTopOf="@id/projectsTopG" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/levelTopG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.85023" />
+
+                <TextView
+                    android:id="@+id/levelTV"
+                    style="@style/FreakScreenTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/level_project"
+                    app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
+                    app:layout_constraintStart_toEndOf="@id/tsplStartG"
+                    app:layout_constraintTop_toTopOf="@id/levelTopG" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/descriptionTopG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.315" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/descriptionBotG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.57" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/descriptionEndG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.976" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/descriptionStartG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.024" />
+
+                <TextView
+                    android:id="@+id/descriptionTV"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="@string/description_template"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sec_text_size"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@id/descriptionBotG"
+                    app:layout_constraintEnd_toStartOf="@id/descriptionEndG"
+                    app:layout_constraintStart_toEndOf="@id/descriptionStartG"
+                    app:layout_constraintTop_toBottomOf="@id/descriptionTopG" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
