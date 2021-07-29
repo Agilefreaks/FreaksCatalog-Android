@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="phone_default_text_size">18sp</dimen>
-    <dimen name="phone_sec_text_size">16sp</dimen>
-    <dimen name="tablet_default_text_size">36sp</dimen>
-    <dimen name="tablet_sec_text_size">32sp</dimen>
+    <dimen name="default_text_size">18sp</dimen>
+    <dimen name="sec_text_size">16sp</dimen>
     <dimen name="details_card_view_radius">8dp</dimen>
     <dimen name="profile_photo_elevation">5dp</dimen>
 </resources>
