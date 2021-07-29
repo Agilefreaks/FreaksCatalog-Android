@@ -41,12 +41,6 @@ android {
 
     addProductFlavours(this)
 
-    dynamicFeatures = mutableSetOf(
-        BuildModules.Features.PORTOFOLIO,
-        BuildModules.Features.FREAKS,
-        BuildModules.Features.ABOUT
-    )
-
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -87,6 +81,9 @@ android {
 
 dependencies {
     implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Features.FREAKS))
+    implementation(project(BuildModules.Features.ABOUT))
+    implementation(project(BuildModules.Features.PORTOFOLIO))
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
 

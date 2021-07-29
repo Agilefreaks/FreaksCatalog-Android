@@ -85,5 +85,9 @@ dependencies {
 
     implementation(Dependencies.COIL)
 
+    implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
+    implementation(Dependencies.AndroidX.Navigation.UI)
+    implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
+
     addTestDependencies()
 }

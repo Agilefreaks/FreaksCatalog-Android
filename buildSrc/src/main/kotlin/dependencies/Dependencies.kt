@@ -24,11 +24,11 @@ object Dependencies {
         const val CORE = "androidx.core:core-ktx:1.3.2"
         const val APPCOMPAT = "androidx.appcompat:appcompat:1.2.0"
         const val CONSTRAINTLAYOUT = "androidx.constraintlayout:constraintlayout:2.0.4"
-        const val FRAGMENT = "androidx.fragment:fragment-ktx:1.2.5"
+        const val FRAGMENT = "androidx.fragment:fragment-ktx:1.4.0-alpha05"
         const val RECYCLERVIEW = "androidx.recyclerview:recyclerview:1.1.0"
 
         object Navigation {
-            private const val VERSION = "2.4.0-alpha01"
+            private const val VERSION = "2.4.0-alpha05"
 
             const val FRAGMENT = "androidx.navigation:navigation-fragment-ktx:$VERSION"
             const val UI = "androidx.navigation:navigation-ui-ktx:$VERSION"
