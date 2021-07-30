@@ -47,7 +47,7 @@ class FreaksFragment : Fragment() {
 
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = ItemAdapter(context, freaksList)
+        recyclerView.adapter = ItemAdapter(freaksList)
 
         return viewBinding.root
     }
