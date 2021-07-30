@@ -17,9 +17,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
-import kotlin.math.pow
 import kotlin.math.sqrt
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import java.util.*
+import kotlin.math.pow
 
 class FreaksFragment : Fragment() {
     companion object {
@@ -55,6 +56,7 @@ class FreaksFragment : Fragment() {
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = ItemAdapter(freaksList)
+
         val btShow: Button = viewBinding.skillsBtn
         btShow.setOnClickListener {
             val dialog = BottomSheetDialog(requireContext())
@@ -63,7 +65,6 @@ class FreaksFragment : Fragment() {
             dialog.setContentView(view)
             dialog.show()
             var checkedBoxes: List<CheckBox> = listOf()
-
             val btShowSkills: Button = viewBinding.skillsBtn
             val btShowProjects: Button = viewBinding.projectsBtn
             var activeFilter: String
@@ -96,41 +97,34 @@ class FreaksFragment : Fragment() {
                             if (item.isChecked) {
                                 checkedBoxes = checkedBoxes.plus(item)
                             }
-                        }
-                    }
+                            val btShowSkills: Button = viewBinding.skillsBtn
+                            val btShowProjects: Button = viewBinding.projectsBtn
+                            var activeFilter: String
+                            var btnList: List<Button> = listOf()
+                            btnList = btnList.plus(btShowProjects)
+                            btnList = btnList.plus(btShowSkills)
 
-                    val btReset: TextView? = view?.findViewById(R.id.reset)
-                    btReset?.setOnClickListener {
-                        Log.d("Testing", checkedBoxes.first().toString())
-                        checkedBoxes.forEach {
-                            if (it.isChecked) {
-                                it.toggle()
+
+                            val btReset: TextView? = view?.findViewById(R.id.reset)
+                            btReset?.setOnClickListener {
+                                Log.d("Testing", checkedBoxes.first().toString())
+                                checkedBoxes.forEach {
+                                    if (it.isChecked) {
+                                        it.toggle()
+                                    }
+                                }
+                                checkedBoxes = listOf()
+                            }
+
+                            val btApply: Button? = view?.findViewById(R.id.apply_btn)
+                            btApply?.setOnClickListener {
+                                checkedBoxes = listOf()
+                                var activeFilter: String
                             }
                         }
-                        checkedBoxes = listOf()
-                    }
-
-                    val btApply: Button? = view?.findViewById(R.id.apply_btn)
-                    btApply?.setOnClickListener {
-                        checkedBoxes = listOf()
-                        var activeFilter: String
                     }
                 }
             }
-
-
-            // Initializes data
-            val freaksList = loadFreaks()
-
-            //Splits the screen in 2 columns if the device is in Portrait or in 3 columns otherwise
-            val layoutManager =
-                if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    GridLayoutManager(context, 2)
-                } else
-                    GridLayoutManager(context, 3)
-            val recyclerView = viewBinding.recycleView
-            recyclerView.layoutManager = layoutManager
-            recyclerView.adapter = ItemAdapter(freaksList)
         }
         return viewBinding.root
     }

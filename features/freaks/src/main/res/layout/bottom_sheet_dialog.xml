@@ -16,96 +16,105 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp">
 
             <TextView
                 android:id="@+id/skill_filter_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/skills_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/skills_btn" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/reset"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/resetBtn"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:paddingStart="10dp"/>
+                android:text="@string/resetBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="380dp"
-            android:layout_height="2dp"
-            android:background="@color/gray"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"/>
-
-        <CheckBox
-            android:textColor = "@color/gray"
-            android:id="@+id/skill1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:checked="false"
-            android:text="@string/androidCheckBox"
+        <ListView
+            android:id="@+id/checkboxesList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:background="@color/gray"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"/>
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray" />
 
         <CheckBox
-            android:textColor = "@color/gray"
+            android:id="@+id/skill1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:checked="false"
+            android:text="@string/androidCheckBox"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray" />
+
+        <CheckBox
             android:id="@+id/skill2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:checked="false"
             android:text="@string/iosCheckBox"
+            android:textColor="@color/gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill1" />
 
         <View
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:background="@color/gray"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"/>
+            android:background="@color/gray" />
 
         <CheckBox
-            android:textColor = "@color/gray"
             android:id="@+id/skill3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:checked="false"
             android:text="@string/cevaCheckBox"
+            android:textColor="@color/gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill1" />
 
         <View
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:background="@color/gray"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"/>
+            android:background="@color/gray" />
 
         <CheckBox
-            android:textColor = "@color/gray"
             android:id="@+id/skill4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:checked="false"
             android:text="@string/altcevaCheckBox"
+            android:textColor="@color/gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/skill1" />
     </LinearLayout>
@@ -114,11 +123,11 @@
         android:id="@+id/apply_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/gray"
         android:text="@string/applyFiltersBtn"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxes"
-        android:layout_gravity="center_horizontal"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/gray"/>
+        app:layout_constraintTop_toBottomOf="@+id/checkboxes" />
 
 </LinearLayout>
