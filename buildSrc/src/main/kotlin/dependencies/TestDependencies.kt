@@ -7,7 +7,7 @@ object TestDependencies {
 
     const val TRUTH = "com.google.truth:truth:1.1.2"
 
-    const val KOIN = "org.koin:koin-test:${Dependencies.Koin.VERSION}"
+    const val KOIN = "io.insert-koin:koin-test:${Dependencies.Koin.VERSION}"
 
     const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Dependencies.Coroutines.VERSION}"
 

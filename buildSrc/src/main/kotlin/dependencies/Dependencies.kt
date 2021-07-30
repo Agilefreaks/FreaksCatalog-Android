@@ -51,10 +51,10 @@ object Dependencies {
     }
 
     object Koin {
-        const val VERSION = "2.2.2"
+        const val VERSION = "3.1.2"
 
-        const val ANDROID = "org.koin:koin-android:$VERSION"
-        const val ANDROID_VIEWMODEL = "org.koin:koin-android-viewmodel:$VERSION"
+        const val CORE = "io.insert-koin:koin-core:$VERSION"
+        const val ANDROID = "io.insert-koin:koin-android:$VERSION"
     }
 
     object Apollo {

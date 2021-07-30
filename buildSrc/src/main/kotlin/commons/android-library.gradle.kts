@@ -81,6 +81,7 @@ dependencies {
         exclude(Dependencies.Picasso.PICASSO_EXIFINTERACE)
     }
 
+    implementation(Dependencies.Koin.CORE)
     implementation(Dependencies.Koin.ANDROID)
 
     addTestDependencies()

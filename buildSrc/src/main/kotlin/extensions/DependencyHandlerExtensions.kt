@@ -20,6 +20,7 @@ fun DependencyHandler.addTestDependencies() {
     testImplementation(TestDependencies.TRUTH)
     testImplementation(TestDependencies.AndroidX.CORE_TESTING)
     testImplementation(TestDependencies.COROUTINES_TEST)
+    testImplementation(TestDependencies.KOIN)
 
     androidTestImplementation(TestAndroidDependencies.AndroidX.ESPRESSO_CORE)
     androidTestImplementation(TestAndroidDependencies.AndroidX.JUNIT)
