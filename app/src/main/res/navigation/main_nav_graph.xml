@@ -9,11 +9,6 @@
         android:label="About">
     </fragment>
 
-    <fragment
-        android:id="@+id/portofolio"
-        android:name="com.agilefreaks.freaks_catalog.features.portofolio.PortofolioFragment"
-        android:label="Portofolio">
-    </fragment>
-
     <include app:graph="@navigation/freaks_nav_graph"/>
+    <include app:graph="@navigation/portofolio_nav_graph"/>
 </navigation>
