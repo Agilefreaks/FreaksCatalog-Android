@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
-import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 
 class FreakDetailsFragment : Fragment() {
-
     private lateinit var viewBinding: FragmentFreakDetailsBinding
 
     override fun onCreateView(
@@ -20,8 +18,6 @@ class FreakDetailsFragment : Fragment() {
     ): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_freak_details, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
-
-
 
         return viewBinding.root
     }
