@@ -129,7 +129,6 @@ class FreaksFragment : Fragment() {
         return viewBinding.root
     }
 
-
     private fun isTablet(): Boolean {
         val metrics = DisplayMetrics()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -137,6 +136,19 @@ class FreaksFragment : Fragment() {
         } else {
             activity?.windowManager?.defaultDisplay?.getMetrics(metrics)
         }
+        // Initializes data
+        val freaksList = loadFreaks()
+
+        //Splits the screen in 2 columns if the device is in Portrait or in 3 columns otherwise
+        val layoutManager =
+            if (this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                GridLayoutManager(context, 2)
+            } else
+                GridLayoutManager(context, 3)
+        val recyclerView = viewBinding.recycleView
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = ItemAdapter(freaksList)
+
 
         val widthInches = metrics.widthPixels / metrics.xdpi
         val heightInches = metrics.heightPixels / metrics.ydpi
