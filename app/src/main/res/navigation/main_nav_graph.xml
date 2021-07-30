@@ -3,12 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/freaks_nav_graph">
 
-    <fragment
-        android:id="@+id/about"
-        android:name="com.agilefreaks.freaks_catalog.features.about.AboutFragment"
-        android:label="About">
-    </fragment>
-
     <include app:graph="@navigation/freaks_nav_graph"/>
     <include app:graph="@navigation/portofolio_nav_graph"/>
+    <include app:graph="@navigation/about_nav_graph"/>
 </navigation>
