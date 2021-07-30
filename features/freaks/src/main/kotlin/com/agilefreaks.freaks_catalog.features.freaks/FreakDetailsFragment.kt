@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
 
 class FreakDetailsFragment : Fragment() {
-
     private lateinit var viewBinding: FragmentFreakDetailsBinding
 
     override fun onCreateView(
