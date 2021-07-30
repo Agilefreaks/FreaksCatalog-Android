@@ -5,9 +5,11 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.35833333333333334" />
+        <entry key="features/freaks/src/main/res/drawable/custom_freak_card_border.xml" value="0.1109375" />
         <entry key="features/freaks/src/main/res/layout/description_layout.xml" value="0.1" />
-        <entry key="features/freaks/src/main/res/layout/fragment_freak_details.xml" value="0.23255813953488372" />
+        <entry key="features/freaks/src/main/res/layout/fragment_freak_details.xml" value="0.1" />
         <entry key="features/freaks/src/main/res/layout/fragment_freaks.xml" value="0.35833333333333334" />
+        <entry key="features/freaks/src/main/res/layout/list_item.xml" value="0.1" />
       </map>
     </option>
   </component>

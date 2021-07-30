@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/freaks_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/freaks_nav_graph"
+    tools:ignore="InvalidNavigation">
 
     <include app:graph="@navigation/freaks_nav_graph"/>
     <include app:graph="@navigation/portofolio_nav_graph"/>
