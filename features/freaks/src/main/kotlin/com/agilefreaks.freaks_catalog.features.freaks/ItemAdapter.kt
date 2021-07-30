@@ -1,17 +1,15 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.agilefreaks.freaks_catalog.features.freaks.DescriptionClass.Companion.FREAK_KEY
 
-class ItemAdapter(private val context: Context?, private val freaksList: List<Freak>):
+class ItemAdapter(private val freaksList: List<Freak>) :
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -20,7 +18,8 @@ class ItemAdapter(private val context: Context?, private val freaksList: List<Fr
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val adapterLayout =
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return ItemViewHolder(adapterLayout)
     }
 
@@ -29,8 +28,8 @@ class ItemAdapter(private val context: Context?, private val freaksList: List<Fr
         holder.textView.text = item.firstName
         holder.imageView.setImageResource(R.drawable.testimage)
 
-        holder.imageView.setOnClickListener{
-            holder.itemView.findNavController().navigate(R.id.freak_details)
+        holder.imageView.setOnClickListener {
+            holder.itemView.findNavController().navigate(R.id.freak_details, bundleOf("freak" to item))
         }
     }
 
