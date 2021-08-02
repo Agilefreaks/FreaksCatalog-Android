@@ -29,6 +29,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_filters_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+
             <TextView
                 android:id="@+id/reset"
                 android:layout_width="60dp"
@@ -40,83 +46,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ListView
-            android:id="@+id/checkboxesList"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="380dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray" />
-
-        <CheckBox
-            android:id="@+id/skill1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:checked="false"
-            android:text="@string/androidCheckBox"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="380dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray" />
-
-        <CheckBox
-            android:id="@+id/skill2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:checked="false"
-            android:text="@string/iosCheckBox"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/skill1" />
-
-        <View
-            android:layout_width="380dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray" />
-
-        <CheckBox
-            android:id="@+id/skill3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:checked="false"
-            android:text="@string/cevaCheckBox"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/skill1" />
-
-        <View
-            android:layout_width="380dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/gray" />
-
-        <CheckBox
-            android:id="@+id/skill4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:checked="false"
-            android:text="@string/altcevaCheckBox"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/skill1" />
     </LinearLayout>
 
     <Button

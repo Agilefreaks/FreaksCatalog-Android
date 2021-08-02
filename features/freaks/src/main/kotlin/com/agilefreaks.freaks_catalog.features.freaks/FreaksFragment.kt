@@ -10,16 +10,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.CheckBox
+import android.widget.LinearLayout
+import android.widget.ListView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import kotlin.math.sqrt
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import java.util.*
 import kotlin.math.pow
 
 class FreaksFragment : Fragment() {
@@ -62,69 +63,24 @@ class FreaksFragment : Fragment() {
             val dialog = BottomSheetDialog(requireContext())
             val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
             dialog.setCancelable(true)
+
+            var activeFilter = "Skills"
+            val filtersList = loadFilters(activeFilter)
+            val recyclerFiltersView = view.findViewById<RecyclerView>(R.id.recycler_filters_view)
+            recyclerFiltersView.layoutManager = LinearLayoutManager(view.context)
+            recyclerFiltersView.adapter = FilterAdapter(filtersList)
+
+            val btReset: TextView? = view?.findViewById(R.id.reset)
+            btReset?.setOnClickListener {
+            }
+
+            val btApply: Button? = view?.findViewById(R.id.apply_btn)
+            btApply?.setOnClickListener {
+                var activeFilter: String
+            }
+
             dialog.setContentView(view)
             dialog.show()
-            var checkedBoxes: List<CheckBox> = listOf()
-            val btShowSkills: Button = viewBinding.skillsBtn
-            val btShowProjects: Button = viewBinding.projectsBtn
-            var activeFilter: String
-            var btnList: List<Button> = listOf()
-            btnList = btnList.plus(btShowProjects)
-            btnList = btnList.plus(btShowSkills)
-
-            for (item in btnList) {
-                item.setOnClickListener {
-                    activeFilter = item.toString()
-                    val dialog = BottomSheetDialog(requireContext())
-                    val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
-                    dialog.setCancelable(true)
-                    dialog.setContentView(view)
-                    dialog.show()
-                    var checkedBoxes: List<CheckBox> = listOf()
-                    val cb1: CheckBox = view.findViewById(R.id.skill1)
-                    val cb2: CheckBox = view.findViewById(R.id.skill2)
-                    val cb3: CheckBox = view.findViewById(R.id.skill3)
-                    val cb4: CheckBox = view.findViewById(R.id.skill4)
-
-                    var allCheckBoxes: List<CheckBox> = listOf()
-                    allCheckBoxes = allCheckBoxes.plus(cb1)
-                    allCheckBoxes = allCheckBoxes.plus(cb2)
-                    allCheckBoxes = allCheckBoxes.plus(cb3)
-                    allCheckBoxes = allCheckBoxes.plus(cb4)
-
-                    for (item in allCheckBoxes) {
-                        item.setOnClickListener {
-                            if (item.isChecked) {
-                                checkedBoxes = checkedBoxes.plus(item)
-                            }
-                            val btShowSkills: Button = viewBinding.skillsBtn
-                            val btShowProjects: Button = viewBinding.projectsBtn
-                            var activeFilter: String
-                            var btnList: List<Button> = listOf()
-                            btnList = btnList.plus(btShowProjects)
-                            btnList = btnList.plus(btShowSkills)
-
-
-                            val btReset: TextView? = view?.findViewById(R.id.reset)
-                            btReset?.setOnClickListener {
-                                Log.d("Testing", checkedBoxes.first().toString())
-                                checkedBoxes.forEach {
-                                    if (it.isChecked) {
-                                        it.toggle()
-                                    }
-                                }
-                                checkedBoxes = listOf()
-                            }
-
-                            val btApply: Button? = view?.findViewById(R.id.apply_btn)
-                            btApply?.setOnClickListener {
-                                checkedBoxes = listOf()
-                                var activeFilter: String
-                            }
-                        }
-                    }
-                }
-            }
         }
         return viewBinding.root
     }
@@ -172,5 +128,13 @@ class FreaksFragment : Fragment() {
         return mutableListOf<Freak>().apply {
             repeat(FREAKS_COUNT) { this.add(freak) }
         }
+    }
+
+    private fun loadFilters(activeFilter: String): List<String> {
+//        return if (activeFilter == "Skills") {
+         return mutableListOf<String>("Android", "Kotlin", "Other Skill", "iOS")
+//        } else {
+//            listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
+//        }
     }
 }

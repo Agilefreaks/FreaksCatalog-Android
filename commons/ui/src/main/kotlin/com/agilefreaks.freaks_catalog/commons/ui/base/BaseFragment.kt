@@ -26,13 +26,4 @@ abstract class BaseFragment<B : ViewDataBinding>(
         return viewBinding.root
     }
 
-    fun requireCompatActivity(): AppCompatActivity {
-        requireActivity()
-        val activity = requireActivity()
-        if (activity is AppCompatActivity) {
-            return activity
-        } else {
-            throw TypeCastException("Main activity should extend from 'AppCompatActivity'")
-        }
-    }
 }
