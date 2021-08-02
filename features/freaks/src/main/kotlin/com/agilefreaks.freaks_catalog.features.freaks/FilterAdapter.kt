@@ -27,7 +27,5 @@ class FilterAdapter(private val filters: List<String>) :
         Log.d("Testing", filter)
     }
 
-    override fun getItemCount(): Int {
-        return filters.size
-    }
+    override fun getItemCount() = filters.size
 }
