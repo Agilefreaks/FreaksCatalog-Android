@@ -61,7 +61,7 @@ class FreaksFragment : Fragment() {
             val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
             dialog.setCancelable(true)
 
-            var activeFilter = "Skills"
+            val activeFilter = "Skills"
             val filtersList = loadFilters(activeFilter)
             val recyclerFiltersView = view.findViewById<RecyclerView>(R.id.recycler_filters_view)
             recyclerFiltersView.layoutManager = LinearLayoutManager(view.context)
@@ -73,7 +73,7 @@ class FreaksFragment : Fragment() {
 
             val btApply: Button? = view?.findViewById(R.id.apply_btn)
             btApply?.setOnClickListener {
-                var activeFilter: String
+                val activeFilter: String
             }
 
             dialog.setContentView(view)
