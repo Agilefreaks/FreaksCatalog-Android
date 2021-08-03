@@ -7,12 +7,9 @@
     <fragment
         android:id="@+id/freaks"
         android:name="com.agilefreaks.freaks_catalog.features.freaks.FreaksFragment"
-        android:label="@string/freaks_title">
-    </fragment>
+        android:label="@string/freaks_title"/>
     <fragment
         android:id="@+id/freak_details"
-        android:name="com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsFragment"
-        android:label="freakDetails" >
-</fragment>
+        android:name="com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsFragment" />
 
 </navigation>

@@ -20,4 +20,5 @@
     <string name="name_template">%1$s %2$s</string>
     <string name="back_button">back button</string>
     <string name="profile_picture">profile picture</string>
+    <string name="details_fragment_label">{$firstName}</string>
 </resources>

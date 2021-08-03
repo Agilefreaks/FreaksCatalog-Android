@@ -44,12 +44,12 @@
         <View
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:background="@color/gray"
+            android:background="@color/white"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"/>
 
         <CheckBox
-            android:textColor = "@color/gray"
+            android:textColor = "@color/white"
             android:id="@+id/skill1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,12 +61,12 @@
         <View
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:background="@color/gray"
+            android:background="@color/white"
             android:layout_marginTop="5dp"
             android:layout_marginStart="15dp"/>
 
         <CheckBox
-            android:textColor = "@color/gray"
+            android:textColor = "@color/white"
             android:id="@+id/skill2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -78,12 +78,12 @@
         <View
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:background="@color/gray"
+            android:background="@color/white"
             android:layout_marginTop="5dp"
             android:layout_marginStart="15dp"/>
 
         <CheckBox
-            android:textColor = "@color/gray"
+            android:textColor = "@color/white"
             android:id="@+id/skill3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -95,12 +95,12 @@
         <View
             android:layout_width="380dp"
             android:layout_height="2dp"
-            android:background="@color/gray"
+            android:background="@color/white"
             android:layout_marginTop="5dp"
             android:layout_marginStart="15dp"/>
 
         <CheckBox
-            android:textColor = "@color/gray"
+            android:textColor = "@color/white"
             android:id="@+id/skill4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -119,6 +119,6 @@
         app:layout_constraintTop_toBottomOf="@+id/checkboxes"
         android:layout_gravity="center_horizontal"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/gray"/>
+        android:backgroundTint="@color/white"/>
 
 </LinearLayout>
