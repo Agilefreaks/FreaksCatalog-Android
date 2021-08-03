@@ -118,13 +118,14 @@ class FreaksFragment : Fragment() {
         val recyclerFiltersView = view?.findViewById<RecyclerView>(R.id.recycler_filters_view)
         val filtersList = loadFilters(activeFilter)
         recyclerFiltersView?.layoutManager = LinearLayoutManager(view.context)
-        recyclerFiltersView?.adapter = FilterAdapter(filtersList)
+
+        val myAdapter = FilterAdapter(filtersList)
+
+        recyclerFiltersView?.adapter = myAdapter
         dialog.setContentView(view)
         dialog.show()
         btReset?.setOnClickListener {
-            val checkBox: CheckBox? = recyclerFiltersView?.findViewById(R.id.skill)
-            checkBox?.toggle()
-            
+            myAdapter.resetCheckboxes()
         }
 
         btApply?.setOnClickListener {
