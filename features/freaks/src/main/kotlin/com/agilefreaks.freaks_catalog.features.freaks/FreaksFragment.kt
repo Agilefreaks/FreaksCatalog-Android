@@ -1,6 +1,5 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
-import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -31,7 +31,6 @@ class FreaksFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentFreaksBinding
 
-    @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,30 +54,17 @@ class FreaksFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = ItemAdapter(freaksList)
 
-        val btShow: Button = viewBinding.skillsBtn
-        btShow.setOnClickListener {
-            val dialog = BottomSheetDialog(requireContext())
-            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
-            dialog.setCancelable(true)
+        val btShowSkills: Button = viewBinding.skillsBtn
+        val btShowProjects: Button = viewBinding.projectsBtn
 
-            val activeFilter = "Skills"
-            val filtersList = loadFilters(activeFilter)
-            val recyclerFiltersView = view.findViewById<RecyclerView>(R.id.recycler_filters_view)
-            recyclerFiltersView.layoutManager = LinearLayoutManager(view.context)
-            recyclerFiltersView.adapter = FilterAdapter(filtersList)
+        btShowSkills.setOnClickListener {
 
-            val btReset: TextView? = view?.findViewById(R.id.reset)
-            btReset?.setOnClickListener {
-            }
-
-            val btApply: Button? = view?.findViewById(R.id.apply_btn)
-            btApply?.setOnClickListener {
-
-            }
-
-            dialog.setContentView(view)
-            dialog.show()
+            showFilterModal("Skills", null)
         }
+        btShowProjects.setOnClickListener {
+            showFilterModal("Projects", null)
+        }
+
         return viewBinding.root
     }
 
@@ -120,4 +106,30 @@ class FreaksFragment : Fragment() {
         } else {
             listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
         }
+
+    private fun showFilterModal(activeFilter: String, otherView: ViewGroup?){
+        val dialog = BottomSheetDialog(requireContext())
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, otherView)
+        dialog.setCancelable(true)
+        val filterTitle: TextView? = view.findViewById(R.id.filter_title)
+        filterTitle?.text = activeFilter
+        val btReset: TextView? = view.findViewById(R.id.reset)
+        val btApply: Button? = view.findViewById(R.id.apply_btn)
+        val recyclerFiltersView = view?.findViewById<RecyclerView>(R.id.recycler_filters_view)
+        val filtersList = loadFilters(activeFilter)
+        recyclerFiltersView?.layoutManager = LinearLayoutManager(view.context)
+        recyclerFiltersView?.adapter = FilterAdapter(filtersList)
+        dialog.setContentView(view)
+        dialog.show()
+        btReset?.setOnClickListener {
+            val checkBox: CheckBox? = recyclerFiltersView?.findViewById(R.id.skill)
+            checkBox?.toggle()
+            
+        }
+
+        btApply?.setOnClickListener {
+
+        }
+    }
+
 }

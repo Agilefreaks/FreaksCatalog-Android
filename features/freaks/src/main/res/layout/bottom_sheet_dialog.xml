@@ -20,17 +20,16 @@
             android:layout_marginBottom="0dp">
 
             <TextView
-                android:id="@+id/skill_filter_title"
+                android:id="@+id/filter_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/skills_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                app:layout_constraintTop_toBottomOf="@id/skill_filter_title"
+                app:layout_constraintTop_toBottomOf="@id/filter_title"
                 android:id="@+id/recycler_filters_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
