@@ -73,7 +73,7 @@ class FreaksFragment : Fragment() {
 
             val btApply: Button? = view?.findViewById(R.id.apply_btn)
             btApply?.setOnClickListener {
-                val activeFilter: String
+
             }
 
             dialog.setContentView(view)
