@@ -12,6 +12,9 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,11 +29,11 @@ class FreaksFragment : Fragment() {
         private const val DISPLAY_IN_THREE_COLUMNS = 3
         private const val DISPLAY_IN_FOUR_COLUMNS = 4
         private const val MIN_TABLET_DISPLAY = 6.5
-        private const val FREAKS_COUNT = 10
         private const val SKILL_FILTER = "Skills"
         private const val PROJECT_FILTER = "Projects"
     }
 
+    private val viewModel: FreaksViewModel by viewModels()
     private lateinit var viewBinding: FragmentFreaksBinding
 
     override fun onCreateView(
@@ -40,9 +43,7 @@ class FreaksFragment : Fragment() {
     ): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_freaks, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
-
-        val freaksList = loadFreaks()
-
+        viewBinding.freaksViewModel = viewModel
         val isPortrait =
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
@@ -54,7 +55,6 @@ class FreaksFragment : Fragment() {
 
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = ItemAdapter(freaksList)
 
         val showSkillsButton: Button = viewBinding.skillsBtn
         val showProjectsButton: Button = viewBinding.projectsBtn
@@ -66,7 +66,14 @@ class FreaksFragment : Fragment() {
             showFilterModal(PROJECT_FILTER)
         }
 
+        recyclerView.adapter = ItemAdapter(viewModel.loadFreaks()) {
+            onItemClicked(it)
+        }
         return viewBinding.root
+    }
+
+    private fun onItemClicked(freak: Freak) {
+        findNavController().navigate(R.id.freak_details, bundleOf("freak" to freak))
     }
 
     private fun isTablet(): Boolean {
@@ -82,23 +89,6 @@ class FreaksFragment : Fragment() {
         val diagonalInches =
             sqrt(widthInches.toDouble().pow(2.0) + heightInches.toDouble().pow(2.0))
         return diagonalInches >= MIN_TABLET_DISPLAY
-    }
-
-    private fun loadFreaks(): List<Freak> {
-        val freak = Freak(
-            "Ciprian",
-            "Hotea",
-            "Android Intern",
-            "Full Time",
-            "Beginner",
-            "Description",
-            0,
-            listOf("Kotlin"),
-            listOf("Freaks Catalog")
-        )
-        return mutableListOf<Freak>().apply {
-            repeat(FREAKS_COUNT) { this.add(freak) }
-        }
     }
 
     private fun loadFilters(activeFilter: String) =
@@ -139,5 +129,4 @@ class FreaksFragment : Fragment() {
 
         }
     }
-
 }
