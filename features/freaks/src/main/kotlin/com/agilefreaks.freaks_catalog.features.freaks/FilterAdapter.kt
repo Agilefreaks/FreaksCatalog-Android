@@ -24,8 +24,9 @@ class FilterAdapter(private val filters: List<String>) :
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         val filter = filters[position]
         holder.checkBox.text = filter
-        if (reset)
+        if (reset) {
             holder.checkBox.isChecked = false
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
