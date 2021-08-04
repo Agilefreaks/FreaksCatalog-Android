@@ -58,7 +58,6 @@ class FreaksFragment : Fragment() {
         val btShowProjects: Button = viewBinding.projectsBtn
 
         btShowSkills.setOnClickListener {
-
             showFilterModal("Skills", null)
         }
         btShowProjects.setOnClickListener {
@@ -116,7 +115,6 @@ class FreaksFragment : Fragment() {
         val btReset: TextView? = view.findViewById(R.id.reset)
         val btApply: Button? = view.findViewById(R.id.apply_btn)
         val recyclerFiltersView = view?.findViewById<RecyclerView>(R.id.recycler_filters_view)
-
         val filtersList = loadFilters(activeFilter)
         recyclerFiltersView?.layoutManager = LinearLayoutManager(view.context)
 
