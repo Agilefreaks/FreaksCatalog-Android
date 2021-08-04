@@ -101,7 +101,7 @@ class FreaksFragment : Fragment() {
 
     private fun loadFilters(activeFilter: String) =
         if (activeFilter == "Skills") {
-            listOf<String>("Android", "Kotlin", "Other Skill", "iOS")
+            listOf("Android", "Kotlin", "Other Skill", "iOS")
         } else {
             listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
         }
