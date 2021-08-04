@@ -1,6 +1,5 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,12 +28,10 @@ class FilterAdapter(private val filters: List<String>) :
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun resetCheckboxes(){
         reset = true
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, filters.size)
     }
-
 
     override fun getItemCount() = filters.size
 }

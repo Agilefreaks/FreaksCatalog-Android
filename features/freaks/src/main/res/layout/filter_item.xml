@@ -6,13 +6,6 @@ android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:orientation="vertical">
 
-    <View
-        android:layout_width="380dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/gray" />
-
     <CheckBox
         android:id="@+id/skill"
         android:layout_width="match_parent"

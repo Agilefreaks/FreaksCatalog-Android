@@ -2,10 +2,6 @@
     <string name="freaks_title">Freaks screen</string>
     <string name="skills_btn">Skills</string>
     <string name="projects_btn">Projects</string>
-    <string name="resetBtn">Reset</string>
-    <string name="androidCheckBox">Android</string>
-    <string name="iosCheckBox">iOS</string>
-    <string name="cevaCheckBox">Ceva</string>
-    <string name="altcevaCheckBox">Altceva</string>
     <string name="applyFiltersBtn">Apply</string>
+    <string name="resetBtn">Reset</string>
 </resources>

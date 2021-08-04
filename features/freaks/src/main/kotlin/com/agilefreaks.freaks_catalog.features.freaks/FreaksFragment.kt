@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -115,9 +116,15 @@ class FreaksFragment : Fragment() {
         val btReset: TextView? = view.findViewById(R.id.reset)
         val btApply: Button? = view.findViewById(R.id.apply_btn)
         val recyclerFiltersView = view?.findViewById<RecyclerView>(R.id.recycler_filters_view)
+
         val filtersList = loadFilters(activeFilter)
         recyclerFiltersView?.layoutManager = LinearLayoutManager(view.context)
 
+        val dividerItemDecoration = DividerItemDecoration(
+            recyclerFiltersView?.getContext(),
+            (recyclerFiltersView?.layoutManager as LinearLayoutManager).getOrientation()
+        )
+        recyclerFiltersView?.addItemDecoration(dividerItemDecoration)
         val myAdapter = FilterAdapter(filtersList)
 
         recyclerFiltersView?.adapter = myAdapter
