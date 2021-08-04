@@ -14,9 +14,9 @@
     <solid android:color="@android:color/white" />
 
     <padding
-        android:bottom="3dp"
-        android:left="3dp"
-        android:right="3dp"
-        android:top="3dp"/>
+        android:bottom="@dimen/picture_padding"
+        android:left="@dimen/picture_padding"
+        android:right="@dimen/picture_padding"
+        android:top="@dimen/picture_padding"/>
 
 </shape>
