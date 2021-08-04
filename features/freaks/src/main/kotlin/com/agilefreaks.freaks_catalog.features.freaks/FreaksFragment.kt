@@ -27,7 +27,6 @@ class FreaksFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentFreaksBinding
 
-    @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
