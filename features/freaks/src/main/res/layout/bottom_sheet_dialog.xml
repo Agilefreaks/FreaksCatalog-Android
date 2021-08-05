@@ -16,8 +16,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="0dp">
+            android:layout_marginTop="@dimen/filter_constraint_layout_margin_top"
+            android:layout_marginBottom="@dimen/filter_constraint_layout_margin_bottom">
 
             <TextView
                 android:id="@+id/filter_title"
@@ -38,11 +38,10 @@
 
             <TextView
                 android:id="@+id/reset"
-                android:layout_width="60dp"
+                android:layout_width="@dimen/reset_button_width"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingStart="10dp"
-                android:paddingEnd="15dp"
+                android:paddingHorizontal="@dimen/reset_button_padding_horizontal"
                 android:text="@string/resetBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -51,8 +50,8 @@
 
     <Button
         android:id="@+id/apply_btn"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/apply_filters_button_width"
+        android:layout_height="@dimen/apply_filters_button_height"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/gray"
         android:text="@string/applyFiltersBtn"

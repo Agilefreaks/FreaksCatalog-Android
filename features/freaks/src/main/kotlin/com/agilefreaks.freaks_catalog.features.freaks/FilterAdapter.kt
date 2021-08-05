@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FilterAdapter(private val filters: List<String>) :
     RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
-    var reset: Boolean = false
+    var filterReset: Boolean = false
 
     class FilterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val checkBox: CheckBox = view.findViewById(R.id.skill)
+        val filterCheckBox: CheckBox = view.findViewById(R.id.filter_checkbox)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
@@ -22,14 +22,14 @@ class FilterAdapter(private val filters: List<String>) :
 
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         val filter = filters[position]
-        holder.checkBox.text = filter
-        if (reset) {
-            holder.checkBox.isChecked = false
+        holder.filterCheckBox.text = filter
+        if (filterReset) {
+            holder.filterCheckBox.isChecked = false
         }
     }
 
     fun resetCheckboxes(){
-        reset = true
+        filterReset = true
         notifyItemRangeChanged(0, filters.size)
     }
 

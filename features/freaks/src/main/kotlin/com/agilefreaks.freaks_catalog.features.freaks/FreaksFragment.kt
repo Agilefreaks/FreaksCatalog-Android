@@ -27,6 +27,8 @@ class FreaksFragment : Fragment() {
         private const val DISPLAY_IN_FOUR_COLUMNS = 4
         private const val MIN_TABLET_DISPLAY = 6.5
         private const val FREAKS_COUNT = 10
+        private const val SKILL_FILTER = "Skills"
+        private const val PROJECT_FILTER = "Projects"
     }
 
     private lateinit var viewBinding: FragmentFreaksBinding
@@ -54,14 +56,14 @@ class FreaksFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = ItemAdapter(freaksList)
 
-        val btShowSkills: Button = viewBinding.skillsBtn
-        val btShowProjects: Button = viewBinding.projectsBtn
+        val showSkillsButton: Button = viewBinding.skillsBtn
+        val showProjectsButton: Button = viewBinding.projectsBtn
 
-        btShowSkills.setOnClickListener {
-            showFilterModal("Skills", null)
+        showSkillsButton.setOnClickListener {
+            showFilterModal(SKILL_FILTER)
         }
-        btShowProjects.setOnClickListener {
-            showFilterModal("Projects", null)
+        showProjectsButton.setOnClickListener {
+            showFilterModal(PROJECT_FILTER)
         }
 
         return viewBinding.root
@@ -100,14 +102,15 @@ class FreaksFragment : Fragment() {
     }
 
     private fun loadFilters(activeFilter: String) =
-        if (activeFilter == "Skills") {
+        if (activeFilter == SKILL_FILTER) {
             listOf("Android", "Kotlin", "Other Skill", "iOS")
         } else {
             listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
         }
 
-    private fun showFilterModal(activeFilter: String, otherView: ViewGroup?){
+    private fun showFilterModal(activeFilter: String){
         val dialog = BottomSheetDialog(requireContext())
+        val otherView: ViewGroup? = null
         val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, otherView)
         dialog.setCancelable(true)
         val filterTitle: TextView? = view.findViewById(R.id.filter_title)
@@ -119,8 +122,8 @@ class FreaksFragment : Fragment() {
         recyclerFiltersView?.layoutManager = LinearLayoutManager(view.context)
 
         val dividerItemDecoration = DividerItemDecoration(
-            recyclerFiltersView?.getContext(),
-            (recyclerFiltersView?.layoutManager as LinearLayoutManager).getOrientation()
+            recyclerFiltersView?.context,
+            (recyclerFiltersView?.layoutManager as LinearLayoutManager).orientation
         )
         recyclerFiltersView?.addItemDecoration(dividerItemDecoration)
         val myAdapter = FilterAdapter(filtersList)
