@@ -9,7 +9,7 @@ android {
     addProductFlavours(this)
 }
 object PluginsVersions {
-    const val LIFECYCLE_VIEW_MODEL = "4.2.1"
+    const val LIFECYCLE_VIEW_MODEL = "2.3.1"
 }
 
 
