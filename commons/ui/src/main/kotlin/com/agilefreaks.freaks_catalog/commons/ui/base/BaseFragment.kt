@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -26,13 +25,4 @@ abstract class BaseFragment<B : ViewDataBinding>(
         return viewBinding.root
     }
 
-    fun requireCompatActivity(): AppCompatActivity {
-        requireActivity()
-        val activity = requireActivity()
-        if (activity is AppCompatActivity) {
-            return activity
-        } else {
-            throw TypeCastException("Main activity should extend from 'AppCompatActivity'")
-        }
-    }
 }
