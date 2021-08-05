@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="freaksViewModel"
+            type="com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
        <LinearLayout
             android:id="@+id/linear_layout"
             android:layout_width="match_parent"
