@@ -9,7 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemAdapter(private val freaksList: List<Freak>) :
+class ItemAdapter(private val freaksList: List<Freak>, val onItemCLicked: (Freak) -> Unit) :
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -31,6 +31,7 @@ class ItemAdapter(private val freaksList: List<Freak>) :
         holder.imageView.setOnClickListener {
             holder.itemView.findNavController()
                 .navigate(R.id.freak_details, bundleOf("freak" to item))
+            onItemCLicked(item)
         }
     }
 
