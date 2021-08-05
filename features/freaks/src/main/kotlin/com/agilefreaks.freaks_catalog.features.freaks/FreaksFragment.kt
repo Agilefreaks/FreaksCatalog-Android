@@ -103,23 +103,23 @@ class FreaksFragment : Fragment() {
 
     private fun loadFilters(activeFilter: String) =
         if (activeFilter == SKILL_FILTER) {
-            listOf("Android", "Kotlin", "Other Skill", "iOS")
+            listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
         } else {
             listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
         }
 
     private fun showFilterModal(activeFilter: String){
         val dialog = BottomSheetDialog(requireContext())
-        val otherView: ViewGroup? = null
-        val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, otherView)
+        val view: ViewGroup? = null
+        val bottomSheetDialog = layoutInflater.inflate(R.layout.bottom_sheet_dialog, view)
         dialog.setCancelable(true)
-        val filterTitle: TextView? = view.findViewById(R.id.filter_title)
+        val filterTitle: TextView? = bottomSheetDialog.findViewById(R.id.filter_title)
         filterTitle?.text = activeFilter
-        val btReset: TextView? = view.findViewById(R.id.reset)
-        val btApply: Button? = view.findViewById(R.id.apply_btn)
-        val recyclerFiltersView = view?.findViewById<RecyclerView>(R.id.recycler_filters_view)
+        val btReset: TextView? = bottomSheetDialog.findViewById(R.id.reset)
+        val btApply: Button? = bottomSheetDialog.findViewById(R.id.apply_btn)
+        val recyclerFiltersView = bottomSheetDialog?.findViewById<RecyclerView>(R.id.recycler_filters_view)
         val filtersList = loadFilters(activeFilter)
-        recyclerFiltersView?.layoutManager = LinearLayoutManager(view.context)
+        recyclerFiltersView?.layoutManager = LinearLayoutManager(bottomSheetDialog.context)
 
         val dividerItemDecoration = DividerItemDecoration(
             recyclerFiltersView?.context,
@@ -129,7 +129,7 @@ class FreaksFragment : Fragment() {
         val myAdapter = FilterAdapter(filtersList)
 
         recyclerFiltersView?.adapter = myAdapter
-        dialog.setContentView(view)
+        dialog.setContentView(bottomSheetDialog)
         dialog.show()
         btReset?.setOnClickListener {
             myAdapter.resetCheckboxes()
