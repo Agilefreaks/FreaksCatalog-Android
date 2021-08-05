@@ -29,7 +29,8 @@ class ItemAdapter(private val freaksList: List<Freak>) :
         holder.imageView.setImageResource(R.drawable.testimage)
 
         holder.imageView.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.freak_details, bundleOf("freak" to item))
+            holder.itemView.findNavController()
+                .navigate(R.id.freak_details, bundleOf("freak" to item))
         }
     }
 
