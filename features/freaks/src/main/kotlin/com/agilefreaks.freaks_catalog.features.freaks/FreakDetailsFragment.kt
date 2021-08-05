@@ -28,20 +28,20 @@ class FreakDetailsFragment : Fragment() {
         arguments?.let {
             val freak = it.getSerializable("freak") as Freak
             activity
-            viewBinding.descriptionTV.text = freak.description
-            viewBinding.skillsTV.text =
+            viewBinding.descriptionFreak.text = freak.description
+            viewBinding.skillsFreak.text =
                 getString(R.string.skills_template, freak.skills.joinToString(", "))
-            viewBinding.projectsTV.text =
+            viewBinding.projectFreak.text =
                 getString(R.string.projects_template, freak.projects.joinToString(", "))
-            viewBinding.titleTV.text = getString(R.string.title_template, freak.role, freak.norm)
-            viewBinding.levelTV.text = getString(R.string.level_project, freak.level)
+            viewBinding.titleFreak.text = getString(R.string.title_template, freak.role, freak.norm)
+            viewBinding.levelFreak.text = getString(R.string.level_project, freak.level)
             initBar(freak.firstName,freak.lastName)
         }
     }
 
     fun initBar(firstName:String, lastName:String) {
-        val mainActivityTB = (activity as AppCompatActivity).supportActionBar
-        mainActivityTB?.setTitle(getString(R.string.name_template, firstName, lastName))
+        val mainActivity_tool_bar = (activity as AppCompatActivity).supportActionBar
+        mainActivity_tool_bar?.setTitle(getString(R.string.name_template, firstName, lastName))
     }
 }
 
