@@ -86,13 +86,6 @@ class FreaksFragment : Fragment() {
         return diagonalInches >= MIN_TABLET_DISPLAY
     }
 
-    private fun loadFilters(activeFilter: String) =
-        if (activeFilter == SKILL_FILTER) {
-            listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
-        } else {
-            listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
-        }
-
     private fun showFilterModal(activeFilter: String) {
         val dialog = BottomSheetDialog(requireContext())
         val view: ViewGroup? = null
@@ -104,7 +97,7 @@ class FreaksFragment : Fragment() {
         val btApply: Button? = bottomSheetDialog.findViewById(R.id.apply_btn)
         val recyclerFiltersView =
             bottomSheetDialog?.findViewById<RecyclerView>(R.id.recycler_filters_view)
-        val filtersList = loadFilters(activeFilter)
+        val filtersList = filterViewModel.loadFilters(activeFilter)
         recyclerFiltersView?.layoutManager = LinearLayoutManager(bottomSheetDialog.context)
 
         val dividerItemDecoration = DividerItemDecoration(
