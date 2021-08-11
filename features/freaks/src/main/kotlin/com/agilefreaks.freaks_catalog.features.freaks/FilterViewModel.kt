@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 class FilterViewModel : ViewModel() {
     companion object {
         private const val SKILL_FILTER = "Skills"
-        private const val PROJECT_FILTER = "Projects"
     }
 
     fun loadFilters(activeFilter: String) =
