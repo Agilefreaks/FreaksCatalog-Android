@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.agilefreaks.freaks_catalog.features.freaks.DetailsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -97,7 +105,7 @@
                     style="@style/FreakScreenTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_template"
+                    android:text="@{String.format(@string/title_template, viewModel.role, viewModel.norm)}"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/titleTopG" />
@@ -118,7 +126,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:maxLength="40"
-                    android:text="@string/skills_template"
+                    android:text="@{String.format(@string/skills_template,viewModel.skills)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/skillsTopG" />
@@ -138,7 +146,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:text="@string/projects_template"
+                    android:text="@{String.format(@string/projects_template,viewModel.projects)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/projectsTopG" />
@@ -155,7 +163,7 @@
                     style="@style/FreakScreenTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/level_project"
+                    android:text="@{String.format(@string/level_project,viewModel.level)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/levelTopG" />
@@ -192,7 +200,7 @@
                     android:id="@+id/description_freak"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="@string/description_template"
+                    android:text="@{viewModel.description}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sec_text_size"
                     android:textStyle="normal"
@@ -200,7 +208,6 @@
                     app:layout_constraintEnd_toStartOf="@id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/descriptionStartG"
                     app:layout_constraintTop_toBottomOf="@id/descriptionTopG" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
