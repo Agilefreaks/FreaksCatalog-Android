@@ -40,8 +40,7 @@ class FreakDetailsFragment : Fragment() {
     }
 
     fun initBar(firstName:String, lastName:String) {
-        val mainActivity_tool_bar = (activity as AppCompatActivity).supportActionBar
-        mainActivity_tool_bar?.setTitle(getString(R.string.name_template, firstName, lastName))
+        val mainActivityToolBar = (activity as AppCompatActivity).supportActionBar
+        mainActivityToolBar?.setTitle(getString(R.string.name_template, firstName, lastName))
     }
 }
-

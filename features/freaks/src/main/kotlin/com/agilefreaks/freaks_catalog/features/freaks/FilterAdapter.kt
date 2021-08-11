@@ -28,7 +28,7 @@ class FilterAdapter(private val filters: List<String>) :
         }
     }
 
-    fun resetCheckboxes(){
+    fun resetCheckboxes() {
         filterReset = true
         notifyItemRangeChanged(0, filters.size)
     }

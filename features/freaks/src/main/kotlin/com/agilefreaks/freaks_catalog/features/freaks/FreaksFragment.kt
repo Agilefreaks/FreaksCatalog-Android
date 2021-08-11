@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -66,14 +67,17 @@ class FreaksFragment : Fragment() {
             showFilterModal(PROJECT_FILTER)
         }
 
-        recyclerView.adapter = ItemAdapter(viewModel.loadFreaks()) {
-            onItemClicked(it)
-        }
+        viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
+            recyclerView.adapter = ItemAdapter(freaks) {
+                onItemClicked(it.id)
+            }
+        })
+
         return viewBinding.root
     }
 
-    private fun onItemClicked(freak: Freak) {
-        findNavController().navigate(R.id.freak_details, bundleOf("freak" to freak))
+    private fun onItemClicked(freakId: String) {
+        findNavController().navigate(R.id.freak_details, bundleOf("freakId" to freakId))
     }
 
     private fun isTablet(): Boolean {
@@ -98,7 +102,7 @@ class FreaksFragment : Fragment() {
             listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
         }
 
-    private fun showFilterModal(activeFilter: String){
+    private fun showFilterModal(activeFilter: String) {
         val dialog = BottomSheetDialog(requireContext())
         val view: ViewGroup? = null
         val bottomSheetDialog = layoutInflater.inflate(R.layout.bottom_sheet_dialog, view)
@@ -107,7 +111,8 @@ class FreaksFragment : Fragment() {
         filterTitle?.text = activeFilter
         val btReset: TextView? = bottomSheetDialog.findViewById(R.id.reset)
         val btApply: Button? = bottomSheetDialog.findViewById(R.id.apply_btn)
-        val recyclerFiltersView = bottomSheetDialog?.findViewById<RecyclerView>(R.id.recycler_filters_view)
+        val recyclerFiltersView =
+            bottomSheetDialog?.findViewById<RecyclerView>(R.id.recycler_filters_view)
         val filtersList = loadFilters(activeFilter)
         recyclerFiltersView?.layoutManager = LinearLayoutManager(bottomSheetDialog.context)
 
