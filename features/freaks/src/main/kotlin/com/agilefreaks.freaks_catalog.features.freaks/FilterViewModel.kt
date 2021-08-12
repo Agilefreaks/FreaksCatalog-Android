@@ -3,9 +3,6 @@ package com.agilefreaks.freaks_catalog.features.freaks
 import androidx.lifecycle.ViewModel
 
 class FilterViewModel : ViewModel() {
-    companion object {
-        private const val SKILL_FILTER = "Skills"
-    }
 
     fun loadFilters(activeFilter: String) =
         if (activeFilter == SKILL_FILTER) {
@@ -13,4 +10,8 @@ class FilterViewModel : ViewModel() {
         } else {
             listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
         }
+
+    companion object {
+        private const val SKILL_FILTER = "Skills"
+    }
 }
