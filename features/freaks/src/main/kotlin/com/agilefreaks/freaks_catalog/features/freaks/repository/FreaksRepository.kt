@@ -9,28 +9,26 @@ import kotlinx.coroutines.withContext
 
 class FreaksRepository {
     suspend fun getFreaksFromApi(): List<Freak> = withContext(IO) {
-        val freaks: List<Freak>?
         val response = apolloClient.query(FreaksListQuery()).await().data
-        freaks = mapFreaks(response)
-
-        freaks
+        mapFreaks(response)
     }
 
-    private fun mapFreaks(response: FreaksListQuery.Data?): List<Freak> {
-        val freaks = response?.freaks?.nodes?.map {
-            Freak(
-                id = it?.id ?: "",
-                firstName = it?.name ?: "",
-                lastName = it?.name ?: "",
-                role = "",
-                norm = "",
-                level = "",
-                description = "",
-                photo = it?.photo?.uri as String,
-                skills = emptyList(),
-                projects = emptyList()
-            )
-        }
-        return freaks ?: emptyList()
-    }
+    private fun mapFreaks(response: FreaksListQuery.Data?): List<Freak> =
+        response?.freaks?.nodes?.map {
+            it.toFreak()
+        } ?: emptyList()
+
+    private fun FreaksListQuery.Node?.toFreak() =
+        Freak(
+            id = this?.id ?: "",
+            firstName = this?.name ?: "",
+            lastName = this?.name ?: "",
+            role = "",
+            norm = "",
+            level = "",
+            description = "",
+            photo = this?.photo?.uri as String,
+            skills = emptyList(),
+            projects = emptyList()
+        )
 }

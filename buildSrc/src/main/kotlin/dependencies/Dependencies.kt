@@ -58,9 +58,17 @@ object Dependencies {
     }
 
     object Apollo {
-        const val VERSION = "2.5.4"
+        const val VERSION = "2.5.9"
 
         const val RUNTIME = "com.apollographql.apollo:apollo-runtime:$VERSION"
         const val COROUTINES_SUPPORT = "com.apollographql.apollo:apollo-coroutines-support:$VERSION"
+    }
+
+    object Picasso {
+        private const val VERSION = "2.71828"
+
+        const val PICASSO = "com.squareup.picasso:picasso:$VERSION"
+        const val PICASSO_ANDROID_SUPPORT = "com.android.support"
+        const val PICASSO_EXIFINTERACE = "exifinterface"
     }
 }

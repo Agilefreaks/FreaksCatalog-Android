@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsFragment.Companion.FREAK_ID
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
@@ -25,15 +26,6 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 class FreaksFragment : Fragment() {
-    companion object {
-        private const val DISPLAY_IN_TWO_COLUMNS = 2
-        private const val DISPLAY_IN_THREE_COLUMNS = 3
-        private const val DISPLAY_IN_FOUR_COLUMNS = 4
-        private const val MIN_TABLET_DISPLAY = 6.5
-        private const val SKILL_FILTER = "Skills"
-        private const val PROJECT_FILTER = "Projects"
-    }
-
     private val viewModel: FreaksViewModel by viewModels()
     private lateinit var viewBinding: FragmentFreaksBinding
 
@@ -77,7 +69,7 @@ class FreaksFragment : Fragment() {
     }
 
     private fun onItemClicked(freakId: String) {
-        findNavController().navigate(R.id.freak_details, bundleOf("freakId" to freakId))
+        findNavController().navigate(R.id.freak_details, bundleOf(FREAK_ID to freakId))
     }
 
     private fun isTablet(): Boolean {
@@ -133,5 +125,14 @@ class FreaksFragment : Fragment() {
         btApply?.setOnClickListener {
 
         }
+    }
+
+    companion object {
+        private const val DISPLAY_IN_TWO_COLUMNS = 2
+        private const val DISPLAY_IN_THREE_COLUMNS = 3
+        private const val DISPLAY_IN_FOUR_COLUMNS = 4
+        private const val MIN_TABLET_DISPLAY = 6.5
+        private const val SKILL_FILTER = "Skills"
+        private const val PROJECT_FILTER = "Projects"
     }
 }

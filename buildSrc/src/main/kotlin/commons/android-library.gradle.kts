@@ -89,5 +89,13 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.UI)
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
 
+    implementation(Dependencies.Apollo.COROUTINES_SUPPORT)
+    implementation(Dependencies.Apollo.RUNTIME)
+
+    implementation(Dependencies.Picasso.PICASSO){
+        exclude(Dependencies.Picasso.PICASSO_ANDROID_SUPPORT)
+        exclude(Dependencies.Picasso.PICASSO_EXIFINTERACE)
+    }
+
     addTestDependencies()
 }

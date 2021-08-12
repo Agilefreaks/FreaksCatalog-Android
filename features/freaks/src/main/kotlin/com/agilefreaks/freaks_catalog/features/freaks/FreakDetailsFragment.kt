@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
 
 class FreakDetailsFragment : Fragment() {
+    companion object{
+        const val FREAK_ID = "freakId"
+    }
 
     private lateinit var viewBinding: FragmentFreakDetailsBinding
 
