@@ -8,13 +8,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
+    compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
 
     defaultConfig {
         applicationId = BuildAndroidConfig.APPLICATION_ID
-        minSdkVersion(BuildAndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(BuildAndroidConfig.TARGET_SDK_VERSION)
-        buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
+        minSdk = 24
+        targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
+        buildToolsVersion = BuildAndroidConfig.BUILD_TOOLS_VERSION
 
         versionCode = BuildAndroidConfig.VERSION_CODE
         versionName = BuildAndroidConfig.VERSION_NAME
@@ -55,7 +55,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    lintOptions {
+    lint {
         lintConfig = rootProject.file(".lint/config.xml")
         isCheckAllWarnings = true
         isWarningsAsErrors = true
