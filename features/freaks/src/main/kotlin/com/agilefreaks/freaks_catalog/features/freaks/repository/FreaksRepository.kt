@@ -7,8 +7,12 @@ import com.apollographql.apollo.coroutines.await
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
 
-class FreaksRepository {
-    suspend fun getFreaksFromApi(): List<Freak> = withContext(IO) {
+interface FreaksRepository {
+    suspend fun getFreaksFromApi(): List<Freak>
+}
+
+class FreaksRepositoryImpl : FreaksRepository {
+    override suspend fun getFreaksFromApi(): List<Freak> = withContext(IO) {
         val response = apolloClient.query(FreaksListQuery()).await().data
         mapFreaks(response)
     }

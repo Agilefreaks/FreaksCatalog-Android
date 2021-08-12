@@ -8,9 +8,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.Freak
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepository
 import kotlinx.coroutines.launch
 
-class FreaksViewModel : ViewModel() {
-    private val repository = FreaksRepository()
-
+class FreaksViewModel(private val repository: FreaksRepository) : ViewModel() {
     private val _freaks = MutableLiveData<List<Freak>>().apply {
         viewModelScope.launch {
             value = loadFreaks()

@@ -22,11 +22,12 @@ import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsFragment.Compa
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositoryImpl
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 class FreaksFragment : Fragment() {
-    private val viewModel: FreaksViewModel by viewModels()
+    private val viewModel: FreaksViewModel by viewModels { FreaksViewModelFactory(FreaksRepositoryImpl()) }
     private lateinit var viewBinding: FragmentFreaksBinding
 
     override fun onCreateView(
