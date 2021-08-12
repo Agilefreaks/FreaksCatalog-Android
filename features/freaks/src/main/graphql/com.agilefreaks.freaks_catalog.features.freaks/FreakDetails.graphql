@@ -1,0 +1,27 @@
+query FreakDetailsQuery{
+    freaks{
+        nodes{
+            id
+            name
+            description
+            norm{
+                name
+            }
+            role{
+                name
+            }
+            level{
+                name
+            }
+            photo{
+                uri
+            }
+            projects{
+                name
+            }
+            skills {
+                name
+            }
+        }
+    }
+}

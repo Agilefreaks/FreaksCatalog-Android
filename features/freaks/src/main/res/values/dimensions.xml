@@ -4,4 +4,5 @@
     <dimen name="sec_text_size">16sp</dimen>
     <dimen name="details_card_view_radius">8dp</dimen>
     <dimen name="profile_photo_elevation">5dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
 </resources>

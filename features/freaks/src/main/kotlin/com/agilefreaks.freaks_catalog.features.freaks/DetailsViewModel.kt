@@ -1,63 +1,63 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.apollographql.apollo.coroutines.await
+import kotlinx.coroutines.launch
 
-class DetailsViewModel: ViewModel() {
-    private var freakID: String? = null
+class DetailsViewModel : ViewModel() {
+    private var _freaks: List<Freak> = listOf()
+    val freaks: List<Freak>
+        get() = _freaks
 
-    private var _firstName: String? = null
-    val firstName: String?
-        get() = _firstName
+    private var _freak = MutableLiveData(Freak("", "", "", "aaa", "aa", "", "", "", "", ""))
+    val freak: LiveData<Freak>
+        get() = _freak
 
-    private var _lastName: String? = null
-    val lastName: String?
-        get() = _lastName
+    private var _freakFirstName: String = ""
+    val freakFirstName: String
+        get() = _freakFirstName
 
-    private var _role: String? = null
-    val role: String?
-        get() = _role
+    private var _freakLastName: String = ""
+    val freakLastName: String
+        get() = _freakLastName
 
-    private var _norm: String? = null
-    val norm: String?
-        get() = _norm
-
-    private var _level: String? = null
-    val level: String?
-        get() = _level
-
-    private var _description: String? = null
-    val description: String?
-        get() = _description
-
-    private var _image: Int? = null
-    val image: Int?
-        get() = _image
-
-    private var _skills: List<String> = mutableListOf()
-    val skills: String
-        get() = _skills.joinToString(", ")
-
-    private var _projects: List<String> = mutableListOf()
-    val projects: String
-        get() = _projects.joinToString(", ")
-
-    init {
-        getData()
+    fun getData(freakId: String) {
+        freaks[freakId.toInt()].let {
+            _freak.value = it
+            _freakFirstName = it.firstName
+            _freakLastName = it.lastName
+        }
     }
 
-    fun getData() {
-        _firstName = "Marian"
-        _lastName = "Vanghelie"
-        _role = "Android Intern"
-        _norm = "Full Time"
-        _level = "Beginner"
-        _description = "Description"
-        _image = 0
-        _skills = listOf("Kotlin")
-        _projects = listOf("Freaks Catalog")
+    suspend fun getFreaksFromApi() {
+        val response = apolloClient.query(FreakDetailsQuery()).await().data
+        _freaks = mapFreaks(response) ?: listOf()
     }
 
-    fun setID(freakId: String){
-        this.freakID = freakId
-    }
+    fun mapFreaks(response: FreakDetailsQuery.Data?): List<Freak>? =
+        response?.freaks?.nodes?.map {
+            it.toFreak()
+        }
+
+    private fun FreakDetailsQuery.Node?.toFreak() = Freak(
+        freakId = this?.id ?: "",
+        firstName = this?.name ?: "",
+        lastName = this?.name ?: "",
+        description = this?.description ?: "",
+        level = this?.level?.name ?: "",
+        norm = this?.norm?.name ?: "",
+        photo = this?.photo?.uri as String ?: "",
+        role = this.role.name ?: "",
+        projects = buildProjectsNameList(this.projects).joinToString(", "),
+        skills = buildSkillsNameList(this.skills).joinToString(", ")
+    )
+
+    fun buildProjectsNameList(projects: List<FreakDetailsQuery.Project>): List<String> =
+        projects.map { it.name }
+
+    fun buildSkillsNameList(skills: List<FreakDetailsQuery.Skill>): List<String> =
+        skills.map { it.name }
 }

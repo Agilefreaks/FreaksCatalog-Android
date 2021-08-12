@@ -9,6 +9,9 @@ plugins {
 android {
     addProductFlavours(this)
 }
+object PluginsVersions {
+    const val LIFECYCLE_VIEW_MODEL = "2.3.1"
+}
 
 apollo {
     generateKotlinModels.set(true)
