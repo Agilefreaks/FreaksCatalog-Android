@@ -12,24 +12,12 @@ class DetailsViewModel : ViewModel() {
     val freaks: List<Freak>
         get() = _freaks
 
-    private var _freak = MutableLiveData(Freak("", "", "", "aaa", "aa", "", "", "", "", ""))
+    private var _curFreak = MutableLiveData(Freak("", "", "", "", "", "", "", "", "", ""))
     val freak: LiveData<Freak>
-        get() = _freak
-
-    private var _freakFirstName: String = ""
-    val freakFirstName: String
-        get() = _freakFirstName
-
-    private var _freakLastName: String = ""
-    val freakLastName: String
-        get() = _freakLastName
+        get() = _curFreak
 
     fun getData(freakId: String) {
-        freaks[freakId.toInt()].let {
-            _freak.value = it
-            _freakFirstName = it.firstName
-            _freakLastName = it.lastName
-        }
+        _curFreak.value = freaks.get(freakId.toInt())
     }
 
     suspend fun getFreaksFromApi() {

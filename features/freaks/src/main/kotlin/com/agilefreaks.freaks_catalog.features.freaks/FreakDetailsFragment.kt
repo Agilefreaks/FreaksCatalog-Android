@@ -39,8 +39,8 @@ class FreakDetailsFragment : Fragment() {
         mainActivitytoolBar?.setTitle(
             getString(
                 R.string.name_template,
-                viewModel.freakFirstName,
-                viewModel.freakLastName
+                viewModel.freak.value?.firstName,
+                viewModel.freak.value?.lastName
             )
         )
     }
