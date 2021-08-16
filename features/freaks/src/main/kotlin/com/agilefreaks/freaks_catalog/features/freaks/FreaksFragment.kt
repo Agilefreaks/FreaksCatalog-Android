@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,6 +16,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -51,10 +53,10 @@ class FreaksFragment : Fragment() {
         val showProjectsButton: Button = viewBinding.projectsBtn
 
         showSkillsButton.setOnClickListener {
-            showFilterModal(SKILL_FILTER)
+            showSkillFilterModal()
         }
         showProjectsButton.setOnClickListener {
-            showFilterModal(PROJECT_FILTER)
+            showProjectsFilterViewModal()
         }
 
         viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
@@ -86,18 +88,38 @@ class FreaksFragment : Fragment() {
         return diagonalInches >= MIN_TABLET_DISPLAY
     }
 
-    private fun showFilterModal(activeFilter: String) {
+    private fun showSkillFilterModal() {
+        val dialog = setupFilterModal()
+        val filtersViewModel = FilterViewModel()
+        // TODO: this should be a resource not a string hardcoded in the fragment
+        // filterTitle?.text = activeFilter
+
+        filtersViewModel.skills.observe(viewLifecycleOwner, {
+            val adapter = FilterAdapter()
+            adapter.submitList(it)
+            val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
+            recyclerFiltersView.adapter = adapter
+        })
+        dialog.findViewById<Button>(R.id.reset).setOnClickListener {
+            filtersViewModel.reset()
+        }
+    }
+
+    private fun showProjectsFilterViewModal() {
+        setupFilterModal()
+
+        TODO()
+    }
+
+    private fun setupFilterModal() : View {
         val dialog = BottomSheetDialog(requireContext())
         val view: ViewGroup? = null
         val bottomSheetDialog = layoutInflater.inflate(R.layout.bottom_sheet_dialog, view)
         dialog.setCancelable(true)
-        val filterTitle: TextView? = bottomSheetDialog.findViewById(R.id.filter_title)
-        filterTitle?.text = activeFilter
-        val btReset: TextView? = bottomSheetDialog.findViewById(R.id.reset)
+        // val btReset: TextView? = bottomSheetDialog.findViewById(R.id.reset)
         val btApply: Button? = bottomSheetDialog.findViewById(R.id.apply_btn)
         val recyclerFiltersView =
             bottomSheetDialog?.findViewById<RecyclerView>(R.id.recycler_filters_view)
-        val filtersList = filterViewModel.loadFilters(activeFilter)
         recyclerFiltersView?.layoutManager = LinearLayoutManager(bottomSheetDialog.context)
 
         val dividerItemDecoration = DividerItemDecoration(
@@ -105,18 +127,19 @@ class FreaksFragment : Fragment() {
             (recyclerFiltersView?.layoutManager as LinearLayoutManager).orientation
         )
         recyclerFiltersView?.addItemDecoration(dividerItemDecoration)
-        val myAdapter = FilterAdapter(filtersList)
 
-        recyclerFiltersView?.adapter = myAdapter
         dialog.setContentView(bottomSheetDialog)
         dialog.show()
-        btReset?.setOnClickListener {
-            myAdapter.resetCheckboxes()
-        }
+
+        // TODO: bind this to the filter view model
+//        btReset?.setOnClickListener {
+//            myAdapter.resetCheckboxes()
+//        }
 
         btApply?.setOnClickListener {
-
         }
+
+        return bottomSheetDialog
     }
 
     companion object {
@@ -124,7 +147,5 @@ class FreaksFragment : Fragment() {
         private const val DISPLAY_IN_THREE_COLUMNS = 3
         private const val DISPLAY_IN_FOUR_COLUMNS = 4
         private const val MIN_TABLET_DISPLAY = 6.5
-        private const val SKILL_FILTER = "Skills"
-        private const val PROJECT_FILTER = "Projects"
     }
 }

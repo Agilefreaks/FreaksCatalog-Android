@@ -4,6 +4,9 @@
         <variable
             name="freaksViewModel"
             type="com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel" />
+        <variable
+            name="filterViewModel"
+            type="com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel" />
     </data>
 
     <RelativeLayout
