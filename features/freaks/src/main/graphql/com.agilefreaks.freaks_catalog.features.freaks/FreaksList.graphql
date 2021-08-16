@@ -6,9 +6,6 @@ query FreaksList {
             photo {
                 uri
             }
-            projects {
-                name
-            }
         }
     }
 }

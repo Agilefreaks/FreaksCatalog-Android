@@ -23,18 +23,24 @@ class FreaksRepositoryTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `getFreaksFromApi will return a list of Freak models`() {
+        val freak = Freak(
+            id = "42",
+            firstName = "Ion",
+            photo = "photo_uri"
+        )
         val dataSource = MockDataSource()
         val repository = FreaksRepositoryImpl(dataSource)
 
         val list = runBlocking { repository.getFreaksFromApi() }
 
-        assertThat(list).containsExactly(Freak("42", "Ion", "photo_uri"))
+        assertThat(list).containsExactly(freak)
     }
 
     class MockDataSource : FreaksDataSource {
         override suspend fun getFreaks(): FreaksListQuery.Data {
             val photo = FreaksListQuery.Photo(uri = "photo_uri")
-            val node = FreaksListQuery.Node(id =  "42", name = "Ion", photo = photo, projects = emptyList())
+            val node =
+                FreaksListQuery.Node(id = "42", name = "Ion", photo = photo)
             val freaks = FreaksListQuery.Freaks(nodes = listOf(node))
             return FreaksListQuery.Data(freaks)
         }
