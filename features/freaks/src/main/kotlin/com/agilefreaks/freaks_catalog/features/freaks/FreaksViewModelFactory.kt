@@ -6,8 +6,6 @@ import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepository
 
 class FreaksViewModelFactory(private val repository: FreaksRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return FreaksViewModel(repository) as T
-    }
-
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+        FreaksViewModel(repository) as T
 }

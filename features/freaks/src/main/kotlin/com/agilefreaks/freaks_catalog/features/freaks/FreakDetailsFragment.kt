@@ -29,7 +29,7 @@ class FreakDetailsFragment : Fragment() {
 
     private fun setViews() {
         arguments?.let {
-            val freak = it.getSerializable("freak") as Freak
+           /* val freak = it.getSerializable("freak") as Freak
             activity
             viewBinding.descriptionFreak.text = freak.description
             viewBinding.skillsFreak.text =
@@ -38,7 +38,7 @@ class FreakDetailsFragment : Fragment() {
                 getString(R.string.projects_template, freak.projects.joinToString(", "))
             viewBinding.titleFreak.text = getString(R.string.title_template, freak.role, freak.norm)
             viewBinding.levelFreak.text = getString(R.string.level_project, freak.level)
-            initBar(freak.firstName,freak.lastName)
+            initBar(freak.firstName,freak.lastName)*/
         }
     }
 

@@ -24,24 +24,18 @@ class FreaksViewModelTest {
         val freak = Freak(
             id = "42",
             firstName = "firstName",
-            lastName = "lastName",
-            role = "role",
-            norm = "norm",
-            level = "level",
-            description = "desc",
-            photo = "photo",
-            skills = emptyList(),
-            projects = emptyList()
+            photo = "photo"
         )
         val freaksRepositoryMock = FreaksRepositoryMock()
         freaksRepositoryMock.add(freak)
-        // act
+
         val viewModel = FreaksViewModel(freaksRepositoryMock)
-        // assert
+
         assertThat(viewModel.freaks.value).containsExactly(freak)
     }
 
-    class FreaksRepositoryMock(private val freaks: MutableList<Freak> = mutableListOf()) : FreaksRepository {
+    class FreaksRepositoryMock(private val freaks: MutableList<Freak> = mutableListOf()) :
+        FreaksRepository {
         override suspend fun getFreaksFromApi(): List<Freak> = freaks
 
         fun add(freak: Freak) = freaks.add(freak)

@@ -3,8 +3,11 @@ query FreaksList {
         nodes {
             id
             name
-                photo {
-                    uri
+            photo {
+                uri
+            }
+            projects {
+                name
             }
         }
     }
