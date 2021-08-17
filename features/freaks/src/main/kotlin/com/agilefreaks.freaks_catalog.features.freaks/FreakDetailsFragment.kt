@@ -16,9 +16,19 @@ import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakD
 import kotlinx.coroutines.*
 
 class FreakDetailsFragment : Fragment() {
-
     private lateinit var viewBinding: FragmentFreakDetailsBinding
-    private val viewModel: DetailsViewModel by viewModels()
+
+    private val viewModel: DetailsViewModel by viewModels {
+        FreaksDetailsViewModelFactory(FreaksRepositoryImpl(ApolloDataSource()))
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setAppBarTitle("")
+
+        listenToEvents()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,43 +37,33 @@ class FreakDetailsFragment : Fragment() {
     ): View {
         viewBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_freak_details, container, false)
-        initBar()
-        runBlocking {
-            launch { getData() }
-        }
+
+        viewBinding.freakDetailsViewModel = viewModel
+
         return viewBinding.root
     }
 
-    fun initBar() {
-        val mainActivitytoolBar = (activity as AppCompatActivity).supportActionBar
-        mainActivitytoolBar?.setTitle(
-            getString(
-                R.string.name_template,
-                viewModel.freak.value?.firstName,
-                viewModel.freak.value?.lastName
-            )
-        )
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    private suspend fun getData() {
         val freakId = arguments?.getString("freakId") ?: ""
-        CoroutineScope(Dispatchers.IO).launch {
-            val data = async { viewModel.getFreaksFromApi() }
-            data.await()
-            withContext(Dispatchers.Main) {
-                viewModel.getData(freakId)
-                showViews()
-                initBar()
-                viewBinding.freakDetailsViewModel = viewModel
-                viewBinding.lifecycleOwner = viewLifecycleOwner
-            }
-        }
+
+        viewModel.loadFreak(freakId)
     }
 
-    private fun showViews() {
-        viewBinding.progressBarFreak.visibility = View.GONE
-        viewBinding.cardViewFreak.visibility = View.VISIBLE
-        viewBinding.imageView.visibility = View.VISIBLE
+    private fun listenToEvents(){
+        viewModel.freak.observe(this, {
+            val freakName = it.firstName + " " + it.lastName
+
+            setAppBarTitle(freakName)
+        })
     }
+
+    private fun setAppBarTitle(title: String) {
+        val mainActivityToolBar = (activity as AppCompatActivity).supportActionBar
+
+        mainActivityToolBar?.title = title
+    }
+
 }
 
