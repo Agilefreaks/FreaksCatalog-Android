@@ -65,7 +65,7 @@ object Dependencies {
     }
 
     object Picasso {
-        private const val VERSION = "2.71828"
+        const val VERSION = "2.71828"
 
         const val PICASSO = "com.squareup.picasso:picasso:$VERSION"
         const val PICASSO_ANDROID_SUPPORT = "com.android.support"

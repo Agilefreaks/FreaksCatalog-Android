@@ -12,7 +12,6 @@ class FreaksRepositoryImpl(private val dataSource: FreaksDataSource) : FreaksRep
     override suspend fun getFreaksFromApi(): List<Freak> =
         mapFreaks(dataSource.getFreaks())
 
-
     private fun mapFreaks(response: FreaksListQuery.Data?): List<Freak> =
         response?.freaks?.nodes?.map {
             it.toFreak()
@@ -24,5 +23,4 @@ class FreaksRepositoryImpl(private val dataSource: FreaksDataSource) : FreaksRep
             firstName = this?.name ?: "",
             photo = this?.photo?.uri as String
         )
-
 }
