@@ -17,19 +17,5 @@ class FreaksViewModel(private val repository: FreaksRepository) : ViewModel() {
     val freaks: LiveData<List<Freak>>
         get() = _freaks
 
-    private suspend fun loadFreaks(): List<Freak> {
-        //repository.getFreaksFromApi()
-        val freak = Freak(
-            "22",
-            "Robert",
-            "https://i.ibb.co/kK7MQQD/rice.jpg",
-        )
-        return mutableListOf<Freak>().apply {
-            repeat(FREAKS_COUNT) { this.add(freak) }
-        }
-    }
-
-    companion object {
-        private const val FREAKS_COUNT = 10
-    }
+    private suspend fun loadFreaks(): List<Freak> = repository.getFreaksFromApi()
 }

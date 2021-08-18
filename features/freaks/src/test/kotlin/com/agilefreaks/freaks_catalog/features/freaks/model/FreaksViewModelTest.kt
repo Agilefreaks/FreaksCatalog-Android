@@ -22,16 +22,16 @@ class FreaksViewModelTest {
     fun `freaks will populate on init`() {
         // setup
         val freak = Freak(
-            id = "42",
-            firstName = "firstName",
-            photo = "photo"
+            id = "22",
+            firstName = "Robert",
+            photo = "https://i.ibb.co/kK7MQQD/rice.jpg"
         )
         val freaksRepositoryMock = FreaksRepositoryMock()
         freaksRepositoryMock.add(freak)
 
         val viewModel = FreaksViewModel(freaksRepositoryMock)
 
-//        assertThat(viewModel.freaks.value).containsExactly(freak)
+        assertThat(viewModel.freaks.value).containsExactly(freak)
     }
 
     class FreaksRepositoryMock(private val freaks: MutableList<Freak> = mutableListOf()) :
