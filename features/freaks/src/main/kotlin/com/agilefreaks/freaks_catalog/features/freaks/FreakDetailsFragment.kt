@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
 
 class FreakDetailsFragment : Fragment() {
+    companion object{
+        const val FREAK_ID = "freakId"
+    }
 
     private lateinit var viewBinding: FragmentFreakDetailsBinding
 
@@ -26,7 +29,7 @@ class FreakDetailsFragment : Fragment() {
 
     private fun setViews() {
         arguments?.let {
-            val freak = it.getSerializable("freak") as Freak
+           /* val freak = it.getSerializable("freak") as Freak
             activity
             viewBinding.descriptionFreak.text = freak.description
             viewBinding.skillsFreak.text =
@@ -35,13 +38,12 @@ class FreakDetailsFragment : Fragment() {
                 getString(R.string.projects_template, freak.projects.joinToString(", "))
             viewBinding.titleFreak.text = getString(R.string.title_template, freak.role, freak.norm)
             viewBinding.levelFreak.text = getString(R.string.level_project, freak.level)
-            initBar(freak.firstName,freak.lastName)
+            initBar(freak.firstName,freak.lastName)*/
         }
     }
 
     fun initBar(firstName:String, lastName:String) {
-        val mainActivity_tool_bar = (activity as AppCompatActivity).supportActionBar
-        mainActivity_tool_bar?.setTitle(getString(R.string.name_template, firstName, lastName))
+        val mainActivityToolBar = (activity as AppCompatActivity).supportActionBar
+        mainActivityToolBar?.setTitle(getString(R.string.name_template, firstName, lastName))
     }
 }
-
