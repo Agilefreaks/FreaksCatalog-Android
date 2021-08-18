@@ -22,10 +22,14 @@ class FreaksViewModel(private val repository: FreaksRepository) : ViewModel() {
         val freak = Freak(
             "22",
             "Robert",
-            "https://bloximages.chicago2.vip.townnews.com/thesouthern.com/content/tncms/assets/v3/editorial/8/47/847c15dd-3d3b-5b08-a3ff-82ab517cf88b/608826f2678a4.image.jpg?crop=339%2C339%2C85%2C0&resize=1200%2C1200&order=crop%2Cresize",
+            "https://i.ibb.co/kK7MQQD/rice.jpg",
         )
         return mutableListOf<Freak>().apply {
-            repeat(10) { this.add(freak) }
+            repeat(FREAKS_COUNT) { this.add(freak) }
         }
+    }
+
+    companion object {
+        private const val FREAKS_COUNT = 10
     }
 }
