@@ -17,10 +17,19 @@ class FilterViewModelTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `init will load skills`() {
+    fun `init will load skills with all the proper skill names`() {
         val viewModel = FilterViewModel()
+        val skillNames = viewModel.skills.value?.map { it.skillName }
+        assertThat(skillNames).containsExactly("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
+    }
 
-        assertThat(viewModel.skills.value).containsExactly("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
+    @ExperimentalCoroutinesApi
+    @Test
+    fun `init will set all skills to have isChecked false`() {
+        val viewModel = FilterViewModel()
+        val anyAreChecked = viewModel.skills.value?.any { it.isChecked.get() == true }
+
+        assertThat(anyAreChecked).isFalse()
     }
 
     @Test
@@ -28,5 +37,10 @@ class FilterViewModelTest {
         val viewModel = FilterViewModel()
 
         assertThat(viewModel.projects.value).containsExactly("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
+    }
+
+    @Test
+    fun `reset will set isChecked to false for all skill`() {
+        TODO()
     }
 }

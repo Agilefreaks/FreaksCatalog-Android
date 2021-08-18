@@ -20,7 +20,6 @@ import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -100,6 +99,7 @@ class FreaksFragment : Fragment() {
             val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
             recyclerFiltersView.adapter = adapter
         })
+        // TODO: we should use binding
         dialog.findViewById<Button>(R.id.reset).setOnClickListener {
             filtersViewModel.reset()
         }
