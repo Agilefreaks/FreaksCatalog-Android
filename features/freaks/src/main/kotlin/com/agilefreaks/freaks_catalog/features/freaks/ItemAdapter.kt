@@ -29,8 +29,9 @@ class ItemAdapter(private val freaksList: List<Freak>, val onItemCLicked: (Freak
         holder.imageView.setOnClickListener {
             onItemCLicked(item)
         }
-        if(item.photo.isNotEmpty())
+        if(item.photo.isNotEmpty()) {
             Picasso.get().load(item.photo).into(holder.imageView)
+        }
     }
 
     override fun getItemCount(): Int = freaksList.size
