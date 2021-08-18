@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
     <data>
         <variable
             name="freaksViewModel"
-            type="com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-       <LinearLayout
+        <LinearLayout
             android:id="@+id/linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -38,7 +37,7 @@
             android:id="@+id/recycle_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            android:layout_below="@id/linear_layout"/>
+            android:layout_below="@id/linear_layout"
+            android:scrollbars="vertical" />
     </RelativeLayout>
 </layout>
