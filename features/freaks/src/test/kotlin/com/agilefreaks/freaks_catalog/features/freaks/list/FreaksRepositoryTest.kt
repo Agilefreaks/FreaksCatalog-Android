@@ -2,7 +2,7 @@ package com.agilefreaks.freaks_catalog.features.freaks.list
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
-import com.agilefreaks.freaks_catalog.features.freaks.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.FreakList
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksDataSource
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksListQuery
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositoryImpl
@@ -23,7 +23,7 @@ class FreaksRepositoryTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `getFreaksFromApi will return a list of Freak models`() {
-        val freak = Freak(
+        val freak = FreakList(
             id = "42",
             firstName = "Ion",
             photo = "photo_uri"

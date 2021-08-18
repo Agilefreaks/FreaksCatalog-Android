@@ -6,7 +6,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositor
 import org.koin.dsl.module
 
 val freaksFragmentModule = module {
-    single <FreaksDataSource> { ApolloDataSource() }
+    single <FreaksDataSource> { FreakListApolloDataSource() }
     single<FreaksRepository> { FreaksRepositoryImpl(get()) }
     single { FreaksViewModel(get()) }
     single { FreaksViewModelFactory(get()) }

@@ -1,24 +1,24 @@
 package com.agilefreaks.freaks_catalog.features.freaks.repository
 
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksListQuery
-import com.agilefreaks.freaks_catalog.features.freaks.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.FreakList
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksDataSource
 
 interface FreaksRepository {
-    suspend fun getFreaksFromApi(): List<Freak>
+    suspend fun getFreaksFromApi(): List<FreakList>
 }
 
 class FreaksRepositoryImpl(private val dataSource: FreaksDataSource) : FreaksRepository {
-    override suspend fun getFreaksFromApi(): List<Freak> =
+    override suspend fun getFreaksFromApi(): List<FreakList> =
         mapFreaks(dataSource.getFreaks())
 
-    private fun mapFreaks(response: FreaksListQuery.Data?): List<Freak> =
+    private fun mapFreaks(response: FreaksListQuery.Data?): List<FreakList> =
         response?.freaks?.nodes?.map {
             it.toFreak()
         } ?: emptyList()
 
     private fun FreaksListQuery.Node?.toFreak() =
-        Freak(
+        FreakList(
             id = this?.id ?: "",
             firstName = this?.name ?: "",
             photo = this?.photo?.uri as String? ?: ""

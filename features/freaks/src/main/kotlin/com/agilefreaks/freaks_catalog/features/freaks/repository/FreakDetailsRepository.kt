@@ -1,7 +1,5 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
-import com.apollographql.apollo.coroutines.await
-
 interface FreakDetailsRepository{
     suspend fun getFreakFromApi(x: String): Freak?
 }

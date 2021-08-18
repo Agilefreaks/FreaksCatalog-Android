@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class ItemAdapter(private val freaksList: List<Freak>, val onItemCLicked: (Freak) -> Unit) :
+class ItemAdapter(private val freaksList: List<FreakList>, val onItemCLicked: (FreakList) -> Unit) :
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {

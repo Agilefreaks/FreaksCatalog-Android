@@ -7,14 +7,23 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
 
 class FreakDetailsFragment : Fragment() {
-    companion object{
-        const val FREAK_ID = "freakId"
+    private lateinit var viewBinding: FragmentFreakDetailsBinding
+
+    private val viewModel: DetailsViewModel by viewModels {
+        FreaksDetailsViewModelFactory(FreaksRepositoryImpl(ApolloDataSource()))
     }
 
-    private lateinit var viewBinding: FragmentFreakDetailsBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setAppBarTitle("")
+
+        listenToEvents()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,27 +32,32 @@ class FreakDetailsFragment : Fragment() {
     ): View {
         viewBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_freak_details, container, false)
-        setViews()
+
+        viewBinding.freakDetailsViewModel = viewModel
+
         return viewBinding.root
     }
 
-    private fun setViews() {
-        arguments?.let {
-           /* val freak = it.getSerializable("freak") as Freak
-            activity
-            viewBinding.descriptionFreak.text = freak.description
-            viewBinding.skillsFreak.text =
-                getString(R.string.skills_template, freak.skills.joinToString(", "))
-            viewBinding.projectFreak.text =
-                getString(R.string.projects_template, freak.projects.joinToString(", "))
-            viewBinding.titleFreak.text = getString(R.string.title_template, freak.role, freak.norm)
-            viewBinding.levelFreak.text = getString(R.string.level_project, freak.level)
-            initBar(freak.firstName,freak.lastName)*/
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val freakId = arguments?.getString("freakId") ?: ""
+
+        viewModel.loadFreak(freakId)
     }
 
-    fun initBar(firstName:String, lastName:String) {
-        val mainActivityToolBar = (activity as AppCompatActivity).supportActionBar
-        mainActivityToolBar?.setTitle(getString(R.string.name_template, firstName, lastName))
+    private fun listenToEvents(){
+        viewModel.freak.observe(this, {
+            val freakName = it.firstName + " " + it.lastName
+
+            setAppBarTitle(freakName)
+        })
     }
+
+    private fun setAppBarTitle(title: String) {
+        val mainActivityToolBar = (activity as AppCompatActivity).supportActionBar
+
+        mainActivityToolBar?.title = title
+    }
+
 }
