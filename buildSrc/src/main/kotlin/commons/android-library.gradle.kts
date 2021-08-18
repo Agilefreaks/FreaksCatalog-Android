@@ -23,7 +23,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
-    id("androidx.navigation.safeargs.kotlin")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -88,6 +88,16 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
     implementation(Dependencies.AndroidX.Navigation.UI)
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
+
+    implementation(Dependencies.Apollo.COROUTINES_SUPPORT)
+    implementation(Dependencies.Apollo.RUNTIME)
+
+    implementation(Dependencies.Picasso.PICASSO){
+        exclude(Dependencies.Picasso.PICASSO_ANDROID_SUPPORT)
+        exclude(Dependencies.Picasso.PICASSO_EXIFINTERACE)
+    }
+
+    implementation(Dependencies.Koin.ANDROID)
 
     addTestDependencies()
 }

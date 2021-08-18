@@ -5,9 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class ItemAdapter(private val freaksList: List<Freak>, val onItemCLicked: (Freak) -> Unit) :
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
@@ -25,15 +24,15 @@ class ItemAdapter(private val freaksList: List<Freak>, val onItemCLicked: (Freak
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = freaksList[position]
-        holder.textView.text = item.firstName
-        holder.imageView.setImageResource(R.drawable.testimage)
 
+        holder.textView.text = item.firstName
         holder.imageView.setOnClickListener {
-            holder.itemView.findNavController()
-                .navigate(R.id.freak_details, bundleOf("freak" to item))
             onItemCLicked(item)
+        }
+        if(item.photo.isNotEmpty()) {
+            Picasso.get().load(item.photo).into(holder.imageView)
         }
     }
 
-    override fun getItemCount() = freaksList.size
+    override fun getItemCount(): Int = freaksList.size
 }
