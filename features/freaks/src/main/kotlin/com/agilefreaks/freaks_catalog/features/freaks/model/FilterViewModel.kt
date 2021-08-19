@@ -28,9 +28,8 @@ class FilterViewModel : ViewModel() {
         projects.value?.forEach { it.reset() }
     }
 
-    fun applyFilters(){
-
-    }
+    fun applyFilters(): List<String> =
+        listOf("", "")
 
     private fun loadSkills(): List<String> =
         listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
