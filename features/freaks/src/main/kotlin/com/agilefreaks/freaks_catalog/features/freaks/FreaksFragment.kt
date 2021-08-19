@@ -10,28 +10,24 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDialogBinding
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
-import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositoryImpl
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 class FreaksFragment : Fragment() {
-
-    // private val viewModel: FreaksViewModel by inject()
-    private val filterViewModel: FilterViewModel by inject()
     private val viewModel: FreaksViewModel by viewModel()
+    private val filterViewModel: FilterViewModel by viewModel()
     private lateinit var viewBinding: FragmentFreaksBinding
 
     override fun onCreateView(
@@ -116,7 +112,7 @@ class FreaksFragment : Fragment() {
         })
     }
 
-    private fun setupFilterModal() : View {
+    private fun setupFilterModal(): View {
         val inflater = LayoutInflater.from(requireContext())
         val mBottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
         mBottomSheetBinding.viewModel = filterViewModel

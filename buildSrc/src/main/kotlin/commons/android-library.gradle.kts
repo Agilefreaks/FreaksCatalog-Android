@@ -83,6 +83,7 @@ dependencies {
 
     implementation(Dependencies.Koin.CORE)
     implementation(Dependencies.Koin.ANDROID)
+    implementation(Dependencies.Koin.ANDROID_VIEWMODEL)
 
     addTestDependencies()
 }

@@ -60,16 +60,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
-    <Button
-        android:id="@+id/apply_btn"
-        android:layout_width="@dimen/apply_filters_button_width"
-        android:layout_height="@dimen/apply_filters_button_height"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="?android:attr/textColorPrimary"
-        android:text="@string/applyFiltersBtn"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxes" />
+        <Button
+            android:id="@+id/apply_btn"
+            android:layout_width="@dimen/apply_filters_button_width"
+            android:layout_height="@dimen/apply_filters_button_height"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="?android:attr/textColorPrimary"
+            android:text="@string/applyFiltersBtn"
+            android:onClick="@{() -> viewModel.applyFilters()}"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxes" />
 
     </LinearLayout>
 </layout>
