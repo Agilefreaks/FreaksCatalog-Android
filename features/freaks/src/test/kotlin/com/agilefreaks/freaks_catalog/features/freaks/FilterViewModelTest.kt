@@ -41,6 +41,9 @@ class FilterViewModelTest {
 
     @Test
     fun `reset will set isChecked to false for all skill`() {
-        TODO()
+        val viewModel = FilterViewModel()
+        viewModel.reset()
+        val anyAreChecked = viewModel.skills.value?.any { it.isChecked.get() == true }
+        assertThat(anyAreChecked).isFalse()
     }
 }

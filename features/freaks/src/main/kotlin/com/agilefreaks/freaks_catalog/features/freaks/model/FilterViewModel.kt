@@ -15,12 +15,12 @@ class FilterViewModel : ViewModel() {
     val skills: LiveData<List<FilterItem>>
         get() = _skills
 
-    private val _projects = MutableLiveData<List<String>>().apply {
+    private val _projects = MutableLiveData<List<FilterItem>>().apply {
         viewModelScope.launch {
-            value = loadProjects()
+            value = loadProjects().map { project -> FilterItem(project) }
         }
     }
-    val projects: LiveData<List<String>>
+    val projects: LiveData<List<FilterItem>>
         get() = _projects
 
     fun reset() {

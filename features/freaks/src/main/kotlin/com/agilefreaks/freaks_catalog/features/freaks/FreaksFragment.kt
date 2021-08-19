@@ -10,21 +10,28 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDialogBinding
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositoryImpl
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 class FreaksFragment : Fragment() {
+
+    // private val viewModel: FreaksViewModel by inject()
+    private val filterViewModel: FilterViewModel by inject()
     private val viewModel: FreaksViewModel by viewModel()
     private lateinit var viewBinding: FragmentFreaksBinding
 
@@ -35,7 +42,8 @@ class FreaksFragment : Fragment() {
     ): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_freaks, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
-        viewBinding.freaksViewModel = viewModel
+       // viewBinding.freaksViewModel = viewModel
+        viewBinding.filterViewModel = filterViewModel
         val isPortrait =
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
@@ -58,11 +66,11 @@ class FreaksFragment : Fragment() {
             showProjectsFilterViewModal()
         }
 
-        viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
-            recyclerView.adapter = ItemAdapter(freaks) {
-                onItemClicked(it.id)
-            }
-        })
+//        viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
+//            recyclerView.adapter = ItemAdapter(freaks) {
+//                onItemClicked(it.id)
+//            }
+//        })
 
         return viewBinding.root
     }
@@ -93,7 +101,7 @@ class FreaksFragment : Fragment() {
         // TODO: this should be a resource not a string hardcoded in the fragment
         // filterTitle?.text = activeFilter
 
-        filtersViewModel.skills.observe(viewLifecycleOwner, {
+        filterViewModel.skills.observe(viewLifecycleOwner, {
             val adapter = FilterAdapter()
             adapter.submitList(it)
             val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
@@ -106,21 +114,31 @@ class FreaksFragment : Fragment() {
     }
 
     private fun showProjectsFilterViewModal() {
-        setupFilterModal()
+        val dialog = setupFilterModal()
+        // TODO: this should be a resource not a string hardcoded in the fragment
+        // filterTitle?.text = activeFilter
 
-        TODO()
+        filterViewModel.projects.observe(viewLifecycleOwner, {
+            val adapter = FilterAdapter()
+            adapter.submitList(it)
+            val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
+            recyclerFiltersView.adapter = adapter
+        })
     }
 
     private fun setupFilterModal() : View {
+        val inflater = LayoutInflater.from(requireContext())
+        val mBottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
+        mBottomSheetBinding.viewModel = filterViewModel
         val dialog = BottomSheetDialog(requireContext())
         val view: ViewGroup? = null
         val bottomSheetDialog = layoutInflater.inflate(R.layout.bottom_sheet_dialog, view)
         dialog.setCancelable(true)
-        // val btReset: TextView? = bottomSheetDialog.findViewById(R.id.reset)
-        val btApply: Button? = bottomSheetDialog.findViewById(R.id.apply_btn)
+
+        val btApply: Button? = mBottomSheetBinding.applyBtn
         val recyclerFiltersView =
-            bottomSheetDialog?.findViewById<RecyclerView>(R.id.recycler_filters_view)
-        recyclerFiltersView?.layoutManager = LinearLayoutManager(bottomSheetDialog.context)
+            mBottomSheetBinding.recyclerFiltersView
+        recyclerFiltersView?.layoutManager = LinearLayoutManager(requireContext())
 
         val dividerItemDecoration = DividerItemDecoration(
             recyclerFiltersView?.context,
@@ -128,7 +146,7 @@ class FreaksFragment : Fragment() {
         )
         recyclerFiltersView?.addItemDecoration(dividerItemDecoration)
 
-        dialog.setContentView(bottomSheetDialog)
+        dialog.setContentView(mBottomSheetBinding.root)
         dialog.show()
 
         // TODO: bind this to the filter view model
@@ -139,7 +157,7 @@ class FreaksFragment : Fragment() {
         btApply?.setOnClickListener {
         }
 
-        return bottomSheetDialog
+        return mBottomSheetBinding.root
     }
 
     companion object {
