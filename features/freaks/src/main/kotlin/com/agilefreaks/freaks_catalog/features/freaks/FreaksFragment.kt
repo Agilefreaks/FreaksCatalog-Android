@@ -122,13 +122,13 @@ class FreaksFragment : Fragment() {
         val btApply: Button? = mBottomSheetBinding.applyBtn
         val recyclerFiltersView =
             mBottomSheetBinding.recyclerFiltersView
-        recyclerFiltersView?.layoutManager = LinearLayoutManager(requireContext())
+        recyclerFiltersView.layoutManager = LinearLayoutManager(requireContext())
 
         val dividerItemDecoration = DividerItemDecoration(
-            recyclerFiltersView?.context,
-            (recyclerFiltersView?.layoutManager as LinearLayoutManager).orientation
+            recyclerFiltersView.context,
+            (recyclerFiltersView.layoutManager as LinearLayoutManager).orientation
         )
-        recyclerFiltersView?.addItemDecoration(dividerItemDecoration)
+        recyclerFiltersView.addItemDecoration(dividerItemDecoration)
 
         dialog.setContentView(mBottomSheetBinding.root)
         dialog.show()
