@@ -2,7 +2,8 @@ query FreakDetailsQuery{
     freaks{
         nodes{
             id
-            name
+            firstName
+            lastName
             description
             norm{
                 name
@@ -12,9 +13,6 @@ query FreakDetailsQuery{
             }
             level{
                 name
-            }
-            photo{
-                uri
             }
             projects{
                 name

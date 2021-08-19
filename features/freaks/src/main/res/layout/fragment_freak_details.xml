@@ -109,7 +109,7 @@
                     style="@style/FreakScreenTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.format(@string/title_template,freakDetailsViewModel.freak.role, freakDetailsViewModel.freak.norm)}"
+                    android:text="@{String.format(@string/title_template,freakDetailsViewModel.curFreak.role, freakDetailsViewModel.curFreak.norm)}"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/titleTopG" />
@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@{String.format(@string/skills_template,freakDetailsViewModel.freak.skills)}"
+                    android:text="@{String.format(@string/skills_template,freakDetailsViewModel.curFreak.skills)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/skillsTopG" />
@@ -151,7 +151,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:text="@{String.format(@string/projects_template, freakDetailsViewModel.freak.projects)}"
+                    android:text="@{String.format(@string/projects_template, freakDetailsViewModel.curFreak.projects)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/projectsTopG" />
@@ -168,7 +168,7 @@
                     style="@style/FreakScreenTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{String.format(@string/level_project,freakDetailsViewModel.freak.level)}"
+                    android:text="@{String.format(@string/level_project,freakDetailsViewModel.curFreak.level)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/levelTopG" />
@@ -206,7 +206,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:ellipsize="end"
-                    android:text="@{freakDetailsViewModel.freak.description}"
+                    android:text="@{freakDetailsViewModel.curFreak.description}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sec_text_size"
                     android:textStyle="normal"

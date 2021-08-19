@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -68,7 +69,8 @@ class FreaksFragment : Fragment() {
     }
 
     private fun onItemClicked(freakId: String) {
-        val action = FreaksFragmentDirections.actionFreaksToFreakDetails(freakId)
+        val freakID = freakId
+        val action = FreaksFragmentDirections.actionFreaksToFreakDetails(freakID)
         findNavController().navigate(action)
     }
 

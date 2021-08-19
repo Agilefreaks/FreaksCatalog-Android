@@ -20,7 +20,7 @@ class FreaksRepositoryImpl(private val dataSource: FreaksDataSource) : FreaksRep
     private fun FreaksListQuery.Node?.toFreak() =
         FreakList(
             id = this?.id ?: "",
-            firstName = this?.name ?: "",
-            photo = this?.photo?.uri as String? ?: ""
+            firstName = this?.firstName ?: "",
+            photo = "https://cdn2.thecatapi.com/images/15o.jpg"
         )
 }

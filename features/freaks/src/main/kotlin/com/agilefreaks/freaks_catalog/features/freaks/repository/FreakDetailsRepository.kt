@@ -1,34 +1,42 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.freaks.repository
 
-interface FreakDetailsRepository{
-    suspend fun getFreakFromApi(x: String): Freak?
+import com.agilefreaks.freaks_catalog.features.freaks.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsDataSource
+import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsQuery
+
+interface FreakDetailsRepository {
+    suspend fun getFreakFromApi(freakId: String): Freak?
 }
 
-class FreaksRepositoryImpl(private val dataSource: FreakDetailsDataSource)  : FreakDetailsRepository {
-    override suspend fun getFreakFromApi(x: String): Freak? =
-        mapFreaks(dataSource.getFreaks())?.get(x.toInt())
+class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource) :
+    FreakDetailsRepository {
+    override suspend fun getFreakFromApi(freakId: String): Freak? =
+        mapFreaks(dataSource.getFreaks())?.getFreakById(freakId)
 
-    fun mapFreaks(response: FreakDetailsQuery.Data?): List<Freak>? =
+    private fun mapFreaks(response: FreakDetailsQuery.Data?): List<Freak>? =
         response?.freaks?.nodes?.map {
             it.toFreak()
         }
 
+    private fun List<Freak>.getFreakById(freakId: String): Freak? =
+        this.find { freak -> freak.freakId == freakId }
+
     private fun FreakDetailsQuery.Node?.toFreak() = Freak(
         freakId = this?.id ?: "",
-        firstName = this?.name ?: "",
-        lastName = this?.name ?: "",
+        firstName = this?.firstName ?: "",
+        lastName = this?.lastName ?: "",
         description = this?.description ?: "",
         level = this?.level?.name ?: "",
         norm = this?.norm?.name ?: "",
-        photo = this?.photo?.uri as String ?: "",
-        role = this.role.name ?: "",
-        projects = buildProjectsNameList(this.projects).joinToString(", "),
+        photo = "https://cdn2.thecatapi.com/images/15o.jpg",
+        role = this?.role?.name ?: "",
+        projects = buildProjectsNameList(this!!.projects).joinToString(", "),
         skills = buildSkillsNameList(this.skills).joinToString(", ")
     )
 
-    fun buildProjectsNameList(projects: List<FreakDetailsQuery.Project>): List<String> =
+    private fun buildProjectsNameList(projects: List<FreakDetailsQuery.Project>): List<String> =
         projects.map { it.name }
 
-    fun buildSkillsNameList(skills: List<FreakDetailsQuery.Skill>): List<String> =
+    private fun buildSkillsNameList(skills: List<FreakDetailsQuery.Skill>): List<String> =
         skills.map { it.name }
 }
