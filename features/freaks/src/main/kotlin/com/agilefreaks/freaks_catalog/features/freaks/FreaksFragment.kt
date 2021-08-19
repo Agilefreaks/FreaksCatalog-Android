@@ -21,7 +21,6 @@ import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaks
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositoryImpl
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,7 +41,7 @@ class FreaksFragment : Fragment() {
     ): View {
         viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_freaks, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner
-       // viewBinding.freaksViewModel = viewModel
+        viewBinding.freaksViewModel = viewModel
         viewBinding.filterViewModel = filterViewModel
         val isPortrait =
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
@@ -66,11 +65,11 @@ class FreaksFragment : Fragment() {
             showProjectsFilterViewModal()
         }
 
-//        viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
-//            recyclerView.adapter = ItemAdapter(freaks) {
-//                onItemClicked(it.id)
-//            }
-//        })
+        viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
+            recyclerView.adapter = ItemAdapter(freaks) {
+                onItemClicked(it.id)
+            }
+        })
 
         return viewBinding.root
     }
@@ -97,9 +96,6 @@ class FreaksFragment : Fragment() {
 
     private fun showSkillFilterModal() {
         val dialog = setupFilterModal()
-        val filtersViewModel = FilterViewModel()
-        // TODO: this should be a resource not a string hardcoded in the fragment
-        // filterTitle?.text = activeFilter
 
         filterViewModel.skills.observe(viewLifecycleOwner, {
             val adapter = FilterAdapter()
@@ -107,16 +103,10 @@ class FreaksFragment : Fragment() {
             val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
             recyclerFiltersView.adapter = adapter
         })
-        // TODO: we should use binding
-        dialog.findViewById<Button>(R.id.reset).setOnClickListener {
-            filtersViewModel.reset()
-        }
     }
 
     private fun showProjectsFilterViewModal() {
         val dialog = setupFilterModal()
-        // TODO: this should be a resource not a string hardcoded in the fragment
-        // filterTitle?.text = activeFilter
 
         filterViewModel.projects.observe(viewLifecycleOwner, {
             val adapter = FilterAdapter()
@@ -131,8 +121,6 @@ class FreaksFragment : Fragment() {
         val mBottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
         mBottomSheetBinding.viewModel = filterViewModel
         val dialog = BottomSheetDialog(requireContext())
-        val view: ViewGroup? = null
-        val bottomSheetDialog = layoutInflater.inflate(R.layout.bottom_sheet_dialog, view)
         dialog.setCancelable(true)
 
         val btApply: Button? = mBottomSheetBinding.applyBtn
@@ -148,11 +136,6 @@ class FreaksFragment : Fragment() {
 
         dialog.setContentView(mBottomSheetBinding.root)
         dialog.show()
-
-        // TODO: bind this to the filter view model
-//        btReset?.setOnClickListener {
-//            myAdapter.resetCheckboxes()
-//        }
 
         btApply?.setOnClickListener {
         }

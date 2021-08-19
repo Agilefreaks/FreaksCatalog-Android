@@ -29,12 +29,7 @@ class FilterAdapter :
 }
 
 class SkillDiffUtilCallback : DiffUtil.ItemCallback<FilterItem>() {
-    override fun areItemsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean {
-        return false
-    }
+    override fun areItemsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean = false
 
-    override fun areContentsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean {
-        return false
-    }
-
+    override fun areContentsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean = false
 }

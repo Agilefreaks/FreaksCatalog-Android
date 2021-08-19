@@ -35,15 +35,23 @@ class FilterViewModelTest {
     @Test
     fun `init will load projects`() {
         val viewModel = FilterViewModel()
-
-        assertThat(viewModel.projects.value).containsExactly("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
+        val projectNames = viewModel.projects.value?.map { it.skillName }
+        assertThat(projectNames).containsExactly("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
     }
 
     @Test
-    fun `reset will set isChecked to false for all skill`() {
+    fun `reset will set isChecked to false for all skills`() {
         val viewModel = FilterViewModel()
         viewModel.reset()
         val anyAreChecked = viewModel.skills.value?.any { it.isChecked.get() == true }
+        assertThat(anyAreChecked).isFalse()
+    }
+
+    @Test
+    fun `reset will set isChecked to false for all projects`() {
+        val viewModel = FilterViewModel()
+        viewModel.reset()
+        val anyAreChecked = viewModel.projects.value?.any { it.isChecked.get() == true }
         assertThat(anyAreChecked).isFalse()
     }
 }

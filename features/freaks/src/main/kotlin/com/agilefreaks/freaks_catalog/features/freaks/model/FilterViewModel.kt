@@ -25,6 +25,7 @@ class FilterViewModel : ViewModel() {
 
     fun reset() {
         skills.value?.forEach { it.reset() }
+        projects.value?.forEach { it.reset() }
     }
 
     private fun loadSkills(): List<String> =
@@ -32,8 +33,4 @@ class FilterViewModel : ViewModel() {
 
     private fun loadProjects(): List<String> =
         listOf("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
-
-    companion object {
-        private const val SKILL_FILTER = "Skills"
-    }
 }
