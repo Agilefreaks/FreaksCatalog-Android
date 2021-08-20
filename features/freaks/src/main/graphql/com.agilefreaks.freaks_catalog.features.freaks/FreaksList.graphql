@@ -2,8 +2,8 @@ query FreaksList {
     freaks {
         nodes {
             id
-            name
-            photo {
+            firstName
+            photo{
                 uri
             }
         }
