@@ -55,10 +55,10 @@ class FreaksFragment : Fragment() {
         val showProjectsButton: Button = viewBinding.projectsBtn
 
         showSkillsButton.setOnClickListener {
-            showSkillFilterModal()
+            showFilterModal(filterViewModel.skills)
         }
         showProjectsButton.setOnClickListener {
-            showProjectsFilterViewModal()
+            showFilterModal(filterViewModel.projects)
         }
 
         viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
@@ -90,21 +90,9 @@ class FreaksFragment : Fragment() {
         return diagonalInches >= MIN_TABLET_DISPLAY
     }
 
-    private fun showSkillFilterModal() {
+    private fun showFilterModal(list: LiveData<List<FilterItem>>) {
         val dialog = setupFilterModal()
-
-        filterViewModel.skills.observe(viewLifecycleOwner, {
-            val adapter = FilterAdapter()
-            adapter.submitList(it)
-            val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
-            recyclerFiltersView.adapter = adapter
-        })
-    }
-
-    private fun showProjectsFilterViewModal() {
-        val dialog = setupFilterModal()
-
-        filterViewModel.projects.observe(viewLifecycleOwner, {
+        list.observe(viewLifecycleOwner, {
             val adapter = FilterAdapter()
             adapter.submitList(it)
             val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
@@ -119,7 +107,6 @@ class FreaksFragment : Fragment() {
         val dialog = BottomSheetDialog(requireContext())
         dialog.setCancelable(true)
 
-        val btApply: Button? = mBottomSheetBinding.applyBtn
         val recyclerFiltersView =
             mBottomSheetBinding.recyclerFiltersView
         recyclerFiltersView.layoutManager = LinearLayoutManager(requireContext())
@@ -132,10 +119,6 @@ class FreaksFragment : Fragment() {
 
         dialog.setContentView(mBottomSheetBinding.root)
         dialog.show()
-
-        btApply?.setOnClickListener {
-        }
-
         return mBottomSheetBinding.root
     }
 
