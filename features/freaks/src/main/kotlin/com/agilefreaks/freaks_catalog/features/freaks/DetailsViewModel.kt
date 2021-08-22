@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRepository
+import com.apollographql.apollo.exception.ApolloException
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(private val repository: FreakDetailsRepository) : ViewModel() {
