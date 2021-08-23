@@ -23,7 +23,7 @@ class FreaksViewModelTest {
     fun `freaks will populate on init`() {
         // setup
         val freak = Freak(
-            id = "22",
+            freakId = "22",
             firstName = "Robert",
             photo = "https://cdn2.thecatapi.com/images/15o.jpg"
         )

@@ -52,7 +52,7 @@ class FreakDetailsFragment : Fragment() {
     }
 
     private fun listenToEvents() {
-        viewModel.curFreakDetails.observe(this, {
+        viewModel.curFreak.observe(this, {
             val freakName = it.firstName + " " + it.lastName
 
             setAppBarTitle(freakName)

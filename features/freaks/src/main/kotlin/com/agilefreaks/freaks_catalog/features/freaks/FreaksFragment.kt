@@ -59,7 +59,7 @@ class FreaksFragment : Fragment() {
 
         viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
             recyclerView.adapter = ItemAdapter(freaks) {
-                onItemClicked(it.id)
+                onItemClicked(it.freakId)
             }
         })
 
