@@ -3,7 +3,7 @@ object BuildModules {
     const val CORE = ":core"
 
     object Features {
-        const val PORTOFOLIO = ":features:portofolio"
+        const val PROJECTS = ":features:projects"
         const val FREAKS = ":features:freaks"
         const val ABOUT = ":features:about"
     }

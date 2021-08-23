@@ -5,6 +5,6 @@ include (
     ":commons:ui",
     ":commons:views",
     ":features:about",
-    ":features:portofolio",
+    ":features:projects",
     ":features:freaks"
 )

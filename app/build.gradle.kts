@@ -83,7 +83,7 @@ dependencies {
     implementation(project(BuildModules.CORE))
     implementation(project(BuildModules.Features.FREAKS))
     implementation(project(BuildModules.Features.ABOUT))
-    implementation(project(BuildModules.Features.PORTOFOLIO))
+    implementation(project(BuildModules.Features.PROJECTS))
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
 
