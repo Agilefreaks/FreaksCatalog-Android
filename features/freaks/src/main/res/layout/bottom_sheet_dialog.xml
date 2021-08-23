@@ -7,7 +7,6 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <LinearLayout
-        android:id="@+id/checkboxes_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -54,7 +53,7 @@
         android:layout_width="@dimen/apply_filters_button_width"
         android:layout_height="@dimen/apply_filters_button_height"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="?android:attr/textColorPrimary"
         android:text="@string/applyFiltersBtn"
         android:textAllCaps="false"
         android:textColor="@android:color/white"

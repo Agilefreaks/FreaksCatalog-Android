@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="features/freaks/src/main/res/layout/bottom_sheet_dialog.xml" value="0.35005065856129686" />
+        <entry key="features/freaks/src/main/res/layout/filter_item.xml" value="0.16574074074074074" />
+        <entry key="features/freaks/src/main/res/layout/fragment_freak_details.xml" value="0.16574074074074074" />
+        <entry key="features/freaks/src/main/res/layout/fragment_freaks.xml" value="0.16574074074074074" />
+        <entry key="features/freaks/src/main/res/layout/list_item.xml" value="0.16574074074074074" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

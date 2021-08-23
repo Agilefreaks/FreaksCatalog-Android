@@ -193,7 +193,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:text="@string/description_template"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/sec_text_size"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toTopOf="@id/descriptionBotG"

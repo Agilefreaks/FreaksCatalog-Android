@@ -1,7 +1,7 @@
 # FreaksCatalog-Android
 Android FreaksCatalog app
 
-How to add and use Apollo 
+How to add and use Apollo
 
 Apollo Client CLI :
 https://www.apollographql.com/docs/devtools/cli/
