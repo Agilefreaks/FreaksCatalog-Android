@@ -100,5 +100,6 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.UI)
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
 
+    implementation(Dependencies.Koin.CORE)
     implementation(Dependencies.Koin.ANDROID)
 }

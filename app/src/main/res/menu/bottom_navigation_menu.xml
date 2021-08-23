@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@id/freaks_nav_graph"
-        android:enabled="true"
-        android:icon="@drawable/ic_freaks"
-        android:title="@string/freaks_label"/>
-    <item
         android:id="@id/about_nav_graph"
         android:enabled="true"
-        android:icon="@drawable/ic_about"
+        android:icon="@drawable/ic_home"
         android:title="@string/about_label"/>
+    <item
+        android:id="@id/freaks_nav_graph"
+        android:enabled="true"
+        android:icon="@drawable/ic_logo"
+        android:title="@string/freaks_label"/>
     <item
         android:id="@id/portofolio_nav_graph"
         android:enabled="true"
-        android:icon="@drawable/ic_portofolio"
+        android:icon="@drawable/ic_layers"
         android:title="@string/portofolio_label"/>
 </menu>

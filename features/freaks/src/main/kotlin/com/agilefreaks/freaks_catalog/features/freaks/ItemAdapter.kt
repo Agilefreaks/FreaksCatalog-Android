@@ -24,12 +24,11 @@ class ItemAdapter(private val freaksList: List<Freak>, val onItemCLicked: (Freak
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = freaksList[position]
-
         holder.textView.text = item.firstName
         holder.imageView.setOnClickListener {
             onItemCLicked(item)
         }
-        if(item.photo.isNotEmpty()) {
+        if (item.photo.isNotEmpty()) {
             Picasso.get().load(item.photo).into(holder.imageView)
         }
     }

@@ -24,7 +24,6 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 class FreaksFragment : Fragment() {
-
     private val viewModel: FreaksViewModel by inject()
     private lateinit var viewBinding: FragmentFreaksBinding
 
