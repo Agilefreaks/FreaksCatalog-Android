@@ -11,8 +11,8 @@
         android:icon="@drawable/ic_logo"
         android:title="@string/freaks_label"/>
     <item
-        android:id="@id/portofolio_nav_graph"
+        android:id="@id/projects_nav_graph"
         android:enabled="true"
         android:icon="@drawable/ic_layers"
-        android:title="@string/portofolio_label"/>
+        android:title="@string/projects_label"/>
 </menu>

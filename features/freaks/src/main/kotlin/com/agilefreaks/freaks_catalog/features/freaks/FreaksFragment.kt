@@ -19,12 +19,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.pow
 import kotlin.math.sqrt
 
 class FreaksFragment : Fragment() {
-    private val viewModel: FreaksViewModel by inject()
+    private val viewModel: FreaksViewModel by viewModel()
     private lateinit var viewBinding: FragmentFreaksBinding
 
     override fun onCreateView(

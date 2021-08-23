@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/projects_nav_graph"
+    app:startDestination="@id/projects">
+    <fragment
+        android:id="@+id/projects"
+        android:name="com.agilefreaks.freaks_catalog.features.projects.ProjectsFragment"
+        android:label="@string/projects_title" />
+</navigation>
