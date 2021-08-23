@@ -40,7 +40,7 @@ class FreaksRepositoryTest {
         override suspend fun getFreaks(): FreaksListQuery.Data {
             val photo = FreaksListQuery.Photo(uri = "photo_uri")
             val node =
-                FreaksListQuery.Node(id = "42", name = "Ion", photo = photo)
+                FreaksListQuery.Node(id = "42", firstName = "Ion", photo = photo)
             val freaks = FreaksListQuery.Freaks(nodes = listOf(node))
             return FreaksListQuery.Data(freaks)
         }
