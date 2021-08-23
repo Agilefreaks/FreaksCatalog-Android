@@ -24,7 +24,7 @@ class FreaksRepositoryTest {
     @Test
     fun `getFreaksFromApi will return a list of Freak models`() {
         val freak = Freak(
-            id = "42",
+            freakId = "42",
             firstName = "Ion",
             photo = "photo_uri"
         )
@@ -38,9 +38,8 @@ class FreaksRepositoryTest {
 
     class MockDataSource : FreaksDataSource {
         override suspend fun getFreaks(): FreaksListQuery.Data {
-            val photo = FreaksListQuery.Photo(uri = "photo_uri")
             val node =
-                FreaksListQuery.Node(id = "42", firstName = "Ion", photo = photo)
+                FreaksListQuery.Node(id = "42", firstName = "Ion",)
             val freaks = FreaksListQuery.Freaks(nodes = listOf(node))
             return FreaksListQuery.Data(freaks)
         }
