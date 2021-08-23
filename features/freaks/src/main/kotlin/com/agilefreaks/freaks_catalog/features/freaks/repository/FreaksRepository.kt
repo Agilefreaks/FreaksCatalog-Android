@@ -21,6 +21,6 @@ class FreaksRepositoryImpl(private val dataSource: FreaksDataSource) : FreaksRep
         Freak(
             id = this?.id ?: "",
             firstName = this?.firstName ?: "",
-            photo = this?.photo?.uri as String? ?: ""
+            photo = "https://cdn2.thecatapi.com/images/15o.jpg"
         )
 }

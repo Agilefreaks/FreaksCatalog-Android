@@ -30,7 +30,7 @@ object PluginsVersions {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.1")
+    implementation("com.android.tools.build:gradle:${PluginsVersions.GRADLE_ANDROID}")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginsVersions.KOTLIN}")
     implementation("com.github.ben-manes:gradle-versions-plugin:${PluginsVersions.GRADLE_VERSIONS}")
 

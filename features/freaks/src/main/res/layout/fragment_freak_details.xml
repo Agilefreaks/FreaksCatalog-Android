@@ -2,6 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="freakDetailsViewModel"
+            type="com.agilefreaks.freaks_catalog.features.freaks.DetailsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,14 +31,15 @@
             app:layout_constraintGuide_percent="0.2702" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/freak_profile_photo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/profile_pick_background"
             android:contentDescription="@string/profile_picture"
             android:elevation="@dimen/profile_photo_elevation"
             android:scaleType="fitXY"
-            android:src="@drawable/testimage"
+            android:visibility="@{freakDetailsViewModel.freakDetailsLoaded ? View.VISIBLE : View.GONE}"
+            app:imageUrl="@{freakDetailsViewModel.curFreak.photo}"
             app:layout_constraintBottom_toTopOf="@+id/photoBotG"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,9 +75,11 @@
             app:layout_constraintGuide_percent="0.956" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_freak"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:cardBackgroundColor="@color/card_view_color"
+            android:visibility="@{freakDetailsViewModel.freakDetailsLoaded ? View.VISIBLE : View.GONE}"
+            app:cardBackgroundColor="@color/blue"
             app:cardCornerRadius="@dimen/details_card_view_radius"
             app:layout_constraintBottom_toTopOf="@id/cardViewBotG"
             app:layout_constraintEnd_toEndOf="@id/cardViewEndG"
@@ -97,7 +109,7 @@
                     style="@style/FreakScreenTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_template"
+                    android:text="@{String.format(@string/title_template,freakDetailsViewModel.curFreak.role, freakDetailsViewModel.curFreak.norm)}"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/titleTopG" />
@@ -117,8 +129,9 @@
                     style="@style/FreakScreenTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:maxLength="40"
-                    android:text="@string/skills_template"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{String.format(@string/skills_template,freakDetailsViewModel.curFreak.skills)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/skillsTopG" />
@@ -138,7 +151,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:text="@string/projects_template"
+                    android:text="@{String.format(@string/projects_template, freakDetailsViewModel.curFreak.projects)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/projectsTopG" />
@@ -155,7 +168,7 @@
                     style="@style/FreakScreenTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/level_project"
+                    android:text="@{String.format(@string/level_project,freakDetailsViewModel.curFreak.level)}"
                     app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/tsplStartG"
                     app:layout_constraintTop_toTopOf="@id/levelTopG" />
@@ -192,16 +205,27 @@
                     android:id="@+id/description_freak"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:text="@string/description_template"
-                    android:textColor="?attr/colorSecondary"
+                    android:ellipsize="end"
+                    android:text="@{freakDetailsViewModel.curFreak.description}"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/sec_text_size"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toTopOf="@id/descriptionBotG"
                     app:layout_constraintEnd_toStartOf="@id/descriptionEndG"
                     app:layout_constraintStart_toEndOf="@id/descriptionStartG"
                     app:layout_constraintTop_toBottomOf="@id/descriptionTopG" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/progressBar_freak"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="@dimen/progress_bar_size"
+            android:layout_height="@dimen/progress_bar_size"
+            android:visibility="@{freakDetailsViewModel.freakDetailsLoaded ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

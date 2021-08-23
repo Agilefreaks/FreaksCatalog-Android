@@ -3,6 +3,7 @@ package com.agilefreaks.freaks_catalog.features.freaks.model
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
 import com.agilefreaks.freaks_catalog.features.freaks.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.FreakD
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,7 +25,7 @@ class FreaksViewModelTest {
         val freak = Freak(
             id = "22",
             firstName = "Robert",
-            photo = "https://i.ibb.co/kK7MQQD/rice.jpg"
+            photo = "https://cdn2.thecatapi.com/images/15o.jpg"
         )
         val freaksRepositoryMock = FreaksRepositoryMock()
         freaksRepositoryMock.add(freak)
