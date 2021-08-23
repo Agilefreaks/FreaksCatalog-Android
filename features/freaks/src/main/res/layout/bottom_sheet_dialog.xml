@@ -34,28 +34,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textIsSelectable="true"
+                    android:textColor="@color/gray"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textIsSelectable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/reset"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_filters_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:scrollbars="vertical"
                     app:layout_constraintTop_toBottomOf="@id/filter_title" />
 
                 <Button
                     android:id="@+id/reset"
+                    android:textColor="@color/gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="@{() -> viewModel.reset()}"
-                    android:paddingHorizontal="@dimen/reset_button_padding_horizontal"
-                    android:paddingBottom="@dimen/reset_button_padding_bottom"
+                    android:padding="@dimen/reset_button_padding_bottom"
                     android:text="@string/resetBtn"
-                    android:background="@android:color/transparent"
+                    android:textSize="12sp"
+                    android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -67,11 +72,12 @@
             android:layout_height="@dimen/apply_filters_button_height"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="?android:attr/textColorPrimary"
-            android:text="@string/applyFiltersBtn"
             android:onClick="@{() -> viewModel.applyFilters()}"
-            android:textAllCaps="false"
+            android:text="@string/applyFiltersBtn"
+            android:textAllCaps="true"
             android:textColor="@android:color/white"
-            app:layout_constraintTop_toBottomOf="@+id/checkboxes" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/checkboxes_linear_layout" />
 
     </LinearLayout>
 </layout>
