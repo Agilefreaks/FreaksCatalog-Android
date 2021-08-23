@@ -11,6 +11,7 @@ import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,8 +22,8 @@ import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 import kotlin.math.pow
 import kotlin.math.sqrt
 

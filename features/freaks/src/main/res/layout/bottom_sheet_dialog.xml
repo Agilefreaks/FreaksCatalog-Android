@@ -55,6 +55,7 @@
                     android:paddingHorizontal="@dimen/reset_button_padding_horizontal"
                     android:paddingBottom="@dimen/reset_button_padding_bottom"
                     android:text="@string/resetBtn"
+                    android:background="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
