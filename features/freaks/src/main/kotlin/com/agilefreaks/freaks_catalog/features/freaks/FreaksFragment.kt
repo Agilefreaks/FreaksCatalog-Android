@@ -19,6 +19,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDia
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -105,6 +106,7 @@ class FreaksFragment : Fragment() {
         val mBottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
         mBottomSheetBinding.viewModel = filterViewModel
         val dialog = BottomSheetDialog(requireContext())
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         dialog.setCancelable(true)
 
         val recyclerFiltersView =
