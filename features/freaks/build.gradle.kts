@@ -13,3 +13,8 @@ android {
 apollo {
     generateKotlinModels.set(true)
 }
+
+dependencies {
+    implementation(project(BuildModules.Commons.UI))
+    implementation(project(BuildModules.Commons.VIEWS))
+}
