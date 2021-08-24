@@ -87,6 +87,8 @@ dependencies {
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
 
+    implementation(platform(Dependencies.Firebase.BOM))
+
     implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)

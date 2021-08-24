@@ -71,4 +71,10 @@ object Dependencies {
         const val PICASSO_ANDROID_SUPPORT = "com.android.support"
         const val PICASSO_EXIFINTERACE = "exifinterface"
     }
+
+    object Firebase {
+        const val BOM = "com.google.firebase:firebase-bom:28.4.0"
+
+        const val ANALYTICS = "com.google.firebase:firebase-analytics-ktx"
+    }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1059674498315",
+    "project_id": "freaks-catalog-70103",
+    "storage_bucket": "freaks-catalog-70103.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059674498315:android:5351aebcd83fae23d9ee0e",
+        "android_client_info": {
+          "package_name": "com.agilefreaks.freaks_catalog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059674498315-l5r2bebudf0ra2sv7agafnmnrlctdcs0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF_i3j0Vpib6UetWzPIx67xL5uSQsyZlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059674498315-l5r2bebudf0ra2sv7agafnmnrlctdcs0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
