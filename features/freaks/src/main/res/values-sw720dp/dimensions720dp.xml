@@ -12,4 +12,5 @@
     <dimen name="card_view_bottom_margin">200dp</dimen>
     <dimen name="card_view_top_margin">150dp</dimen>
     <dimen name="photo_margin_top">37dp</dimen>
+    <dimen name="description_min_height">200dp</dimen>
 </resources>

@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="features/freaks/src/main/res/layout/bottom_sheet_dialog.xml" value="0.35005065856129686" />
-        <entry key="features/freaks/src/main/res/layout/filter_item.xml" value="0.16574074074074074" />
-        <entry key="features/freaks/src/main/res/layout/fragment_freak_details.xml" value="0.16574074074074074" />
-        <entry key="features/freaks/src/main/res/layout/fragment_freaks.xml" value="0.16574074074074074" />
-        <entry key="features/freaks/src/main/res/layout/list_item.xml" value="0.16574074074074074" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.3734375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.35833333333333334" />
+        <entry key="commons/ui/src/main/res/drawable/profile_pick_background.xml" value="0.15260416666666668" />
+        <entry key="features/freaks/src/main/res/drawable/custom_freak_card_border.xml" value="0.1109375" />
+        <entry key="features/freaks/src/main/res/drawable/profile_pick_background.xml" value="0.20520833333333333" />
+        <entry key="features/freaks/src/main/res/layout/bottom_sheet_dialog.xml" value="0.1" />
+        <entry key="features/freaks/src/main/res/layout/description_layout.xml" value="0.1" />
+        <entry key="features/freaks/src/main/res/layout/filter_item.xml" value="0.35833333333333334" />
+        <entry key="features/freaks/src/main/res/layout/fragment_freak_details.xml" value="0.22" />
+        <entry key="features/freaks/src/main/res/layout/fragment_freaks.xml" value="0.35833333333333334" />
+        <entry key="features/freaks/src/main/res/layout/list_item.xml" value="0.1" />
       </map>
     </option>
   </component>

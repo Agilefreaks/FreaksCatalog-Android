@@ -26,4 +26,5 @@
     <dimen name="progress_bar_size">50dp</dimen>
     <dimen name="photo_margin_top">37dp</dimen>
     <dimen name="progress_bar_elevation">6dp</dimen>
+    <dimen name="description_min_height">100dp</dimen>
 </resources>
