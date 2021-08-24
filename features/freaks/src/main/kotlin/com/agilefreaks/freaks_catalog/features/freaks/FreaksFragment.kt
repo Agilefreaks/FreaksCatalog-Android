@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDialogBinding
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -42,6 +43,7 @@ class FreaksFragment : Fragment() {
         viewBinding.filterViewModel = filterViewModel
         val isPortrait =
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+
 
         val layoutManager: RecyclerView.LayoutManager = when {
             !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
@@ -107,7 +109,11 @@ class FreaksFragment : Fragment() {
         mBottomSheetBinding.viewModel = filterViewModel
         mBottomSheetBinding.filterTitle.text = name
         val dialog = BottomSheetDialog(requireContext())
-        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        val isLandscape =
+            this.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        if (isLandscape) {
+            dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
         dialog.setCancelable(true)
 
         val recyclerFiltersView =
