@@ -28,7 +28,7 @@ class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource)
         description = this?.description ?: "",
         level = this?.level?.name ?: "",
         norm = this?.norm?.name ?: "",
-        photo = "https://cdn2.thecatapi.com/images/15o.jpg",
+        photo = this?.photo?.uri as String? ?: "",
         role = this?.role?.name ?: "",
         projects = buildProjectsNameList(this!!.projects).joinToString(", "),
         skills = buildSkillsNameList(this.skills).joinToString(", ")

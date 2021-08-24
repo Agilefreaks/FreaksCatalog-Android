@@ -5,6 +5,9 @@ query FreakDetailsQuery{
             firstName
             lastName
             description
+            photo{
+                uri
+            }
             norm{
                 name
             }

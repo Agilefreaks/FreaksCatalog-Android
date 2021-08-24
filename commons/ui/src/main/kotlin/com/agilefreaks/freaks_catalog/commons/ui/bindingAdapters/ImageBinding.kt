@@ -6,7 +6,7 @@ import com.squareup.picasso.Picasso
 
 @BindingAdapter("imageUrl")
 fun loadImage(profilePicture: ImageView, imageUrl: String?) {
-    imageUrl?.let {
+    if (imageUrl != "") {
         Picasso.get()
             .load(imageUrl)
             .into(profilePicture)
