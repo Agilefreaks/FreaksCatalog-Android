@@ -36,7 +36,7 @@ class FilterViewModelTest {
     fun `init will load projects`() {
         val viewModel = FilterViewModel()
         val projectNames = viewModel.projects.value?.map { it.skillName }
-        assertThat(projectNames).containsExactly("Freaks Catalog", "Proj2", "Tutorial", "Altkeva")
+        assertThat(projectNames).containsExactly("Freaks Catalog", "Proj2", "Tutorial", "Altceva")
     }
 
     @Test
