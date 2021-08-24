@@ -2,7 +2,6 @@ package com.agilefreaks.freaks_catalog.commons.ui.bindingAdapters
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.agilefreaks.freaks_catalog.commons.ui.R
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("imageUrl")

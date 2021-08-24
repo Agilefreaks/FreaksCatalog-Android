@@ -5,10 +5,9 @@ import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRep
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val DetailsFragmentModule = module {
-    single<FreakDetailsApolloDataSource> { FreakDetailsApolloDataSource()}
+val detailsFragmentModule = module {
+    single<FreakDetailsDataSource> { FreakDetailsApolloDataSource()}
     single<FreakDetailsRepository> { FreakDetailsRepositoryImpl(get()) }
-    single { FreaksDetailsViewModelFactory(get()) }
     viewModel {
         DetailsViewModel(get())
     }

@@ -9,7 +9,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 val freaksFragmentModule = module {
     single <FreaksDataSource> { FreaksApolloDataSource() }
     single<FreaksRepository> { FreaksRepositoryImpl(get()) }
-    single { FreaksViewModelFactory(get()) }
     viewModel {
         FreaksViewModel(get())
     }

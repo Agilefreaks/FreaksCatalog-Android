@@ -7,17 +7,16 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRepositoryImpl
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FreakDetailsFragment : Fragment() {
     private lateinit var viewBinding: FragmentFreakDetailsBinding
 
     private val args: FreakDetailsFragmentArgs by navArgs()
 
-    private val viewModel: DetailsViewModel by viewModels()
+    private val viewModel: DetailsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
