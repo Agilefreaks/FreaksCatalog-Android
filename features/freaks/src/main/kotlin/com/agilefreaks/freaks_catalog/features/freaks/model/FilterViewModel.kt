@@ -32,7 +32,7 @@ class FilterViewModel : ViewModel() {
         listOf("", "")
 
     private fun loadSkills(): List<String> =
-        listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA", "Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA", "Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
+        listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
 
     private fun loadProjects(): List<String> =
         listOf("Freaks Catalog", "Proj2", "Tutorial", "Altceva")
