@@ -10,6 +10,7 @@ fun loadImage(profilePicture: ImageView, imageUrl: String?) {
         Picasso.get()
             .load(imageUrl)
             .centerCrop()
+            .resize(400,400)
             .into(profilePicture)
     }
 }
