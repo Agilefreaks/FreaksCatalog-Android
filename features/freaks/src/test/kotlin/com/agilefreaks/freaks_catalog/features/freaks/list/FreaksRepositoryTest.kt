@@ -26,7 +26,7 @@ class FreaksRepositoryTest {
         val freak = Freak(
             freakId = "42",
             firstName = "Ion",
-            photo = "photo_uri"
+            photo = "https://cdn2.thecatapi.com/images/15o.jpg"
         )
         val dataSource = MockDataSource()
         val repository = FreaksRepositoryImpl(dataSource)
