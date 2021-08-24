@@ -3,6 +3,9 @@ query FreaksList {
         nodes {
             id
             firstName
+            photo{
+                uri
+            }
         }
     }
 }
