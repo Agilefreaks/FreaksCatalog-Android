@@ -15,10 +15,6 @@ dependencies {
     implementation(project(BuildModules.Commons.VIEWS))
 }
 
-object PluginsVersions {
-    const val LIFECYCLE_VIEW_MODEL = "2.3.1"
-}
-
 apollo {
     generateKotlinModels.set(true)
 }

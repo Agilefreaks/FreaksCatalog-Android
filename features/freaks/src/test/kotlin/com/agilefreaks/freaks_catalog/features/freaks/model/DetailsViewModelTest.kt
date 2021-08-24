@@ -2,10 +2,9 @@ package com.agilefreaks.freaks_catalog.features.freaks.model
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
-import com.agilefreaks.freaks_catalog.features.freaks.FreakD
+import com.agilefreaks.freaks_catalog.features.freaks.FreakDetails
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
 
@@ -20,7 +19,7 @@ class DetailsViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `freak will populate on init`() {
-        val freak = FreakD(
+        val freak = FreakDetails(
             "1",
             "Mihai",
             "Boss",
@@ -38,7 +37,7 @@ class DetailsViewModelTest {
     }
 
     class DetailsMockRepository(
-        private var freakDetails: FreakD = FreakD(
+        private var freakDetails: FreakDetails = FreakDetails(
             "",
             "",
             "",
@@ -51,10 +50,10 @@ class DetailsViewModelTest {
             ""
         )
     ) : FreakDetailsRepository {
-        override suspend fun getFreakFromApi(x: String): FreakD? = freakDetails
+        override suspend fun getFreakFromApi(x: String): FreakDetails? = freakDetails
 
-        fun add(freakD: FreakD) {
-            freakDetails = freakD
+        fun add(freakDetails: FreakDetails) {
+            this.freakDetails = freakDetails
         }
     }
 }

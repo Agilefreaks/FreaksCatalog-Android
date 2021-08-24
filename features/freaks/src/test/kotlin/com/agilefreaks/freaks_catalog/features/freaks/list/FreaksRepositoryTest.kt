@@ -24,7 +24,7 @@ class FreaksRepositoryTest {
     @Test
     fun `getFreaksFromApi will return a list of Freak models`() {
         val freak = Freak(
-            freakId = "42",
+            id = "42",
             firstName = "Ion",
             photo = "https://cdn2.thecatapi.com/images/15o.jpg"
         )

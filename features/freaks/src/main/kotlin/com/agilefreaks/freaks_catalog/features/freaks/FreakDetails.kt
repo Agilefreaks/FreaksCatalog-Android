@@ -1,7 +1,7 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
-data class FreakD(
-    val freakId:String,
+data class FreakDetails(
+    val id:String,
     val firstName: String,
     val lastName: String,
     val role: String,

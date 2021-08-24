@@ -17,9 +17,7 @@ class FreakDetailsFragment : Fragment() {
 
     private val args: FreakDetailsFragmentArgs by navArgs()
 
-    private val viewModel: DetailsViewModel by viewModels {
-        FreaksDetailsViewModelFactory(FreakDetailsRepositoryImpl(FreakDetailsApolloDataSource()))
-    }
+    private val viewModel: DetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +50,7 @@ class FreakDetailsFragment : Fragment() {
     }
 
     private fun listenToEvents() {
-        viewModel.curFreak.observe(this, {
+        viewModel.freak.observe(this, {
             val freakName = it.firstName + " " + it.lastName
 
             setAppBarTitle(freakName)

@@ -8,9 +8,9 @@ import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRep
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(private val repository: FreakDetailsRepository) : ViewModel() {
-    private var _curFreak = MutableLiveData<FreakD>()
-    val curFreak: LiveData<FreakD>
-        get() = _curFreak
+    private var _freak = MutableLiveData<FreakDetails>()
+    val freak: LiveData<FreakDetails>
+        get() = _freak
 
     private var _freakDetailsLoaded = MutableLiveData(false)
     val freakDetailsLoaded: LiveData<Boolean>
@@ -18,7 +18,7 @@ class DetailsViewModel(private val repository: FreakDetailsRepository) : ViewMod
 
     fun loadFreak(freakId: String) {
         viewModelScope.launch {
-            _curFreak.value = repository.getFreakFromApi(freakId)
+            _freak.value = repository.getFreakFromApi(freakId)
             _freakDetailsLoaded.value = true
         }
     }

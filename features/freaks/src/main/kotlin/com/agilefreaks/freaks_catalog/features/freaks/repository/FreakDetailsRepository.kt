@@ -1,28 +1,28 @@
 package com.agilefreaks.freaks_catalog.features.freaks.repository
 
-import com.agilefreaks.freaks_catalog.features.freaks.FreakD
+import com.agilefreaks.freaks_catalog.features.freaks.FreakDetails
 import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsDataSource
 import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsQuery
 
 interface FreakDetailsRepository {
-    suspend fun getFreakFromApi(freakId: String): FreakD?
+    suspend fun getFreakFromApi(freakId: String): FreakDetails?
 }
 
 class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource) :
     FreakDetailsRepository {
-    override suspend fun getFreakFromApi(freakId: String): FreakD? =
+    override suspend fun getFreakFromApi(freakId: String): FreakDetails? =
         mapFreaks(dataSource.getFreaks())?.getFreakById(freakId)
 
-    private fun mapFreaks(response: FreakDetailsQuery.Data?): List<FreakD>? =
+    private fun mapFreaks(response: FreakDetailsQuery.Data?): List<FreakDetails>? =
         response?.freaks?.nodes?.map {
             it.toFreak()
         }
 
-    private fun List<FreakD>.getFreakById(freakId: String): FreakD? =
-        this.find { freak -> freak.freakId == freakId }
+    private fun List<FreakDetails>.getFreakById(freakId: String): FreakDetails? =
+        this.find { freak -> freak.id == freakId }
 
-    private fun FreakDetailsQuery.Node?.toFreak() = FreakD(
-        freakId = this?.id ?: "",
+    private fun FreakDetailsQuery.Node?.toFreak() = FreakDetails(
+        id = this?.id ?: "",
         firstName = this?.firstName ?: "",
         lastName = this?.lastName ?: "",
         description = this?.description ?: "",
