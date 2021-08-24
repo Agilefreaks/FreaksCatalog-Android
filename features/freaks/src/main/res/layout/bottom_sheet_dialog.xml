@@ -41,7 +41,7 @@
             android:padding="@dimen/reset_button_padding_bottom"
             android:text="@string/resetBtn"
             android:textAlignment="center"
-            android:textColor="@color/gray"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
