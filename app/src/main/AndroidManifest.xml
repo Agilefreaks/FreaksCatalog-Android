@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
         android:name=".FreaksCatalogApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -19,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Freakscatalog"
-        tools:targetApi="n">
+        tools:targetApi="n"
+        tools:ignore="MediaCapabilities">
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -30,5 +32,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

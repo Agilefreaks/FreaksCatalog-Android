@@ -2,5 +2,5 @@
     <string name="app_name">Freaks Catalog</string>
     <string name="freaks_label">Freaks</string>
     <string name="about_label">About</string>
-    <string name="portofolio_label">Portofolio</string>
+    <string name="projects_label">Projects</string>
 </resources>

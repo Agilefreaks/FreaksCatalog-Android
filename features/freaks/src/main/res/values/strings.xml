@@ -1,3 +1,12 @@
 <resources>
-    <string name="freaks_title">Freaks screen</string>
+    <string name="freaks_title">FREAKS</string>
+    <string name="skills_btn">Skills</string>
+    <string name="projects_btn">Projects</string>
+    <string name="applyFiltersBtn">Apply</string>
+    <string name="resetBtn">Reset</string>
+    <string name="title_template">%1$s - %2$s</string>
+    <string name="skills_template">Skills: %1$s</string>
+    <string name="projects_template">Projects: %1$s</string>
+    <string name="level_project">Level: %1$s</string>
+    <string name="profile_picture">profile picture</string>
 </resources>

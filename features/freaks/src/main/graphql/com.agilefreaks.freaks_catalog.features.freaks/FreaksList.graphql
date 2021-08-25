@@ -1,0 +1,11 @@
+query FreaksList {
+    freaks {
+        nodes {
+            id
+            firstName
+            photo{
+                uri
+            }
+        }
+    }
+}

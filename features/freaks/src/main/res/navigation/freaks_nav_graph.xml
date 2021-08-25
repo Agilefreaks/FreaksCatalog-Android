@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/freaks_nav_graph"
+    app:startDestination="@id/freaks"
+    tools:ignore="UnusedIds,UnusedResources">
+
+    <fragment
+        android:id="@+id/freaks"
+        android:name="com.agilefreaks.freaks_catalog.features.freaks.FreaksFragment"
+        android:label="@string/freaks_title">
+        <action
+            android:id="@+id/action_freaks_to_freak_details"
+            app:destination="@id/freak_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/freak_details"
+        android:name="com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsFragment" >
+        <argument
+            android:name="freakId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

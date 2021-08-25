@@ -83,9 +83,11 @@ dependencies {
     implementation(project(BuildModules.CORE))
     implementation(project(BuildModules.Features.FREAKS))
     implementation(project(BuildModules.Features.ABOUT))
-    implementation(project(BuildModules.Features.PORTOFOLIO))
+    implementation(project(BuildModules.Features.PROJECTS))
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
+
+    implementation(platform(Dependencies.Firebase.BOM))
 
     implementation(Dependencies.Kotlin.STDLIB)
     implementation(Dependencies.AndroidX.CORE)
@@ -99,4 +101,7 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.FRAGMENT)
     implementation(Dependencies.AndroidX.Navigation.UI)
     implementation(Dependencies.AndroidX.Navigation.DYNAMIC_FEATURE)
+
+    implementation(Dependencies.Koin.CORE)
+    implementation(Dependencies.Koin.ANDROID)
 }

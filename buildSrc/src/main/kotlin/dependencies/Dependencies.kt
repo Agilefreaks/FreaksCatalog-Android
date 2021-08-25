@@ -51,16 +51,30 @@ object Dependencies {
     }
 
     object Koin {
-        const val VERSION = "2.2.2"
+        const val VERSION = "3.1.2"
 
-        const val ANDROID = "org.koin:koin-android:$VERSION"
-        const val ANDROID_VIEWMODEL = "org.koin:koin-android-viewmodel:$VERSION"
+        const val CORE = "io.insert-koin:koin-core:$VERSION"
+        const val ANDROID = "io.insert-koin:koin-android:$VERSION"
     }
 
     object Apollo {
-        const val VERSION = "2.5.4"
+        const val VERSION = "2.5.9"
 
         const val RUNTIME = "com.apollographql.apollo:apollo-runtime:$VERSION"
         const val COROUTINES_SUPPORT = "com.apollographql.apollo:apollo-coroutines-support:$VERSION"
+    }
+
+    object Picasso {
+        const val VERSION = "2.71828"
+
+        const val PICASSO = "com.squareup.picasso:picasso:$VERSION"
+        const val PICASSO_ANDROID_SUPPORT = "com.android.support"
+        const val PICASSO_EXIFINTERACE = "exifinterface"
+    }
+
+    object Firebase {
+        const val BOM = "com.google.firebase:firebase-bom:28.4.0"
+
+        const val ANALYTICS = "com.google.firebase:firebase-analytics-ktx"
     }
 }
