@@ -93,20 +93,7 @@ class FreaksFragment : Fragment() {
     }
 
     private fun showFilterModal(list: LiveData<List<FilterItem>>, name: String) {
-        val dialog = setupFilterModal(name)
-        list.observe(viewLifecycleOwner, {
-            val adapter = FilterAdapter()
-            adapter.submitList(it)
-            val recyclerFiltersView = dialog.findViewById<RecyclerView>(R.id.recycler_filters_view)
-            recyclerFiltersView.adapter = adapter
-        })
-    }
-
-    private fun setupFilterModal(name: String): View {
-        val inflater = LayoutInflater.from(requireContext())
-        val mBottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
-        mBottomSheetBinding.viewModel = filterViewModel
-        mBottomSheetBinding.filterTitle.text = name
+        val modal = setupFilterModal(list, name)
         val dialog = BottomSheetDialog(requireContext())
         val isLandscape =
             this.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
@@ -114,13 +101,28 @@ class FreaksFragment : Fragment() {
             dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
         dialog.setCancelable(true)
+        dialog.setContentView(modal)
+        dialog.show()
+    }
+
+    private fun setupFilterModal(list: LiveData<List<FilterItem>>, name: String): View {
+        val inflater = LayoutInflater.from(requireContext())
+        val mBottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
+        mBottomSheetBinding.viewModel = filterViewModel
+        mBottomSheetBinding.filterTitle.text = name
 
         val recyclerFiltersView =
             mBottomSheetBinding.recyclerFiltersView
         recyclerFiltersView.layoutManager = LinearLayoutManager(requireContext())
 
-        dialog.setContentView(mBottomSheetBinding.root)
-        dialog.show()
+        list.observe(viewLifecycleOwner, {
+            val adapter = FilterAdapter()
+            adapter.submitList(it)
+            val recyclerFiltersView =
+                mBottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
+            recyclerFiltersView.adapter = adapter
+        })
+
         return mBottomSheetBinding.root
     }
 
