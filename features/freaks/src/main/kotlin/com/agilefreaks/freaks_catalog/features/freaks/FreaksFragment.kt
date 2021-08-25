@@ -40,7 +40,7 @@ class FreaksFragment : Fragment() {
 
         val layoutManager: RecyclerView.LayoutManager = when {
             !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
-            isPortrait -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
+            isPortrait && !isTablet() -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
             else -> GridLayoutManager(context, DISPLAY_IN_THREE_COLUMNS)
         }
 
