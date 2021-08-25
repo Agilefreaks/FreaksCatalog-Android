@@ -1,37 +1,35 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.agilefreaks.freaks_catalog.features.freaks.databinding.FilterItemBinding
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 
-class FilterAdapter(private val filters: List<String>) :
-    RecyclerView.Adapter<FilterAdapter.FilterViewHolder>() {
-    var filterReset: Boolean = false
+class FilterAdapter :
+    ListAdapter<FilterItem, FilterAdapter.ViewHolder>(SkillDiffUtilCallback()) {
 
-    class FilterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val filterCheckBox: CheckBox = view.findViewById(R.id.filter_checkbox)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
-        val adapterLayout =
-            LayoutInflater.from(parent.context).inflate(R.layout.filter_item, parent, false)
-        return FilterViewHolder(adapterLayout)
-    }
-
-    override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
-        val filter = filters[position]
-        holder.filterCheckBox.text = filter
-        if (filterReset) {
-            holder.filterCheckBox.isChecked = false
+    class ViewHolder(private val binding: FilterItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(filterItem: FilterItem) {
+            binding.model = filterItem
         }
     }
 
-    fun resetCheckboxes() {
-        filterReset = true
-        notifyItemRangeChanged(0, filters.size)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = FilterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
-    override fun getItemCount() = filters.size
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val viewModel = getItem(position)
+        holder.bind(viewModel)
+    }
+}
+
+class SkillDiffUtilCallback : DiffUtil.ItemCallback<FilterItem>() {
+    override fun areItemsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean = false
+
+    override fun areContentsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean = false
 }
