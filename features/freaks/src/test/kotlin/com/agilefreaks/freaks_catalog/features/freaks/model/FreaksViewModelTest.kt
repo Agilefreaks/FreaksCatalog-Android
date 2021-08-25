@@ -24,7 +24,7 @@ class FreaksViewModelTest {
         val freak = Freak(
             id = "22",
             firstName = "Robert",
-            photo = "https://i.ibb.co/kK7MQQD/rice.jpg"
+            photo = "https://cdn2.thecatapi.com/images/15o.jpg"
         )
         val freaksRepositoryMock = FreaksRepositoryMock()
         freaksRepositoryMock.add(freak)

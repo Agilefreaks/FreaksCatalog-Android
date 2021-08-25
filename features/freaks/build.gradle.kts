@@ -10,6 +10,11 @@ android {
     addProductFlavours(this)
 }
 
+dependencies {
+    implementation(project(BuildModules.Commons.UI))
+    implementation(project(BuildModules.Commons.VIEWS))
+}
+
 apollo {
     generateKotlinModels.set(true)
 }

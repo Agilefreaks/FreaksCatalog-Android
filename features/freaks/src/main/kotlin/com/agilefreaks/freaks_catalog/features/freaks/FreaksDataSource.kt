@@ -9,7 +9,7 @@ interface FreaksDataSource {
     suspend fun getFreaks(): FreaksListQuery.Data?
 }
 
-class ApolloDataSource : FreaksDataSource {
+class FreaksApolloDataSource : FreaksDataSource {
     override suspend fun getFreaks(): FreaksListQuery.Data? = withContext(Dispatchers.IO) {
         apolloClient.query(FreaksListQuery()).await().data
     }

@@ -17,7 +17,9 @@
     <fragment
         android:id="@+id/freak_details"
         android:name="com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsFragment" >
-        <argument android:name="freakId" />
+        <argument
+            android:name="freakId"
+            app:argType="string" />
     </fragment>
 
 </navigation>
