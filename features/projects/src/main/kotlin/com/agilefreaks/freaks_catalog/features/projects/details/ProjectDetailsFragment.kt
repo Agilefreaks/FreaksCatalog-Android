@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.projects
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import com.agilefreaks.freaks_catalog.features.projects.databinding.FragmentProj
 import com.agilefreaks.freaks_catalog.features.projects.details.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FreakDetailsFragment : Fragment() {
+class ProjectDetailsFragment : Fragment() {
     private lateinit var viewBinding: FragmentProjectDetailsBinding
 
 

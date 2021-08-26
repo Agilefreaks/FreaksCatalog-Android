@@ -7,6 +7,6 @@
     tools:ignore="UnusedIds,UnusedResources">
     <fragment
         android:id="@+id/projects"
-        android:name="com.agilefreaks.freaks_catalog.features.projects.ProjectsFragment"
+        android:name="com.agilefreaks.freaks_catalog.features.projects.ProjectDetailsFragment"
         android:label="@string/projects_title" />
 </navigation>
