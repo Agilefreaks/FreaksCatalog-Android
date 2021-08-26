@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="freak_card_corner_radius">8dp</dimen>
+    <dimen name="project_photo_height">100dp</dimen>
+    <dimen name="project_photo_width">150dp</dimen>
+    <dimen name="project_title_text_size">18sp</dimen>
+    <dimen name="project_card_view_min_height">150dp</dimen>
+    <dimen name="card_view_vertical_margin">24dp</dimen>
+</resources>
