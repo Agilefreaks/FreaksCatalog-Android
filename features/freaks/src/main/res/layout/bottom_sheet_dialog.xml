@@ -61,7 +61,7 @@
             android:layout_width="@dimen/apply_filters_button_width"
             android:layout_height="@dimen/apply_filters_button_height"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="?android:attr/textColorPrimary"
+            android:backgroundTint="@color/variant_blue"
             android:onClick="@{() -> viewModel.applyFilters()}"
             android:text="@string/applyFiltersBtn"
             android:textAllCaps="true"

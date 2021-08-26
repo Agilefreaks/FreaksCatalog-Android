@@ -4,12 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.agilefreaks.freaks_catalog.features.freaks.FilterItem
+import com.agilefreaks.freaks_catalog.features.freaks.Project
+import com.agilefreaks.freaks_catalog.features.freaks.Technology
 import kotlinx.coroutines.launch
 
 class FilterViewModel : ViewModel() {
     private val _skills = MutableLiveData<List<FilterItem>>().apply {
         viewModelScope.launch {
-            value = loadSkills().map { skill -> FilterItem(skill) }
+            value = loadSkills()
         }
     }
     val skills: LiveData<List<FilterItem>>
@@ -17,7 +20,7 @@ class FilterViewModel : ViewModel() {
 
     private val _projects = MutableLiveData<List<FilterItem>>().apply {
         viewModelScope.launch {
-            value = loadProjects().map { project -> FilterItem(project) }
+            value = loadProjects()
         }
     }
     val projects: LiveData<List<FilterItem>>
@@ -31,14 +34,26 @@ class FilterViewModel : ViewModel() {
     fun applyFilters(): List<String> =
         listOf("", "")
 
-    private fun loadSkills(): List<String> {
-        val skillsList = listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
-        return skillsList.sorted()
+    private fun loadSkills(): MutableList<FilterItem> {
+        val technologiesList: MutableList<FilterItem> = mutableListOf()
+        technologiesList.add(Technology("1", "Android"))
+        technologiesList.add(Technology("2", "Kotlin"))
+        technologiesList.add(Technology("3", "iOS"))
+        technologiesList.add(Technology("4", "Ruby"))
+        technologiesList.add(Technology("5", "QA"))
+        technologiesList.add(Technology("6", "Other Skill"))
+        technologiesList.sortBy { it.name }
+        return technologiesList
     }
 
-    private fun loadProjects(): List<String> {
-        val projectsList = listOf("Freaks Catalog", "EPIX", "reAsig", "New Project")
-        return projectsList.sorted()
+    private fun loadProjects(): MutableList<FilterItem> {
+        val projectsList: MutableList<FilterItem> = mutableListOf()
+        projectsList.add(Project("1", "Freaks"))
+        projectsList.add(Project("2", "EPIX"))
+        projectsList.add(Project("3", "reAsig"))
+        projectsList.add(Project("4", "New Project"))
+        projectsList.sortBy { it.name }
+        return projectsList
     }
 
 }

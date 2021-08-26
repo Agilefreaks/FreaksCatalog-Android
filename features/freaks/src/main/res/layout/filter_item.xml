@@ -3,7 +3,7 @@
     <data>
         <variable
             name="model"
-            type="com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.FilterItem" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="@={model.isChecked()}"
-            android:text="@{model.skillName}"
+            android:text="@{model.name}"
             android:buttonTint="?attr/colorPrimary"
             android:textColor="?android:attr/textColorPrimary"
             app:layout_constraintStart_toStartOf="parent"
