@@ -18,7 +18,3 @@ dependencies {
 apollo {
     generateKotlinModels.set(true)
 }
-
-dependencies {
-    implementation(project(BuildModules.Commons.UI))
-}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="freak_card_size">140dp</dimen>
-    <dimen name="freak_card_margin">24dp</dimen>
+    <dimen name="freak_card_margin_start_end">24dp</dimen>
+    <dimen name="freak_card_margin_top_bottom">12dp</dimen>
     <dimen name="freak_card_corner_radius">8dp</dimen>
     <dimen name="item_title_bottom_margin">8dp</dimen>
     <dimen name="picture_padding">3dp</dimen>

@@ -31,9 +31,14 @@ class FilterViewModel : ViewModel() {
     fun applyFilters(): List<String> =
         listOf("", "")
 
-    private fun loadSkills(): List<String> =
-        listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
+    private fun loadSkills(): List<String> {
+        val skillsList = listOf("Android", "Kotlin", "Other Skill", "iOS", "Ruby", "QA")
+        return skillsList.sorted()
+    }
 
-    private fun loadProjects(): List<String> =
-        listOf("Freaks Catalog", "Proj2", "Tutorial", "Altceva")
+    private fun loadProjects(): List<String> {
+        val projectsList = listOf("Freaks Catalog", "EPIX", "reAsig", "New Project")
+        return projectsList.sorted()
+    }
+
 }
