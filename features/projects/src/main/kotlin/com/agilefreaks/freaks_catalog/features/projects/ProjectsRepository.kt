@@ -1,16 +1,24 @@
 package com.agilefreaks.freaks_catalog.features.projects
 
+import org.koin.core.component.getScopeId
+
 interface ProjectsRepository {
-    fun getProjectsFromApi(): List<Project>
+    suspend fun getProjectsFromApi(): List<Project>
 }
 
-class ProjectsRepositoryImpl() : ProjectsRepository{
-    override fun getProjectsFromApi(): List<Project> {
-        val projects = mutableListOf<Project>()
-        val mockProject = Project("1","Ask Mihai","https://cdn2.thecatapi.com/images/8lr.jpg")
-        repeat(5){
-            projects.add(mockProject)
+class ProjectsRepositoryImpl(private val dataSource: ProjectsDataSource) : ProjectsRepository {
+    override suspend fun getProjectsFromApi(): List<Project> {
+        return dataSource.getProjects().map {
+            it.toProject()
         }
-        return projects
     }
+
+    private fun ProjectListQuery.Project.toProject() = Project(
+        id = this?.id ?: "",
+        name = this?.name ?: "",
+        image = (this?.logoUrl?.uri ?: "") as String
+    )
+
+
+
 }

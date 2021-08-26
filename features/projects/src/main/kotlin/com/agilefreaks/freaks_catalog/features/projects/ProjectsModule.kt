@@ -5,8 +5,9 @@ import org.koin.dsl.module
 
 
 val projectsFragmentModule = module {
-    single <ProjectsRepository> {ProjectsRepositoryImpl()}
-    viewModel {
+    single <ProjectsDataSource> {ProjectsApolloDataSource()}
+    single<ProjectsRepository> {ProjectsRepositoryImpl(get())}
+    viewModel{
         ProjectViewModel(get())
     }
 }
