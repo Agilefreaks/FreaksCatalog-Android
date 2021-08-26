@@ -7,7 +7,7 @@ interface ProjectsRepository {
 class ProjectsRepositoryImpl() : ProjectsRepository{
     override fun getProjectsFromApi(): List<Project> {
         val projects = mutableListOf<Project>()
-        val mockProject = Project("Ask Mihai","https://cdn2.thecatapi.com/images/8lr.jpg")
+        val mockProject = Project("1","Ask Mihai","https://cdn2.thecatapi.com/images/8lr.jpg")
         repeat(5){
             projects.add(mockProject)
         }
