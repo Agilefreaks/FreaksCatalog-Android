@@ -6,10 +6,6 @@ interface ProjectDetailsRepository {
 
 class ProjectDetailsRepositoryImpl(private val dataSource: ProjectDetailsDataSource): ProjectDetailsRepository {
     override suspend fun getProjectFromApi(projectId: String): ProjectDetails? {
-        TODO("Not yet implemented")
+        return
     }
-
-    private fun mapProjects(){}
-
-
 }
