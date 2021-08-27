@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,9 +43,10 @@ class FreaksFragment : Fragment() {
         val isPortrait =
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
+
         val layoutManager: RecyclerView.LayoutManager = when {
-            isPortrait && !isTablet() -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
             !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
+            isPortrait && !isTablet() -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
             else -> GridLayoutManager(context, DISPLAY_IN_THREE_COLUMNS)
         }
 
@@ -54,18 +56,12 @@ class FreaksFragment : Fragment() {
         val showSkillsButton: Button = viewBinding.skillsButton
         val showProjectsButton: Button = viewBinding.projectsButton
 
-//        showSkillsButton.setOnClickListener {
-//            showFilterModal(filterViewModel.technologies, SKILLS)
-//        }
-//        showProjectsButton.setOnClickListener {
-//            showFilterModal(filterViewModel.projects, PROJECTS)
-//        }
-        viewModel.technologies.observe(viewLifecycleOwner, {
-            showFilterModal(it, SKILLS)
-        })
-        viewModel.projects.observe(viewLifecycleOwner, {
-            showFilterModal(it, PROJECTS)
-        })
+        showSkillsButton.setOnClickListener {
+            showFilterModal(filterViewModel.technologies, SKILLS)
+        }
+        showProjectsButton.setOnClickListener {
+            showFilterModal(filterViewModel.projects, PROJECTS)
+        }
 
         viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
             recyclerView.adapter = FreakItemAdapter(freaks) {
@@ -75,7 +71,6 @@ class FreaksFragment : Fragment() {
 
         return viewBinding.root
     }
-    fun showSkills(){}
 
     private fun onItemClicked(freakId: String) {
         val action = FreaksFragmentDirections.actionFreaksToFreakDetails(freakId)
@@ -97,10 +92,7 @@ class FreaksFragment : Fragment() {
         return diagonalInches >= MIN_TABLET_DISPLAY
     }
 
-    private fun showFilterModal(
-        list: List<FilterItem>,
-        name: String
-    ) {
+    private fun showFilterModal(list: LiveData<List<FilterItem>>, name: String) {
         val modal = setupFilterModal(list, name)
         val dialog = BottomSheetDialog(requireContext())
         val isLandscape =
@@ -113,30 +105,22 @@ class FreaksFragment : Fragment() {
         dialog.show()
     }
 
-    private fun setupFilterModal(
-        list: List<FilterItem>,
-        name: String
-    ): View {
+    private fun setupFilterModal(list: LiveData<List<FilterItem>>, name: String): View {
         val inflater = LayoutInflater.from(requireContext())
         val bottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
         bottomSheetBinding.viewModel = filterViewModel
         bottomSheetBinding.filterTitle.text = name
 
-//        when(list.first()) {
-//            is Project ->
-//        }
-//        if (list.first() is Technology)
         bottomSheetBinding.recyclerFiltersView.layoutManager =
             LinearLayoutManager(requireContext())
 
-        val adapter = FilterAdapter()
-        adapter.submitList(list)
-
-
-        val recyclerFiltersView =
-            bottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
-        recyclerFiltersView.adapter = adapter
-
+        list.observe(viewLifecycleOwner, {
+            val adapter = FilterAdapter()
+            adapter.submitList(it)
+            val recyclerFiltersView =
+                bottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
+            recyclerFiltersView.adapter = adapter
+        })
 
         return bottomSheetBinding.root
     }
