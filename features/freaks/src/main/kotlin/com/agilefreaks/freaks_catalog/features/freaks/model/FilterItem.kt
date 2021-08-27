@@ -1,3 +1,4 @@
+
 package com.agilefreaks.freaks_catalog.features.freaks.model
 
 import androidx.databinding.ObservableField

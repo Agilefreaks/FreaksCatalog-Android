@@ -1,6 +1,8 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
+import com.agilefreaks.freaks_catalog.features.freaks.FreaksListQuery
 import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.FreaksDataSource
 
 interface FreaksRepository {
     suspend fun getFreaksFromApi(): List<Freak>
