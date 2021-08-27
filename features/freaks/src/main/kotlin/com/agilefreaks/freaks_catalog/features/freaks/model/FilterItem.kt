@@ -11,18 +11,16 @@ interface FilterItem {
 data class Technology(
     val id: String,
     override val name: String,
-    override val isChecked: ObservableField<Boolean> = ObservableField()
+    override val isChecked: ObservableField<Boolean> = ObservableField(),
 ) : FilterItem {
-
     override fun reset() {
-        isChecked.set(false)
-    }
+        isChecked.set(false)    }
 }
 
 data class Project(
     val id: String,
     override val name: String,
-    override val isChecked: ObservableField<Boolean> = ObservableField()
+    override val isChecked: ObservableField<Boolean> = ObservableField(),
 ) : FilterItem {
     override fun reset() {
         isChecked.set(false)
