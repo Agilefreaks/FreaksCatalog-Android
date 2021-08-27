@@ -17,8 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDialogBinding
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
-import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
-import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterAdapter
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
+import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -42,18 +43,17 @@ class FreaksFragment : Fragment() {
         val isPortrait =
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-
         val layoutManager: RecyclerView.LayoutManager = when {
-            !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
             isPortrait && !isTablet() -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
+            !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
             else -> GridLayoutManager(context, DISPLAY_IN_THREE_COLUMNS)
         }
 
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
 
-        val showSkillsButton: Button = viewBinding.skillsBtn
-        val showProjectsButton: Button = viewBinding.projectsBtn
+        val showSkillsButton: Button = viewBinding.skillsButton
+        val showProjectsButton: Button = viewBinding.projectsButton
 
         showSkillsButton.setOnClickListener {
             showFilterModal(filterViewModel.skills, SKILLS)
@@ -63,7 +63,7 @@ class FreaksFragment : Fragment() {
         }
 
         viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
-            recyclerView.adapter = ItemAdapter(freaks) {
+            recyclerView.adapter = FreakItemAdapter(freaks) {
                 onItemClicked(it.id)
             }
         })

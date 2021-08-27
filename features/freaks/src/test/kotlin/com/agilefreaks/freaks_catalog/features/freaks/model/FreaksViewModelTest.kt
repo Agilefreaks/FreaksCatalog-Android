@@ -2,7 +2,7 @@ package com.agilefreaks.freaks_catalog.features.freaks.model
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
-import com.agilefreaks.freaks_catalog.features.freaks.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi

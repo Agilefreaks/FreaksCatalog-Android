@@ -1,12 +1,12 @@
-package com.agilefreaks.freaks_catalog.features.freaks.model
+package com.agilefreaks.freaks_catalog.features.freaks.filter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.agilefreaks.freaks_catalog.features.freaks.FilterItem
-import com.agilefreaks.freaks_catalog.features.freaks.Project
-import com.agilefreaks.freaks_catalog.features.freaks.Technology
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
+import com.agilefreaks.freaks_catalog.features.freaks.model.Project
+import com.agilefreaks.freaks_catalog.features.freaks.model.Technology
 import kotlinx.coroutines.launch
 
 class FilterViewModel : ViewModel() {
@@ -48,12 +48,11 @@ class FilterViewModel : ViewModel() {
 
     private fun loadProjects(): MutableList<FilterItem> {
         val projectsList: MutableList<FilterItem> = mutableListOf()
-        projectsList.add(Project("1", "Freaks"))
+        projectsList.add(Project("1", "Freaks Catalog"))
         projectsList.add(Project("2", "EPIX"))
         projectsList.add(Project("3", "reAsig"))
         projectsList.add(Project("4", "New Project"))
         projectsList.sortBy { it.name }
         return projectsList
     }
-
 }

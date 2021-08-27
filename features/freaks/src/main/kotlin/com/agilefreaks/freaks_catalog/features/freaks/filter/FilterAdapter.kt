@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.freaks.filter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FilterItemBinding
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 
 class FilterAdapter :
     ListAdapter<FilterItem, FilterAdapter.ViewHolder>(SkillDiffUtilCallback()) {

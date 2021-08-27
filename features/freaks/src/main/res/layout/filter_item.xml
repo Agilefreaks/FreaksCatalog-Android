@@ -3,7 +3,7 @@
     <data>
         <variable
             name="model"
-            type="com.agilefreaks.freaks_catalog.features.freaks.FilterItem" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

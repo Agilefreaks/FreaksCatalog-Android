@@ -6,7 +6,7 @@
 
         <variable
             name="freak"
-            type="com.agilefreaks.freaks_catalog.features.freaks.Freak" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.model.Freak" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

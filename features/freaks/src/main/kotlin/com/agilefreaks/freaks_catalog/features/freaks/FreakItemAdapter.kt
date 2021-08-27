@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.ListItemBinding
+import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
 
-class ItemAdapter(private val freaksList: List<Freak>, private val onItemCLicked: (Freak) -> Unit) :
-    RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class FreakItemAdapter(private val freaksList: List<Freak>, private val onItemCLicked: (Freak) -> Unit) :
+    RecyclerView.Adapter<FreakItemAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding =

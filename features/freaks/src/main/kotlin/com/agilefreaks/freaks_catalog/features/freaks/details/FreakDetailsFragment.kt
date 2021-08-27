@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.freaks.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.agilefreaks.freaks_catalog.features.freaks.R
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.freaks.model
 
 import androidx.databinding.ObservableField
 
@@ -11,9 +11,8 @@ interface FilterItem {
 data class Technology(
     val id: String,
     override val name: String,
-    override val isChecked: ObservableField<Boolean> = ObservableField()
+    override val isChecked: ObservableField<Boolean> = ObservableField(),
 ) : FilterItem {
-
     override fun reset() {
         isChecked.set(false)
     }
@@ -22,9 +21,12 @@ data class Technology(
 data class Project(
     val id: String,
     override val name: String,
-    override val isChecked: ObservableField<Boolean> = ObservableField()
+    override val isChecked: ObservableField<Boolean> = ObservableField(),
 ) : FilterItem {
     override fun reset() {
         isChecked.set(false)
     }
 }
+
+
+

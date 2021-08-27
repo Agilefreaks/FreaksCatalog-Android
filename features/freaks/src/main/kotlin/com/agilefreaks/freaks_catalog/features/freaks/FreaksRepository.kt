@@ -1,7 +1,7 @@
 package com.agilefreaks.freaks_catalog.features.freaks.repository
 
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksListQuery
-import com.agilefreaks.freaks_catalog.features.freaks.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksDataSource
 
 interface FreaksRepository {

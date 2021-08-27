@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.freaks.model
 
 data class Freak(
     val id:String,

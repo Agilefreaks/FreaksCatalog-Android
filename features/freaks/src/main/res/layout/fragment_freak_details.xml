@@ -8,7 +8,7 @@
 
         <variable
             name="freakDetailsViewModel"
-            type="com.agilefreaks.freaks_catalog.features.freaks.DetailsViewModel" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.details.DetailsViewModel" />
     </data>
 
     <ScrollView
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:isScrollContainer="true"
-            tools:context=".FreakDetailsFragment">
+            tools:context=".details.FreakDetailsFragment">
 
             <ProgressBar
                 android:id="@+id/progressBar_freak"
@@ -49,7 +49,7 @@
                 android:layout_width="@dimen/details_profile_photo"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/photo_margin_top"
-                android:background="@drawable/profile_pic_background"
+                android:background="@drawable/details_image_background"
                 android:contentDescription="@string/profile_picture"
                 android:elevation="@dimen/profile_photo_elevation"
                 android:scaleType="fitXY"
