@@ -12,13 +12,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProjectsFragment : Fragment() {
     private lateinit var viewBinding: FragmentProjectsBinding
-    private val viewModel:ProjectViewModel by viewModel()
+    private val viewModel:ProjectsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel.loadProjects()
         viewBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_projects, container, false)
         viewBinding.lifecycleOwner = viewLifecycleOwner

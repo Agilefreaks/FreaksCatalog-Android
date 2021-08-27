@@ -8,10 +8,10 @@ interface FreakDetailsRepository {
     suspend fun getFreakFromApi(freakId: String): FreakDetails?
 }
 
-class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource) :
+class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource?) :
     FreakDetailsRepository {
     override suspend fun getFreakFromApi(freakId: String): FreakDetails? =
-        mapFreaks(dataSource.getFreaks())?.getFreakById(freakId)
+        mapFreaks(dataSource?.getFreaks())?.getFreakById(freakId)
 
     private fun mapFreaks(response: FreakDetailsQuery.Data?): List<FreakDetails>? =
         response?.freaks?.nodes?.map {

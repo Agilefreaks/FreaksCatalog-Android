@@ -5,4 +5,5 @@
     <dimen name="project_title_text_size">36sp</dimen>
     <dimen name="project_card_view_min_height">300dp</dimen>
     <dimen name="card_view_vertical_margin">48dp</dimen>
+    <dimen name="recycler_view_bottom_padding">80dp</dimen>
 </resources>

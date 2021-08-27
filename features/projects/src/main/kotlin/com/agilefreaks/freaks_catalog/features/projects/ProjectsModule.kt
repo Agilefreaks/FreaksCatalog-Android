@@ -8,6 +8,6 @@ val projectsFragmentModule = module {
     single <ProjectsDataSource> {ProjectsApolloDataSource()}
     single<ProjectsRepository> {ProjectsRepositoryImpl(get())}
     viewModel{
-        ProjectViewModel(get())
+        ProjectsViewModel(get())
     }
 }

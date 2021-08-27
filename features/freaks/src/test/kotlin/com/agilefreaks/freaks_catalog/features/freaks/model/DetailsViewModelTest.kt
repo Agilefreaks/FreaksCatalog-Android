@@ -1,24 +1,26 @@
 package com.agilefreaks.freaks_catalog.features.freaks.model
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
+import com.agilefreaks.freaks_catalog.features.freaks.DetailsViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.FreakDetails
 import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRepository
+import com.google.common.truth.Truth.assertThat
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class DetailsViewModelTest {
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    var coroutineRule = CoroutineRule()
-
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @ExperimentalCoroutinesApi
+    private val freakDetailsRepository = mock<FreakDetailsRepository>()
+
     @Test
-    fun `freak will populate on init`() {
+    fun `loadFreak will populate freak with value from repository`() = runBlockingTest {
         val freak = FreakDetails(
             "1",
             "Mihai",
@@ -31,29 +33,11 @@ class DetailsViewModelTest {
             "c++",
             "pasaj"
         )
+        val viewModel = DetailsViewModel(freakDetailsRepository)
+        whenever(freakDetailsRepository.getFreakFromApi("1")).thenReturn(freak)
 
-        val freakDetailsRepository = DetailsViewModelTest.DetailsMockRepository()
-        freakDetailsRepository.add(freak)
-    }
+        viewModel.loadFreak("1")
 
-    class DetailsMockRepository(
-        private var freakDetails: FreakDetails = FreakDetails(
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        )
-    ) : FreakDetailsRepository {
-        override suspend fun getFreakFromApi(x: String): FreakDetails? = freakDetails
-
-        fun add(freakDetails: FreakDetails) {
-            this.freakDetails = freakDetails
-        }
+        assertThat(viewModel.freak.value).isEqualTo(freak)
     }
 }
