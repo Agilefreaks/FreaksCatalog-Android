@@ -1,24 +1,43 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.agilefreaks.freaks_catalog.features.freaks.DetailsViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.FreakDetails
+import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRepository
+import com.google.common.truth.Truth.assertThat
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Assert.*
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Rule
 import org.junit.Test
 
-class DetailsViewModelTest{
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    var coroutineRule = CoroutineRule()
-
+@ExperimentalCoroutinesApi
+class DetailsViewModelTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @ExperimentalCoroutinesApi
+    private val freakDetailsRepository = mock<FreakDetailsRepository>()
+
     @Test
-    fun `will get the right freak`(){
+    fun `loadFreak will populate freak with value from repository`() = runBlockingTest {
+        val freak = FreakDetails(
+            "1",
+            "Mihai",
+            "Boss",
+            "Developer",
+            "Full-time",
+            "expert",
+            "the boss",
+            "photo",
+            "c++",
+            "pasaj"
+        )
+        val viewModel = DetailsViewModel(freakDetailsRepository)
+        whenever(freakDetailsRepository.getFreakFromApi("1")).thenReturn(freak)
 
+        viewModel.loadFreak("1")
+
+        assertThat(viewModel.freak.value).isEqualTo(freak)
     }
-
-
 }
