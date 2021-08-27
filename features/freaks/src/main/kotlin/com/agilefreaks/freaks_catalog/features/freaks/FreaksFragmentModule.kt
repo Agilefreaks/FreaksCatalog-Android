@@ -11,7 +11,7 @@ val freaksFragmentModule = module {
     single<FreaksRepository> { FreaksRepositoryImpl(get()) }
     single<FilterRepository> { FilterRepositoryImpl(get()) }
     viewModel {
-        FreaksViewModel(get(), get())
-        FilterViewModel(get())
+        FreaksViewModel(get())
+        FilterViewModel()
     }
 }
