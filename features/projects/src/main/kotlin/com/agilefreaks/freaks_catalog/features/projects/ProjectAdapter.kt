@@ -19,9 +19,8 @@ class ProjectAdapter(private val projectsList: List<Project>) :
         holder.bind(project)
     }
 
-    override fun getItemCount(): Int {
-       return projectsList.size
-    }
+    override fun getItemCount(): Int = projectsList.size
+
 
     class ItemViewHolder(private val binding: ListProjectsBinding) :
         RecyclerView.ViewHolder(binding.root) {

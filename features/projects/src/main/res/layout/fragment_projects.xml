@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
+
         <variable
             name="projectsViewModel"
             type="com.agilefreaks.freaks_catalog.features.projects.ProjectsViewModel" />
@@ -18,7 +20,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingBottom="@dimen/recycler_view_bottom_padding"/>
+            android:paddingBottom="@dimen/recycler_view_bottom_padding">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/projects_recyclerview"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="@{projectsViewModel.isLoading() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

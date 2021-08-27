@@ -9,7 +9,7 @@ interface ProjectsDataSource {
     suspend fun getProjects():List<ProjectListQuery.Project>
 }
 
-class ProjectsApolloDataSource():ProjectsDataSource{
+class ProjectsApolloDataSource:ProjectsDataSource{
     override suspend fun getProjects():List<ProjectListQuery.Project> = withContext(Dispatchers.IO) {
         apolloClient.query(ProjectListQuery()).await().data?.projects ?: emptyList()
     }
