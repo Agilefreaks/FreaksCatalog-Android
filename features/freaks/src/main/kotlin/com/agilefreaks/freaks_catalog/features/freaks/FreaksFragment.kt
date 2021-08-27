@@ -110,9 +110,8 @@ class FreaksFragment : Fragment() {
         mBottomSheetBinding.viewModel = filterViewModel
         mBottomSheetBinding.filterTitle.text = name
 
-        val recyclerFiltersView =
-            mBottomSheetBinding.recyclerFiltersView
-        recyclerFiltersView.layoutManager = LinearLayoutManager(requireContext())
+        mBottomSheetBinding.recyclerFiltersView.layoutManager =
+            LinearLayoutManager(requireContext())
 
         list.observe(viewLifecycleOwner, {
             val adapter = FilterAdapter()

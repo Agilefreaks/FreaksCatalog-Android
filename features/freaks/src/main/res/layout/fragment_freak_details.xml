@@ -49,7 +49,7 @@
                 android:layout_width="@dimen/details_profile_photo"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/photo_margin_top"
-                android:background="@drawable/profile_pick_background"
+                android:background="@drawable/profile_pic_background"
                 android:contentDescription="@string/profile_picture"
                 android:elevation="@dimen/profile_photo_elevation"
                 android:scaleType="fitXY"
