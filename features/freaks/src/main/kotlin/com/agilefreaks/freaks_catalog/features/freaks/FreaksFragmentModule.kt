@@ -1,8 +1,6 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepository
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositoryImpl
 import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
 

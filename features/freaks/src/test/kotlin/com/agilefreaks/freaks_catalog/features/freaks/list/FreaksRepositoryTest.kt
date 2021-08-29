@@ -5,7 +5,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
 import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksDataSource
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksListQuery
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepositoryImpl
+import com.agilefreaks.freaks_catalog.features.freaks.FreaksRepositoryImpl
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
