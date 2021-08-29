@@ -20,7 +20,7 @@ class FilterViewModelTest {
     @Test
     fun `init will load skills with all the proper skill names`() {
         val viewModel = FilterViewModel()
-        val skillNames = viewModel.skills.value?.map { it.name }
+        val skillNames = viewModel.filtersList.value?.first?.map { it.name }
         assertThat(skillNames).containsExactly("Android", "Kotlin", "Other Skill", "QA", "Ruby", "iOS")
     }
 
@@ -28,7 +28,7 @@ class FilterViewModelTest {
     @Test
     fun `init will set all skills to have isChecked false`() {
         val viewModel = FilterViewModel()
-        val anyAreChecked = viewModel.skills.value?.any { it.isChecked.get() == true }
+        val anyAreChecked = viewModel.filtersList.value?.first?.any { it.isChecked.get() == true }
 
         assertThat(anyAreChecked).isFalse()
     }
@@ -36,7 +36,7 @@ class FilterViewModelTest {
     @Test
     fun `init will load projects`() {
         val viewModel = FilterViewModel()
-        val projectNames = viewModel.projects.value?.map { it.name }
+        val projectNames = viewModel.filtersList.value?.second?.map { it.name }
         assertThat(projectNames).containsExactly("EPIX", "Freaks Catalog", "New Project", "reAsig")
     }
 
@@ -44,7 +44,7 @@ class FilterViewModelTest {
     fun `reset will set isChecked to false for all skills`() {
         val viewModel = FilterViewModel()
         viewModel.reset()
-        val anyAreChecked = viewModel.skills.value?.any { it.isChecked.get() == true }
+        val anyAreChecked = viewModel.filtersList.value?.first?.any { it.isChecked.get() == true }
         assertThat(anyAreChecked).isFalse()
     }
 
@@ -52,7 +52,7 @@ class FilterViewModelTest {
     fun `reset will set isChecked to false for all projects`() {
         val viewModel = FilterViewModel()
         viewModel.reset()
-        val anyAreChecked = viewModel.projects.value?.any { it.isChecked.get() == true }
+        val anyAreChecked = viewModel.filtersList.value?.second?.any { it.isChecked.get() == true }
         assertThat(anyAreChecked).isFalse()
     }
 }
