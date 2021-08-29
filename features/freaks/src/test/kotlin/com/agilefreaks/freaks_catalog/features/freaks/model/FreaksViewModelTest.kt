@@ -3,11 +3,7 @@ package com.agilefreaks.freaks_catalog.features.freaks.model
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel
-<<<<<<< HEAD
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksRepository
-=======
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepository
->>>>>>> Refactor packages and files
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule

@@ -4,38 +4,46 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.Project
 import com.agilefreaks.freaks_catalog.features.freaks.model.Technology
 import kotlinx.coroutines.launch
 
 class FilterViewModel : ViewModel() {
-    private val _skills = MutableLiveData<List<FilterItem>>().apply {
+    private val _filtersList = MutableLiveData<Pair<List<Technology>, List<Project>>>().apply {
         viewModelScope.launch {
-            value = loadSkills()
+            value = Pair(loadSkills(), loadProjects())
         }
     }
-    val skills: LiveData<List<FilterItem>>
-        get() = _skills
-
-    private val _projects = MutableLiveData<List<FilterItem>>().apply {
-        viewModelScope.launch {
-            value = loadProjects()
-        }
-    }
-    val projects: LiveData<List<FilterItem>>
-        get() = _projects
+    val filtersList: LiveData<Pair<List<Technology>, List<Project>>>
+        get() = _filtersList
 
     fun reset() {
-        skills.value?.forEach { it.reset() }
-        projects.value?.forEach { it.reset() }
+        filtersList.value?.first?.forEach { it.reset() }
+        filtersList.value?.second?.forEach { it.reset() }
     }
 
-    fun applyFilters(): List<String> =
-        listOf("", "")
+    fun applyFilters(): Pair<MutableList<String>, MutableList<String>> {
+        val selectedFilters: Pair<MutableList<String>, MutableList<String>> =
+            Pair(mutableListOf(), mutableListOf())
+        filtersList.value?.first?.forEach {
+            if (it.isChecked.get() == true) {
+                selectedFilters.first.add(
+                    it.id
+                )
+            }
+        }
+        filtersList.value?.second?.forEach {
+            if (it.isChecked.get() == true) {
+                selectedFilters.second.add(
+                    it.id
+                )
+            }
+        }
+        return selectedFilters
+    }
 
-    private fun loadSkills(): MutableList<FilterItem> {
-        val technologiesList: MutableList<FilterItem> = mutableListOf()
+    private fun loadSkills(): MutableList<Technology> {
+        val technologiesList: MutableList<Technology> = mutableListOf()
         technologiesList.add(Technology("1", "Android"))
         technologiesList.add(Technology("2", "Kotlin"))
         technologiesList.add(Technology("3", "iOS"))
@@ -46,8 +54,8 @@ class FilterViewModel : ViewModel() {
         return technologiesList
     }
 
-    private fun loadProjects(): MutableList<FilterItem> {
-        val projectsList: MutableList<FilterItem> = mutableListOf()
+    private fun loadProjects(): MutableList<Project> {
+        val projectsList: MutableList<Project> = mutableListOf()
         projectsList.add(Project("1", "Freaks Catalog"))
         projectsList.add(Project("2", "EPIX"))
         projectsList.add(Project("3", "reAsig"))
