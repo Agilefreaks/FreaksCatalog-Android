@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreaksRepository
 import kotlinx.coroutines.launch
 
 class FreaksViewModel(private val repository: FreaksRepository) : ViewModel() {
