@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
 
         <variable
             name="freakDetailsViewModel"
@@ -25,24 +26,25 @@
 
             <View
                 android:id="@+id/view2"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/image_roundend_background_size"
                 android:layout_height="0dp"
-                android:elevation="10dp"
                 android:background="@drawable/profile_pick_rounded_corners"
-                app:layout_constraintBottom_toBottomOf="@id/freak_profile_photo"
+                android:elevation="@dimen/background_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/freak_profile_photo"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="@id/freak_profile_photo"
                 app:layout_constraintStart_toStartOf="@id/freak_profile_photo"
-                app:layout_constraintTop_toTopOf="@id/freak_profile_photo" />
+                app:layout_constraintTop_toTopOf="@+id/freak_profile_photo" />
 
             <ImageView
                 android:id="@+id/freak_profile_photo"
                 android:layout_width="@dimen/details_profile_photo"
                 android:layout_height="0dp"
-                android:scaleType="fitXY"
                 android:layout_marginTop="@dimen/photo_margin_top"
                 android:background="@drawable/profile_pick_background"
                 android:contentDescription="@string/profile_picture"
                 android:elevation="@dimen/profile_photo_elevation"
+                android:scaleType="fitXY"
                 app:imageUrl="@{freakDetailsViewModel.freak.photo}"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"

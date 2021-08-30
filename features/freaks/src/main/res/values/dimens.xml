@@ -30,5 +30,7 @@
     <dimen name="recycler_filters_view_margin_bottom">15dp</dimen>
     <dimen name="image_background_radius">10dp</dimen>
     <dimen name="image_roundend_background_radius">10dp</dimen>
-    <dimen name="image_rounded_background_stroke_width">4dp</dimen>
+    <dimen name="image_rounded_background_stroke_width">6dp</dimen>
+    <dimen name="image_roundend_background_size">145dp</dimen>
+    <dimen name="background_elevation">10dp</dimen>
 </resources>
