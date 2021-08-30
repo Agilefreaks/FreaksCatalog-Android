@@ -5,7 +5,7 @@ import com.apollographql.apollo.coroutines.await
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-interface   FreakDetailsDataSource {
+interface FreakDetailsDataSource {
     suspend fun getFreaks(): FreakDetailsQuery.Data?
 }
 

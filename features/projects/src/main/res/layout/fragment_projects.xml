@@ -35,6 +35,4 @@
             android:visibility="@{projectsViewModel.isLoading() ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>
