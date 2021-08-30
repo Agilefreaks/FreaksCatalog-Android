@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <corners android:radius="10dp" />
+    <corners android:radius="@dimen/image_background_radius" />
 
     <solid android:color="@android:color/white" />
 
@@ -10,5 +10,4 @@
         android:left="@dimen/picture_padding"
         android:right="@dimen/picture_padding"
         android:top="@dimen/picture_padding"/>
-
 </shape>

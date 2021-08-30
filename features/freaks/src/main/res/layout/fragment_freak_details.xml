@@ -23,6 +23,32 @@
             android:isScrollContainer="true"
             tools:context=".details.FreakDetailsFragment">
 
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elevation="10dp"
+                android:background="@drawable/profile_pick_rounded_corners"
+                app:layout_constraintBottom_toBottomOf="@id/freak_profile_photo"
+                app:layout_constraintEnd_toEndOf="@id/freak_profile_photo"
+                app:layout_constraintStart_toStartOf="@id/freak_profile_photo"
+                app:layout_constraintTop_toTopOf="@id/freak_profile_photo" />
+
+            <ImageView
+                android:id="@+id/freak_profile_photo"
+                android:layout_width="@dimen/details_profile_photo"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/photo_margin_top"
+                android:background="@drawable/profile_pick_background"
+                android:contentDescription="@string/profile_picture"
+                android:elevation="@dimen/profile_photo_elevation"
+                app:imageUrl="@{freakDetailsViewModel.freak.photo}"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ProgressBar
                 android:id="@+id/progressBar_freak"
                 style="?android:attr/progressBarStyle"
@@ -44,21 +70,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/freak_profile_photo"
-                android:layout_width="@dimen/details_profile_photo"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/photo_margin_top"
-                android:background="@drawable/details_image_background"
-                android:contentDescription="@string/profile_picture"
-                android:elevation="@dimen/profile_photo_elevation"
-                android:scaleType="fitXY"
-                app:imageUrl="@{freakDetailsViewModel.freak.photo}"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cardViewStartG"
                 android:layout_width="wrap_content"
@@ -78,7 +89,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/card_view_top_margin"
-                app:cardBackgroundColor="@color/variant_blue"
+                app:cardBackgroundColor="?attr/colorPrimary"
                 app:cardCornerRadius="@dimen/details_card_view_radius"
                 app:layout_constraintEnd_toEndOf="@id/cardViewEndG"
                 app:layout_constraintStart_toStartOf="@id/cardViewStartG"
@@ -115,7 +126,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/freak_description_vertical"
                         android:ellipsize="end"
-                        android:maxLines="1"
                         android:text="@{String.format(@string/skills_template,freakDetailsViewModel.freak.skills)}"
                         app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -129,8 +139,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/projects_level_top_margin"
                         android:ellipsize="end"
-                        android:maxLines="1"
-                        android:singleLine="true"
                         android:text="@{String.format(@string/projects_template, freakDetailsViewModel.freak.projects)}"
                         app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -143,8 +151,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/projects_level_top_margin"
-                        android:layout_marginBottom="@dimen/level_bot_margin"
-                        android:lines="1"
+                        android:paddingBottom="@dimen/level_bot_margin"
                         android:text="@{String.format(@string/level_project,freakDetailsViewModel.freak.level)}"
                         app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                         app:layout_constraintHorizontal_bias="0.0"
