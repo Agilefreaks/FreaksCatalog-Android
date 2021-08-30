@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
-import com.agilefreaks.freaks_catalog.features.projects.R
 import com.agilefreaks.freaks_catalog.features.projects.databinding.FragmentProjectDetailsBinding
 import com.agilefreaks.freaks_catalog.features.projects.details.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -16,6 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ProjectDetailsFragment : Fragment() {
     private lateinit var viewBinding: FragmentProjectDetailsBinding
 
+    private val viewModel: DetailsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +32,7 @@ class ProjectDetailsFragment : Fragment() {
         viewBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_project_details, container, false)
 
+        viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = this
 
         return viewBinding.root

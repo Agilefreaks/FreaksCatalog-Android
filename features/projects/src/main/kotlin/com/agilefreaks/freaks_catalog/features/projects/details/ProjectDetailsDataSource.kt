@@ -5,7 +5,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 interface ProjectDetailsDataSource {
-
 }
 
 class ProjectDetailsApolloDataSource: ProjectDetailsDataSource {
