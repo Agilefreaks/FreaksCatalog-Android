@@ -4,131 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="android.view.View" />
-
         <variable
-            name="freakDetailsViewModel"
+            name="viewModel"
             type="com.agilefreaks.freaks_catalog.features.projects.details.DetailsViewModel" />
     </data>
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/card_view_bottom_margin">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/card_view_bottom_margin"
+        android:clipToPadding="false">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:isScrollContainer="true">
 
-        <ProgressBar
-            android:id="@+id/progressBar_project"
-            android:layout_width="@dimen/progress_bar_size"
-            android:layout_height="@dimen/progress_bar_size"
-            android:elevation="@dimen/progress_bar_elevation"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ProgressBar
+                android:layout_width="@dimen/progress_bar_size"
+                android:layout_height="@dimen/progress_bar_size"
+                android:id="@+id/progressBar_project"
+                android:elevation="@dimen/progress_bar_elevation"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:layout_width="@dimen/details_profile_photo"
+                android:layout_height="0dp"
+                android:id="@+id/project_photo"
+                android:contentDescription="Picture"
+                android:elevation="@dimen/profile_photo_elevation"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/project_photo"
-            android:layout_width="@dimen/details_profile_photo"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/photo_margin_top"
-            android:contentDescription="@string/project_picture"
-            android:elevation="@dimen/profile_photo_elevation"
-            android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/cardViewStartG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.044" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/cardViewEndG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.956" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView_freak"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_view_top_margin"
-            app:cardBackgroundColor="?attr/colorPrimary"
-            app:cardCornerRadius="@dimen/details_card_view_radius"
-            app:layout_constraintEnd_toEndOf="@id/cardViewEndG"
-            app:layout_constraintStart_toStartOf="@id/cardViewStartG"
-            app:layout_constraintTop_toTopOf="@+id/project_photo">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/card_view_min_height">
+                android:id="@+id/cardViewStart"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.044"/>
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/tsplStartG"
-                    android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardViewEnd"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.956" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardView_project"
+                android:layout_marginTop="@dimen/card_view_top_margin"
+                app:cardBackgroundColor="?attr/colorPrimary"
+                app:cardCornerRadius="@dimen/details_card_view_radius"
+                app:layout_constraintStart_toStartOf="@id/cardViewStart"
+                app:layout_constraintTop_toTopOf="@id/project_photo"
+                app:layout_constraintEnd_toEndOf="@id/cardViewEnd">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.09756" />
+                    android:minHeight="@dimen/card_view_min_height"
+                    android:visibility="visible">
 
-                <TextView
-                    android:id="@+id/title_project"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/title_top_margin"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/tsplStartG"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/titleStart"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.09756" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/descriptionEndG"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.976" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/description"
+                        android:layout_marginTop="@dimen/title_top_margin"
+                        android:text="Freaks Catalog is an app that does stuff."
+                        app:layout_constraintStart_toStartOf="@id/titleStart"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/descriptionStartG"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.024" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/freak_description_vertical"
+                        android:id="@+id/skills"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Kotlin, Swift"
+                        app:layout_constraintTop_toBottomOf="@id/description"
+                        app:layout_constraintStart_toEndOf="@id/titleStart"
+                        app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />
 
-                <TextView
-                    android:id="@+id/description_project"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/freak_description_vertical"
-                    android:ellipsize="end"
-                    android:minHeight="@dimen/description_min_height"
-                    android:textSize="@dimen/sec_text_size"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toStartOf="@id/descriptionEndG"
-                    app:layout_constraintStart_toEndOf="@id/descriptionStartG"
-                    app:layout_constraintTop_toBottomOf="@+id/title_project" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/freak_description_vertical"
+                        android:id="@+id/freaks"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Alexandra, Denis"
+                        app:layout_constraintTop_toBottomOf="@id/skills"
+                        app:layout_constraintStart_toEndOf="@id/titleStart"
+                        app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.Guideline
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/descriptionStart"
+                        app:layout_constraintGuide_percent="0.024" />
 
-        </androidx.cardview.widget.CardView>
+                    <androidx.constraintlayout.widget.Guideline
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/descriptionEnd"
+                        app:layout_constraintGuide_percent="0.976" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
