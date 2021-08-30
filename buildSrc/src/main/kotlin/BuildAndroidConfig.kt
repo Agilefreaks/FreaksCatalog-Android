@@ -1,5 +1,5 @@
 object BuildAndroidConfig {
-    const val APPLICATION_ID = "com.agilefreaks.freaks_catalog"
+    const val APPLICATION_ID = "com.agilefreaks.freaks.catalog"
 
     const val COMPILE_SDK_VERSION = 30
     const val BUILD_TOOLS_VERSION = "30.0.3"
