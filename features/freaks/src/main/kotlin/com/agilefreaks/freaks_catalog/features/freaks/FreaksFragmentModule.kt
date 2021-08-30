@@ -8,7 +8,7 @@ import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
 
 val freaksFragmentModule = module {
-    single <FreaksDataSource> { FreaksApolloDataSource() }
+    single<FreaksDataSource> { FreaksApolloDataSource() }
     single<FreaksRepository> { FreaksRepositoryImpl(get()) }
     viewModel {
         FreaksViewModel(get())
@@ -16,5 +16,4 @@ val freaksFragmentModule = module {
     viewModel {
         FilterViewModel()
     }
-
 }

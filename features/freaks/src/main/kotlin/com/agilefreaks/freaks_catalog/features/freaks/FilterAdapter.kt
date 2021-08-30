@@ -11,7 +11,8 @@ import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 class FilterAdapter :
     ListAdapter<FilterItem, FilterAdapter.ViewHolder>(SkillDiffUtilCallback()) {
 
-    class ViewHolder(private val binding: FilterItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: FilterItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(filterItem: FilterItem) {
             binding.model = filterItem
         }

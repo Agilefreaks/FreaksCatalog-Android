@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ProjectsFragment : Fragment() {
     private lateinit var viewBinding: FragmentProjectsBinding
     private lateinit var recyclerView: RecyclerView
-    private val viewModel:ProjectsViewModel by viewModel()
+    private val viewModel: ProjectsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,10 +32,10 @@ class ProjectsFragment : Fragment() {
         return viewBinding.root
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         recyclerView = viewBinding.projectsRecyclerview
         recyclerView.layoutManager = LinearLayoutManager(context)
-        viewModel.projects.observe(viewLifecycleOwner, {projects ->
+        viewModel.projects.observe(viewLifecycleOwner, { projects ->
             recyclerView.adapter = ProjectAdapter(projects)
         })
 

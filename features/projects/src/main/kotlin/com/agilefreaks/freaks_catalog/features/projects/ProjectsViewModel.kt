@@ -18,7 +18,6 @@ class ProjectsViewModel(private val projectsRepository: ProjectsRepository) : Vi
     fun loadProjects() {
         viewModelScope.launch {
             _projects.value = projectsRepository.getProjectsFromApi()
-
             _isLoading.value = false
         }
     }
