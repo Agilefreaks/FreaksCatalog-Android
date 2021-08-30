@@ -19,8 +19,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDia
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterAdapter
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel
-import com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel
-import com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
