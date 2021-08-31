@@ -1,0 +1,9 @@
+query ProjectListQuery{
+    projects{
+        id
+        name
+        logoUrl{
+            uri
+        }
+    }
+}
