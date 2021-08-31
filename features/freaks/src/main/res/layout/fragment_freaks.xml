@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/skills_button"
                 android:layout_weight="1"
+android:onClick="@{() -> freaksViewModel.showSkills()}"
                 android:textAllCaps="false"
                 android:textColor="?android:attr/textColorPrimary" />
             <Button

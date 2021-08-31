@@ -1,5 +1,5 @@
 query ProjectsList {
-    technologies {
+    projects {
         id
         name
     }

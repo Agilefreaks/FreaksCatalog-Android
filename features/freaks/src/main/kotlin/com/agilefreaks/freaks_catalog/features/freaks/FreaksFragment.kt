@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +18,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDia
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterAdapter
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel
-import com.agilefreaks.freaks_catalog.features.freaks.model.Project
-import com.agilefreaks.freaks_catalog.features.freaks.model.Technology
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -56,16 +54,18 @@ class FreaksFragment : Fragment() {
         val showSkillsButton: Button = viewBinding.skillsButton
         val showProjectsButton: Button = viewBinding.projectsButton
 
-        showSkillsButton.setOnClickListener {
-            showFilterModal(filterViewModel.filtersList, SKILLS)
-        }
-        showProjectsButton.setOnClickListener {
-            showFilterModal(filterViewModel.filtersList, PROJECTS)
-        }
-
-//        viewModel.showFilterDialog.observe(viewLifecycleOwner, {
-//            showFilterModal(it)
-//        })
+//        showSkillsButton.setOnClickListener {
+//            showFilterModal(filterViewModel.technologies, SKILLS)
+//        }
+//        showProjectsButton.setOnClickListener {
+//            showFilterModal(filterViewModel.projects, PROJECTS)
+//        }
+        viewModel.technologies.observe(viewLifecycleOwner, {
+            showFilterModal(it, SKILLS)
+        })
+        viewModel.projects.observe(viewLifecycleOwner, {
+            showFilterModal(it, PROJECTS)
+        })
 
         viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
             recyclerView.adapter = FreakItemAdapter(freaks) {
@@ -75,6 +75,7 @@ class FreaksFragment : Fragment() {
 
         return viewBinding.root
     }
+    fun showSkills(){}
 
     private fun onItemClicked(freakId: String) {
         val action = FreaksFragmentDirections.actionFreaksToFreakDetails(freakId)
@@ -97,7 +98,7 @@ class FreaksFragment : Fragment() {
     }
 
     private fun showFilterModal(
-        list: LiveData<Pair<List<Technology>, List<Project>>>,
+        list: List<FilterItem>,
         name: String
     ) {
         val modal = setupFilterModal(list, name)
@@ -113,8 +114,7 @@ class FreaksFragment : Fragment() {
     }
 
     private fun setupFilterModal(
-        //list: List<FilterItem>
-        list: LiveData<Pair<List<Technology>, List<Project>>>,
+        list: List<FilterItem>,
         name: String
     ): View {
         val inflater = LayoutInflater.from(requireContext())
@@ -129,17 +129,14 @@ class FreaksFragment : Fragment() {
         bottomSheetBinding.recyclerFiltersView.layoutManager =
             LinearLayoutManager(requireContext())
 
-        list.observe(viewLifecycleOwner, {
-            val adapter = FilterAdapter()
-            if (name == SKILLS) {
-                adapter.submitList(it.first)
-            } else {
-                adapter.submitList(it.second)
-            }
-            val recyclerFiltersView =
-                bottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
-            recyclerFiltersView.adapter = adapter
-        })
+        val adapter = FilterAdapter()
+        adapter.submitList(list)
+
+
+        val recyclerFiltersView =
+            bottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
+        recyclerFiltersView.adapter = adapter
+
 
         return bottomSheetBinding.root
     }
