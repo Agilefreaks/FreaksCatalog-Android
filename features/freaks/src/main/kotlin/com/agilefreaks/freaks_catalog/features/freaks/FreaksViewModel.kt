@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
 import kotlinx.coroutines.launch
 
@@ -16,5 +17,11 @@ class FreaksViewModel(private val repository: FreaksRepository) : ViewModel() {
     val freaks: LiveData<List<Freak>>
         get() = _freaks
 
+    val showFilterDialog = MutableLiveData<List<FilterItem>>()
+
     private suspend fun loadFreaks(): List<Freak> = repository.getFreaksFromApi()
+
+//    fun onSkillsFilterClicked() {
+//        showFilterDialog.value = skilsList
+//    }
 }
