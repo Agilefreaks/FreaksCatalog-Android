@@ -1,11 +1,15 @@
-query ProjectDetailsQuery{
-    projects{
-        nodes{
-            id
-            name
-            logoUrl {
-                uri
-            }
-        }
+query ProjectDetails {
+  projects{
+    id
+    description
+    logoUrl{
+      uri
     }
+    freaks{
+      firstName
+    }
+    technologies{
+      name
+    }
+  }
 }

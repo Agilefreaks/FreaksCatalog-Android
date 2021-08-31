@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class DetailsViewModel : ViewModel() {
+class DetailsViewModel (private val repository: ProjectDetailsRepository) : ViewModel() {
     private var _project = MutableLiveData<ProjectDetails>()
     val project: LiveData<ProjectDetails>
         get() = _project
@@ -17,6 +17,8 @@ class DetailsViewModel : ViewModel() {
 
     fun loadProject(projectId: String) {
         viewModelScope.launch {
+            _project.value = repository.getProjectFromApi(projectId)
+            _projectDetailsLoaded.value = true
         }
     }
 

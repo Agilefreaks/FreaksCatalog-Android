@@ -10,7 +10,4 @@ val projectsFragmentModule = module {
     viewModel {
         ProjectsViewModel(get())
     }
-    viewModel {
-        DetailsViewModel()
-    }
 }
