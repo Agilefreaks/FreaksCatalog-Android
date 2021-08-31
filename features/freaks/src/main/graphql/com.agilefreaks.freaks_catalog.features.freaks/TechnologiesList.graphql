@@ -1,0 +1,6 @@
+query TechnologiesList {
+    technologies {
+        id
+        name
+    }
+}

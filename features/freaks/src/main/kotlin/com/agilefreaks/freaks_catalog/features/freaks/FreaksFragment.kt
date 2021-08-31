@@ -19,6 +19,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDia
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterAdapter
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.Project
 import com.agilefreaks.freaks_catalog.features.freaks.model.Technology
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -62,6 +63,10 @@ class FreaksFragment : Fragment() {
         showProjectsButton.setOnClickListener {
             showFilterModal(filterViewModel.filtersList, PROJECTS)
         }
+
+//        viewModel.showFilterDialog.observe(viewLifecycleOwner, {
+//            showFilterModal(it)
+//        })
 
         viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
             recyclerView.adapter = FreakItemAdapter(freaks) {
@@ -109,6 +114,7 @@ class FreaksFragment : Fragment() {
     }
 
     private fun setupFilterModal(
+        //list: List<FilterItem>
         list: LiveData<Pair<List<Technology>, List<Project>>>,
         name: String
     ): View {
@@ -117,6 +123,10 @@ class FreaksFragment : Fragment() {
         bottomSheetBinding.viewModel = filterViewModel
         bottomSheetBinding.filterTitle.text = name
 
+//        when(list.first()) {
+//            is Project ->
+//        }
+//        if (list.first() is Technology)
         bottomSheetBinding.recyclerFiltersView.layoutManager =
             LinearLayoutManager(requireContext())
 
