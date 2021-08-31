@@ -107,22 +107,22 @@ class FreaksFragment : Fragment() {
 
     private fun setupFilterModal(list: LiveData<List<FilterItem>>, name: String): View {
         val inflater = LayoutInflater.from(requireContext())
-        val mBottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
-        mBottomSheetBinding.viewModel = filterViewModel
-        mBottomSheetBinding.filterTitle.text = name
+        val bottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
+        bottomSheetBinding.viewModel = filterViewModel
+        bottomSheetBinding.filterTitle.text = name
 
-        mBottomSheetBinding.recyclerFiltersView.layoutManager =
+        bottomSheetBinding.recyclerFiltersView.layoutManager =
             LinearLayoutManager(requireContext())
 
         list.observe(viewLifecycleOwner, {
             val adapter = FilterAdapter()
             adapter.submitList(it)
             val recyclerFiltersView =
-                mBottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
+                bottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
             recyclerFiltersView.adapter = adapter
         })
 
-        return mBottomSheetBinding.root
+        return bottomSheetBinding.root
     }
 
     companion object {
