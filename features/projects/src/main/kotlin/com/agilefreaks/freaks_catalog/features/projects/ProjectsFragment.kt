@@ -35,9 +35,9 @@ class ProjectsFragment : Fragment() {
     private fun setupRecyclerView() {
         recyclerView = viewBinding.projectsRecyclerview
         recyclerView.layoutManager = LinearLayoutManager(context)
-        viewModel.projects.observe(viewLifecycleOwner, { projects ->
+        viewModel.projects.observe(viewLifecycleOwner) { projects ->
             recyclerView.adapter = ProjectAdapter(projects)
-        })
+        }
 
     }
 }
