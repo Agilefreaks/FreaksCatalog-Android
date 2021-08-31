@@ -24,4 +24,8 @@
     <dimen name="photo_margin_top">37dp</dimen>
     <dimen name="progress_bar_elevation">6dp</dimen>
     <dimen name="description_min_height">100dp</dimen>
+    <dimen name="reset_button_text_size">12sp</dimen>
+    <dimen name="filter_title_text_size">16sp</dimen>
+    <dimen name="filter_title_padding_bottom">10dp</dimen>
+    <dimen name="recycler_filters_view_margin_bottom">15dp</dimen>
 </resources>
