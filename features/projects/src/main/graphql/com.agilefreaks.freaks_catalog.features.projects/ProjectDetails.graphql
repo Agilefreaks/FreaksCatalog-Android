@@ -1,0 +1,11 @@
+query ProjectDetailsQuery{
+    projects{
+        nodes{
+            id
+            name
+            logoUrl {
+                uri
+            }
+        }
+    }
+}
