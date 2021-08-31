@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.agilefreaks.freaks_catalog.features.projects.details.DetailsViewModel" />
@@ -25,7 +26,7 @@
                 android:layout_height="@dimen/progress_bar_size"
                 android:id="@+id/progressBar_project"
                 android:elevation="@dimen/progress_bar_elevation"
-                android:visibility="invisible"
+                android:visibility="@{viewModel.projectDetailsLoaded ? View.GONE : View.VISIBLE}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -38,6 +39,8 @@
                 android:contentDescription="Picture"
                 android:elevation="@dimen/profile_photo_elevation"
                 android:scaleType="fitXY"
+                app:imageUrl="@viewModel.project.photo"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -85,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/description"
                         android:layout_marginTop="@dimen/title_top_margin"
-                        android:text="Freaks Catalog is an app that does stuff."
+                        android:text="@{String.format(@string/title_template,viewModel.project.description)}"
                         app:layout_constraintStart_toStartOf="@id/titleStart"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,7 +99,7 @@
                         android:id="@+id/skills"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="Kotlin, Swift"
+                        android:text="@{String.format(@string/title_template,viewModel.project.technology)}"
                         app:layout_constraintTop_toBottomOf="@id/description"
                         app:layout_constraintStart_toEndOf="@id/titleStart"
                         app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />
