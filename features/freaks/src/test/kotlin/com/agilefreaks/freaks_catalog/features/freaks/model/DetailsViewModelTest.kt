@@ -2,8 +2,7 @@ package com.agilefreaks.freaks_catalog.features.freaks.model
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.agilefreaks.freaks_catalog.features.freaks.CoroutineRule
-import com.agilefreaks.freaks_catalog.features.freaks.FreakDetails
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRepository
+import com.agilefreaks.freaks_catalog.features.freaks.details.FreakDetailsRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 import org.junit.Test

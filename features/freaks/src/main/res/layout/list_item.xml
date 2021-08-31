@@ -3,37 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="freak"
-            type="com.agilefreaks.freaks_catalog.features.freaks.Freak" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.model.Freak" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="@dimen/freak_card_size"
-        android:layout_height="@dimen/freak_card_size"
-        android:layout_marginStart="@dimen/freak_card_margin"
-        android:layout_marginTop="@dimen/freak_card_margin"
-        android:layout_marginEnd="@dimen/freak_card_margin"
-        android:background="@drawable/custom_freak_card_border"
-        app:cardCornerRadius="@dimen/freak_card_corner_radius">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/item_image"
-            app:imageUrl="@{freak.photo}"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:importantForAccessibility="no" />
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/freak_card_margin_start_end"
+            android:layout_marginTop="@dimen/freak_card_margin_top_bottom"
+            android:layout_marginEnd="@dimen/freak_card_margin_start_end"
+            android:layout_marginBottom="@dimen/freak_card_margin_top_bottom"
+            app:cardCornerRadius="@dimen/freak_card_corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/item_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginTop="102dp"
-            android:layout_marginBottom="16dp"
-            android:text="@{freak.firstName}"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="?attr/colorSecondary"
-            android:textIsSelectable="false" />
-    </com.google.android.material.card.MaterialCardView>
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{freak.photo}" />
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="@dimen/item_title_bottom_margin"
+                android:text="@{freak.firstName}"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="?attr/colorSecondary"
+                android:textIsSelectable="false" />
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

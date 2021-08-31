@@ -2,9 +2,11 @@ package com.agilefreaks.freaks_catalog.features.freaks.model
 
 import androidx.databinding.ObservableField
 
-class FilterItem(val skillName: String) {
+class FilterItem(
+    val id: String,
+    val name: String,
     val isChecked: ObservableField<Boolean> = ObservableField()
-
+) {
     fun reset() {
         isChecked.set(false)
     }

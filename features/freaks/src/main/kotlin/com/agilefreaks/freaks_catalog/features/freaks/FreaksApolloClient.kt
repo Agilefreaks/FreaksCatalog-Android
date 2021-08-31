@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks.model
+package com.agilefreaks.freaks_catalog.features.freaks
 
 import com.apollographql.apollo.ApolloClient
 

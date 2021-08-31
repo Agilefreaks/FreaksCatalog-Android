@@ -20,7 +20,7 @@ query FreakDetailsQuery{
             projects{
                 name
             }
-            skills {
+            technologies{
                 name
             }
         }

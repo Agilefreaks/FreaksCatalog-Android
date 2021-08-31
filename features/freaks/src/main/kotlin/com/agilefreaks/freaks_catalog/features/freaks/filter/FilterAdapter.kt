@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.freaks.filter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

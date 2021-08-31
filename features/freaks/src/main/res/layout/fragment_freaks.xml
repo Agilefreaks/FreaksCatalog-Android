@@ -3,10 +3,10 @@
     <data>
         <variable
             name="freaksViewModel"
-            type="com.agilefreaks.freaks_catalog.features.freaks.model.FreaksViewModel" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel" />
         <variable
             name="filterViewModel"
-            type="com.agilefreaks.freaks_catalog.features.freaks.model.FilterViewModel" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel" />
     </data>
 
     <RelativeLayout
@@ -17,21 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/skills_btn"
+                android:id="@+id/skills_button"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/skills_btn"
+                android:text="@string/skills_button"
                 android:layout_weight="1"
                 android:textAllCaps="false"
                 android:textColor="?android:attr/textColorPrimary" />
             <Button
-                android:id="@+id/projects_btn"
+                android:id="@+id/projects_button"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/projects_btn"
+                android:text="@string/projects_button"
                 android:textAllCaps="false"
                 android:textColor="?android:attr/textColorPrimary" />
         </LinearLayout>

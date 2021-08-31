@@ -1,9 +1,9 @@
 <resources>
     <string name="freaks_title">FREAKS</string>
-    <string name="skills_btn">Skills</string>
-    <string name="projects_btn">Projects</string>
-    <string name="applyFiltersBtn">Apply</string>
-    <string name="resetBtn">Reset</string>
+    <string name="skills_button">Skills</string>
+    <string name="projects_button">Projects</string>
+    <string name="apply_filters_button">Apply</string>
+    <string name="reset_button">Reset</string>
     <string name="title_template">%1$s - %2$s</string>
     <string name="skills_template">Skills: %1$s</string>
     <string name="projects_template">Projects: %1$s</string>

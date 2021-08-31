@@ -1,6 +1,7 @@
-package com.agilefreaks.freaks_catalog.features.freaks
+package com.agilefreaks.freaks_catalog.features.freaks.details
 
-import com.agilefreaks.freaks_catalog.features.freaks.model.apolloClient
+import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsQuery
+import com.agilefreaks.freaks_catalog.features.freaks.apolloClient
 import com.apollographql.apollo.coroutines.await
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

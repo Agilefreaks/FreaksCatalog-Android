@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/freak_details"
-        android:name="com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsFragment" >
+        android:name="com.agilefreaks.freaks_catalog.features.freaks.details.FreakDetailsFragment" >
         <argument
             android:name="freakId"
             app:argType="string" />
