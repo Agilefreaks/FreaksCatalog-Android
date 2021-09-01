@@ -19,7 +19,7 @@ query FreakDetailsQuery($freakId: ID!){
         projects{
             name
         }
-        technologies {
+        technologies{
             name
         }
     }

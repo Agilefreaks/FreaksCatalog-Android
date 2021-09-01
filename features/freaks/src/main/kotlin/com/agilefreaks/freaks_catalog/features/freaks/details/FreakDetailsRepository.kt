@@ -22,7 +22,7 @@ class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource)
         photo = this.photo?.uri as String? ?: "",
         role = this.role.name,
         projects = buildProjectsNameList(this.projects).joinToString(", "),
-        skills = buildSkillsNameList(this.skills).joinToString(", ")
+        skills = buildSkillsNameList(this.technologies).joinToString(", ")
     )
 
     private fun buildProjectsNameList(projects: List<FreakDetailsQuery.Project>): List<String> =
