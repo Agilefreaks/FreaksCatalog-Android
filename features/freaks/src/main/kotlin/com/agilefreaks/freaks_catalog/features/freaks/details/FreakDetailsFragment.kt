@@ -45,7 +45,6 @@ class FreakDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val freakId = args.freakId
-
         viewModel.loadFreak(freakId)
     }
 

@@ -16,15 +16,16 @@ class ProjectAdapter(private val projectsList: List<Project>, private val onItem
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val project = projectsList[position]
-        holder.bind(project)
+        holder.bind(project, onItemCLicked)
     }
 
     override fun getItemCount(): Int = projectsList.size
 
     class ItemViewHolder(private val binding: ListProjectsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(project: Project) {
+        fun bind(project: Project, onItemCLicked: (Project) -> Unit) {
             binding.project = project
+            binding.projectImage.setOnClickListener {onItemCLicked(project)}
         }
     }
 }

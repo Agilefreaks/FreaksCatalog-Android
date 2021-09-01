@@ -21,5 +21,4 @@ class DetailsViewModel (private val repository: ProjectDetailsRepository) : View
             _projectDetailsLoaded.value = true
         }
     }
-
 }

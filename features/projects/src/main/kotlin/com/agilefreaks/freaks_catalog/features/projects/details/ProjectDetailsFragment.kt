@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.agilefreaks.freaks_catalog.features.projects.R
 import com.agilefreaks.freaks_catalog.features.projects.databinding.FragmentProjectDetailsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProjectDetailsFragment : Fragment() {
     private lateinit var viewBinding: FragmentProjectDetailsBinding
+
+    private val args: ProjectDetailsFragmentArgs by navArgs()
 
     private val viewModel: DetailsViewModel by viewModel()
 
@@ -40,6 +43,9 @@ class ProjectDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val projectId = args.projectId
+        viewModel.loadProject(projectId)
     }
 
     private fun listenToEvents() {
