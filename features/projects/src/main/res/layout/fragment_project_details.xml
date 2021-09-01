@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/cardView_project"
                 android:layout_marginTop="@dimen/card_view_top_margin"
-                app:cardBackgroundColor="?attr/colorPrimary"
+                app:cardBackgroundColor="@color/variant_blue"
                 app:cardCornerRadius="@dimen/details_card_view_radius"
                 app:layout_constraintStart_toStartOf="@id/cardViewStart"
                 app:layout_constraintTop_toTopOf="@id/project_photo"
@@ -91,6 +91,7 @@
                         android:id="@+id/description"
                         android:layout_marginTop="@dimen/title_top_margin"
                         android:text="@{viewModel.project.description}"
+                        style="@style/DetailScreenTextStyle"
                         app:layout_constraintStart_toStartOf="@id/titleStart"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,7 +102,8 @@
                         android:id="@+id/skills"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@{viewModel.project.technology}"
+                        android:text="@{String.format(@string/skills,viewModel.project.technology)}"
+                        style="@style/DetailScreenTextStyle"
                         app:layout_constraintTop_toBottomOf="@id/description"
                         app:layout_constraintStart_toEndOf="@id/titleStart"
                         app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />
@@ -113,7 +115,8 @@
                         android:id="@+id/freaks"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@{viewModel.project.freaks}"
+                        android:text="@{String.format(@string/freaks,viewModel.project.freaks)}"
+                        style="@style/DetailScreenTextStyle"
                         app:layout_constraintTop_toBottomOf="@id/skills"
                         app:layout_constraintStart_toEndOf="@id/titleStart"
                         app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DetailScreenTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <dimen name="default_text_size">18sp</dimen>
+</resources>
