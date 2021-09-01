@@ -151,7 +151,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/projects_level_top_margin"
-                        android:paddingBottom="@dimen/level_bot_margin"
+                        android:paddingBottom="@dimen/level_bottom_margin"
                         android:text="@{String.format(@string/level_project,freakDetailsViewModel.freak.level)}"
                         app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
                         app:layout_constraintHorizontal_bias="0.0"

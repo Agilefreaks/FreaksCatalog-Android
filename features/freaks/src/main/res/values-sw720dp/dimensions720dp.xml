@@ -7,7 +7,7 @@
     <dimen name="card_view_min_height">800dp</dimen>
     <dimen name="title_top_margin">140dp</dimen>
     <dimen name="freak_description_vertical">80dp</dimen>
-    <dimen name="level_bot_margin">80dp</dimen>
+    <dimen name="level_bottom_margin">80dp</dimen>
     <dimen name="projects_level_top_margin">32dp</dimen>
     <dimen name="card_view_bottom_margin">200dp</dimen>
     <dimen name="card_view_top_margin">150dp</dimen>
