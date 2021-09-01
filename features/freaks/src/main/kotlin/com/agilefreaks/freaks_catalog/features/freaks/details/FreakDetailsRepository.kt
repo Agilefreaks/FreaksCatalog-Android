@@ -10,27 +10,19 @@ interface FreakDetailsRepository {
 class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource) :
     FreakDetailsRepository {
     override suspend fun getFreakFromApi(freakId: String): FreakDetails? =
-        mapFreaks(dataSource.getFreaks())?.getFreakById(freakId)
+        dataSource.getFreaks(freakId)?.freak?.toFreak()
 
-    private fun mapFreaks(response: FreakDetailsQuery.Data?): List<FreakDetails>? =
-        response?.freaks?.nodes?.map {
-            it.toFreak()
-        }
-
-    private fun List<FreakDetails>.getFreakById(freakId: String): FreakDetails? =
-        this.find { freak -> freak.id == freakId }
-
-    private fun FreakDetailsQuery.Node?.toFreak() = FreakDetails(
-        id = this?.id ?: "",
-        firstName = this?.firstName ?: "",
-        lastName = this?.lastName ?: "",
-        description = this?.description ?: "",
-        level = this?.level?.name ?: "",
-        norm = this?.norm?.name ?: "",
-        photo = this?.photo?.uri as String? ?: "",
-        role = this?.role?.name ?: "",
-        projects = buildProjectsNameList(this!!.projects).joinToString(", "),
-        skills = buildSkillsNameList(this.technologies).joinToString(", ")
+    private fun FreakDetailsQuery.Freak.toFreak() = FreakDetails(
+        id = this.id,
+        firstName = this.firstName,
+        lastName = this.lastName,
+        description = this.description,
+        level = this.level.name,
+        norm = this.norm.name,
+        photo = this.photo?.uri as String? ?: "",
+        role = this.role.name,
+        projects = buildProjectsNameList(this.projects).joinToString(", "),
+        skills = buildSkillsNameList(this.skills).joinToString(", ")
     )
 
     private fun buildProjectsNameList(projects: List<FreakDetailsQuery.Project>): List<String> =

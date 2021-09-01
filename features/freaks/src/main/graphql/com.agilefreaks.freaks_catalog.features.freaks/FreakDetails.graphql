@@ -1,28 +1,26 @@
-query FreakDetailsQuery{
-    freaks{
-        nodes{
-            id
-            firstName
-            lastName
-            description
-            photo{
-                uri
-            }
-            norm{
-                name
-            }
-            role{
-                name
-            }
-            level{
-                name
-            }
-            projects{
-                name
-            }
-            technologies{
-                name
-            }
+query FreakDetailsQuery($freakId: ID!){
+    freak(id: $freakId){
+        id
+        firstName
+        lastName
+        description
+        photo{
+            uri
+        }
+        norm{
+            name
+        }
+        role{
+            name
+        }
+        level{
+            name
+        }
+        projects{
+            name
+        }
+        technologies {
+            name
         }
     }
 }
