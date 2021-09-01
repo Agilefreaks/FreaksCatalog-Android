@@ -1,6 +1,8 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
+import com.agilefreaks.freaks_catalog.features.freaks.model.Project
+import com.agilefreaks.freaks_catalog.features.freaks.model.Technology
 
 interface FreaksRepository {
     suspend fun getFreaksFromApi(): List<Freak>
@@ -19,6 +21,12 @@ class FreaksRepositoryImpl(private val dataSource: FreaksDataSource) : FreaksRep
         Freak(
             id = this?.id ?: "",
             firstName = this?.firstName ?: "",
-            photo = this?.photo?.uri?.toString() ?: ""
+            photo = this?.photo?.uri?.toString() ?: "",
+            technologyId = this?.technologies?.map {
+                it.id
+            } ?: emptyList(),
+            projectId = this?.projects?.map {
+                it.id
+            } ?: emptyList()
         )
 }

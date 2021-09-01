@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="freaksViewModel"
             type="com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel" />
+
         <variable
             name="filterViewModel"
             type="com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel" />
@@ -12,20 +15,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/skills_button"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/skills_button"
                 android:layout_weight="1"
-android:onClick="@{() -> freaksViewModel.showSkills()}"
+                android:text="@string/skills_button"
                 android:textAllCaps="false"
                 android:textColor="?android:attr/textColorPrimary" />
+
             <Button
                 android:id="@+id/projects_button"
                 style="?attr/materialButtonOutlinedStyle"

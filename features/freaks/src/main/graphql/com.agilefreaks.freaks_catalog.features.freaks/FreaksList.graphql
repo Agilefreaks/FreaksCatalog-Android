@@ -6,6 +6,12 @@ query FreaksList {
             photo{
                 uri
             }
+            projects{
+                id
+            }
+            technologies{
+                id
+            }
         }
     }
 }

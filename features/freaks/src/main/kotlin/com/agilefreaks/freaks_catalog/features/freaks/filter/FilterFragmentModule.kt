@@ -5,8 +5,7 @@ import org.koin.dsl.module
 
 val filterFragmentModule = module {
     single<FilterDataSource> { FilterApolloDataSource() }
-    single<FilterRepository> { FilterRepositoryImpl(get()) }
     viewModel {
-        FilterViewModel(get())
+        FilterViewModel()
     }
 }
