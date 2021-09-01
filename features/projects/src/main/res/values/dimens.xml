@@ -11,4 +11,5 @@
     <dimen name="profile_photo_elevation">5dp</dimen>
     <dimen name="progress_bar_size">50dp</dimen>
     <dimen name="progress_bar_elevation">6dp</dimen>
+    <dimen name="photo_margin_top">37dp</dimen>
 </resources>

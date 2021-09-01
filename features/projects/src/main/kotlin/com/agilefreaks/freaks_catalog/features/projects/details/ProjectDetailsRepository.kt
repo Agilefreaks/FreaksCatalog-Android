@@ -21,9 +21,9 @@ class ProjectDetailsRepositoryImpl(private val dataSource: ProjectDetailsDataSou
 
     private fun ProjectDetailsQuery.Project?.toProject() = ProjectDetails(
         id = this?.id ?: "",
-        name = this as String,
+        name = this?.name ?: "",
         description = this?.description ?: "",
-        photo = this?.logoUrl as String ?: "",
+        photo = this?.logoUrl?.uri as String ?: "",
         freaks = buildFreaksNameList(this!!.freaks).joinToString(", "),
         technology = buildTechnologiesList(this!!.technologies).joinToString (", ")
     )
