@@ -39,7 +39,6 @@
                 android:contentDescription="Picture"
                 android:elevation="@dimen/profile_photo_elevation"
                 android:scaleType="fitXY"
-                app:imageUrl="@viewModel.project.photo"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/description"
                         android:layout_marginTop="@dimen/title_top_margin"
-                        android:text="@{String.format(@string/title_template,viewModel.project.description)}"
+                        android:text="@{viewModel.project.description}"
                         app:layout_constraintStart_toStartOf="@id/titleStart"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,7 +98,7 @@
                         android:id="@+id/skills"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@{String.format(@string/title_template,viewModel.project.technology)}"
+                        android:text="@{viewModel.project.technology}"
                         app:layout_constraintTop_toBottomOf="@id/description"
                         app:layout_constraintStart_toEndOf="@id/titleStart"
                         app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />
@@ -111,7 +110,7 @@
                         android:id="@+id/freaks"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="Alexandra, Denis"
+                        android:text="@{viewModel.project.freaks}"
                         app:layout_constraintTop_toBottomOf="@id/skills"
                         app:layout_constraintStart_toEndOf="@id/titleStart"
                         app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />

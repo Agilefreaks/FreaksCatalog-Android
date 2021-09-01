@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agilefreaks.freaks_catalog.features.projects.databinding.FragmentProjectsBinding
@@ -32,12 +33,18 @@ class ProjectsFragment : Fragment() {
         return viewBinding.root
     }
 
+    private fun onItemClicked(projectId: String) {
+        val action = ProjectsFragmentDirections.actionProjectsToProjectDetailsFragment(projectId)
+        findNavController().navigate(action)
+    }
+
     private fun setupRecyclerView() {
         recyclerView = viewBinding.projectsRecyclerview
         recyclerView.layoutManager = LinearLayoutManager(context)
-        viewModel.projects.observe(viewLifecycleOwner) { projects ->
-            recyclerView.adapter = ProjectAdapter(projects)
-        }
-
+        viewModel.projects.observe(viewLifecycleOwner, { projects ->
+            recyclerView.adapter = ProjectAdapter(projects) {
+                onItemClicked(it.id)
+            }
+        })
     }
 }

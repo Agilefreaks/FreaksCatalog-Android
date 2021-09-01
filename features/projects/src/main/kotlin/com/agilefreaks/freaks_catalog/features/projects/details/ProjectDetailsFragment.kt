@@ -43,7 +43,9 @@ class ProjectDetailsFragment : Fragment() {
     }
 
     private fun listenToEvents() {
-
+        viewModel.project.observe(this, {
+            setAppBarTitle(it.name)
+        })
     }
 
     private fun setAppBarTitle(title: String) {

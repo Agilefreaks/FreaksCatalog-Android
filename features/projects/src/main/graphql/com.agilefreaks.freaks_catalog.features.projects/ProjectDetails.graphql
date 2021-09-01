@@ -1,6 +1,7 @@
 query ProjectDetails {
   projects{
     id
+    name
     description
     logoUrl{
       uri
