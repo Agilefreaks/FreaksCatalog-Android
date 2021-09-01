@@ -6,4 +6,5 @@
         android:color="@android:color/white" />
 
     <corners android:radius="@dimen/image_roundend_background_radius" />
+
 </shape>
