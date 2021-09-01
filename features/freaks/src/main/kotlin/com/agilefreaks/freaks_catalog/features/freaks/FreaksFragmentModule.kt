@@ -13,5 +13,4 @@ val freaksFragmentModule = module {
     viewModel {
         FilterViewModel()
     }
-
 }
