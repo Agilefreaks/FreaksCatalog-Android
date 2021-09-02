@@ -35,6 +35,12 @@
                 android:scaleType="centerCrop"
                 app:imageUrl="@{freak.photo}" />
 
+            <View
+                android:id="@+id/gradient_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/list_items_gradient" />
+
             <TextView
                 android:id="@+id/item_title"
                 android:layout_width="wrap_content"
