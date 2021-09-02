@@ -86,12 +86,13 @@
                         app:layout_constraintGuide_percent="0.09756" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/description"
+                        style="@style/DetailScreenTextStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="@dimen/title_top_margin"
                         android:text="@{viewModel.project.description}"
-                        style="@style/DetailScreenTextStyle"
+                        app:layout_constraintEnd_toStartOf="@id/descriptionEnd"
                         app:layout_constraintStart_toStartOf="@id/titleStart"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,10 +101,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/freak_description_vertical"
                         android:id="@+id/skills"
-                        android:ellipsize="end"
-                        android:maxLines="1"
                         android:text="@{String.format(@string/skills,viewModel.project.technology)}"
                         style="@style/DetailScreenTextStyle"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintTop_toBottomOf="@id/description"
                         app:layout_constraintStart_toEndOf="@id/titleStart"
                         app:layout_constraintEnd_toStartOf="@id/descriptionEnd" />
@@ -113,8 +113,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/freak_description_vertical"
                         android:id="@+id/freaks"
-                        android:ellipsize="end"
-                        android:maxLines="1"
                         android:text="@{String.format(@string/freaks,viewModel.project.freaks)}"
                         style="@style/DetailScreenTextStyle"
                         app:layout_constraintTop_toBottomOf="@id/skills"
