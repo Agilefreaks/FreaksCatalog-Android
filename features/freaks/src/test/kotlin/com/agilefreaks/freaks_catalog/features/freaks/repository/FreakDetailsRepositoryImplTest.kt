@@ -1,10 +1,9 @@
 package com.agilefreaks.freaks_catalog.features.freaks.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.agilefreaks.freaks_catalog.features.freaks.Freak
-import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsDataSource
 import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsQuery
-import com.agilefreaks.freaks_catalog.features.freaks.FreaksDataSource
+import com.agilefreaks.freaks_catalog.features.freaks.details.FreakDetailsDataSource
+import com.agilefreaks.freaks_catalog.features.freaks.details.FreakDetailsRepositoryImpl
 import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -46,7 +45,7 @@ class FreakDetailsRepositoryImplTest {
                         role = FreakDetailsQuery.Role("Role", "Developer"),
                         level = FreakDetailsQuery.Level("Level", "Profesor"),
                         projects = listOf(),
-                        skills = listOf()
+                        technologies = listOf()
                     )
                 )
             )
