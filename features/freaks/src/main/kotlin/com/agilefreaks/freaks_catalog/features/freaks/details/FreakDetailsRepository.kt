@@ -4,13 +4,13 @@ import com.agilefreaks.freaks_catalog.features.freaks.model.FreakDetails
 import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsQuery
 
 interface FreakDetailsRepository {
-    suspend fun getFreakFromApi(freakId: String): FreakDetails?
+    suspend fun getFreakDetailsFromApi(freakId: String): FreakDetails?
 }
 
 class FreakDetailsRepositoryImpl(private val dataSource: FreakDetailsDataSource) :
     FreakDetailsRepository {
-    override suspend fun getFreakFromApi(freakId: String): FreakDetails? =
-        dataSource.getFreaks(freakId)?.freak?.toFreak()
+    override suspend fun getFreakDetailsFromApi(freakId: String): FreakDetails? =
+        dataSource.getFreakDetails(freakId)?.freak?.toFreak()
 
     private fun FreakDetailsQuery.Freak.toFreak() = FreakDetails(
         id = this.id,

@@ -31,7 +31,7 @@ class DetailsViewModelTest {
             "pasaj"
         )
 
-        val freakDetailsRepository = DetailsViewModelTest.DetailsMockRepository()
+        val freakDetailsRepository = DetailsMockRepository()
         freakDetailsRepository.add(freak)
     }
 
@@ -49,7 +49,7 @@ class DetailsViewModelTest {
             ""
         )
     ) : FreakDetailsRepository {
-        override suspend fun getFreakFromApi(x: String): FreakDetails? = freakDetails
+        override suspend fun getFreakDetailsFromApi(freakId: String): FreakDetails = freakDetails
 
         fun add(freakDetails: FreakDetails) {
             this.freakDetails = freakDetails

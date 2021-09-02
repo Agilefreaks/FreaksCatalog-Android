@@ -7,11 +7,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 interface FreakDetailsDataSource {
-    suspend fun getFreaks(freakId: String): FreakDetailsQuery.Data?
+    suspend fun getFreakDetails(freakId: String): FreakDetailsQuery.Data?
 }
 
 class FreakDetailsApolloDataSource : FreakDetailsDataSource {
-    override suspend fun getFreaks(freakId: String): FreakDetailsQuery.Data? = withContext(Dispatchers.IO) {
+    override suspend fun getFreakDetails(freakId: String): FreakDetailsQuery.Data? = withContext(Dispatchers.IO) {
         apolloClient.query(FreakDetailsQuery(freakId)).await().data
     }
 }

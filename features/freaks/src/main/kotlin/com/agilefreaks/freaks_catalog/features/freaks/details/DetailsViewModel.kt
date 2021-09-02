@@ -18,7 +18,7 @@ class DetailsViewModel(private val repository: FreakDetailsRepository) : ViewMod
 
     fun loadFreak(freakId: String) {
         viewModelScope.launch {
-            _freak.value = repository.getFreakFromApi(freakId)
+            _freak.value = repository.getFreakDetailsFromApi(freakId)
             _freakDetailsLoaded.value = true
         }
     }

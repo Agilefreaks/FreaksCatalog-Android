@@ -61,24 +61,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cardViewStartG"
+                android:id="@+id/card_view_start_guide_line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.044" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cardViewEndG"
+                android:id="@+id/card_view_end_guide_line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -91,8 +82,8 @@
                 android:layout_marginTop="@dimen/card_view_top_margin"
                 app:cardBackgroundColor="@color/variant_blue"
                 app:cardCornerRadius="@dimen/details_card_view_radius"
-                app:layout_constraintEnd_toEndOf="@id/cardViewEndG"
-                app:layout_constraintStart_toStartOf="@id/cardViewStartG"
+                app:layout_constraintEnd_toEndOf="@id/card_view_end_guide_line"
+                app:layout_constraintStart_toStartOf="@id/card_view_start_guide_line"
                 app:layout_constraintTop_toTopOf="@+id/freak_profile_photo">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,7 +93,7 @@
                     android:visibility="@{freakDetailsViewModel.freakDetailsLoaded ? View.VISIBLE : View.INVISIBLE}">
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/tsplStartG"
+                        android:id="@+id/tspl_start_guide_line"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -116,7 +107,7 @@
                         android:layout_marginTop="@dimen/title_top_margin"
                         android:text="@{String.format(@string/title_template,freakDetailsViewModel.freak.role, freakDetailsViewModel.freak.norm)}"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/tsplStartG"
+                        app:layout_constraintStart_toStartOf="@+id/tspl_start_guide_line"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -127,9 +118,9 @@
                         android:layout_marginTop="@dimen/freak_description_vertical"
                         android:ellipsize="end"
                         android:text="@{String.format(@string/skills_template,freakDetailsViewModel.freak.skills)}"
-                        app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
+                        app:layout_constraintEnd_toStartOf="@+id/description_end_guide_line"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@id/tsplStartG"
+                        app:layout_constraintStart_toEndOf="@id/tspl_start_guide_line"
                         app:layout_constraintTop_toBottomOf="@+id/description_freak" />
 
                     <TextView
@@ -140,9 +131,9 @@
                         android:layout_marginTop="@dimen/projects_level_top_margin"
                         android:ellipsize="end"
                         android:text="@{String.format(@string/projects_template, freakDetailsViewModel.freak.projects)}"
-                        app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
+                        app:layout_constraintEnd_toStartOf="@+id/description_end_guide_line"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@id/tsplStartG"
+                        app:layout_constraintStart_toEndOf="@id/tspl_start_guide_line"
                         app:layout_constraintTop_toBottomOf="@+id/skills_freak" />
 
                     <TextView
@@ -153,20 +144,20 @@
                         android:layout_marginTop="@dimen/projects_level_top_margin"
                         android:paddingBottom="@dimen/level_bottom_margin"
                         android:text="@{String.format(@string/level_project,freakDetailsViewModel.freak.level)}"
-                        app:layout_constraintEnd_toStartOf="@+id/descriptionEndG"
+                        app:layout_constraintEnd_toStartOf="@+id/description_end_guide_line"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@id/tsplStartG"
+                        app:layout_constraintStart_toEndOf="@id/tspl_start_guide_line"
                         app:layout_constraintTop_toBottomOf="@+id/project_freak" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/descriptionEndG"
+                        android:id="@+id/description_end_guide_line"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         app:layout_constraintGuide_percent="0.976" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/descriptionStartG"
+                        android:id="@+id/description_start_guide_line"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -183,8 +174,8 @@
                         android:text="@{freakDetailsViewModel.freak.description}"
                         android:textSize="@dimen/sec_text_size"
                         android:textStyle="normal"
-                        app:layout_constraintEnd_toStartOf="@id/descriptionEndG"
-                        app:layout_constraintStart_toEndOf="@id/descriptionStartG"
+                        app:layout_constraintEnd_toStartOf="@id/description_end_guide_line"
+                        app:layout_constraintStart_toEndOf="@id/description_start_guide_line"
                         app:layout_constraintTop_toBottomOf="@+id/title_freak" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
