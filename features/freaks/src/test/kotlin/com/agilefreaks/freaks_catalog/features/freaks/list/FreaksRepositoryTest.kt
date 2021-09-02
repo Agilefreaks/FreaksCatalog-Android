@@ -26,7 +26,9 @@ class FreaksRepositoryTest {
         val freak = Freak(
             id = "42",
             firstName = "Ion",
-            photo = "photo_uri"
+            photo = "photo_uri",
+            skillsIds = listOf("11"),
+            projectIds = listOf("22")
         )
         val dataSource = MockDataSource()
         val repository = FreaksRepositoryImpl(dataSource)
@@ -40,7 +42,11 @@ class FreaksRepositoryTest {
         override suspend fun getFreaks(): FreaksListQuery.Data {
             val photo = FreaksListQuery.Photo(uri = "photo_uri")
             val node =
-                FreaksListQuery.Node(id = "42", firstName = "Ion", photo = photo)
+                FreaksListQuery.Node(
+                    id = "42", firstName = "Ion", photo = photo,
+                    technologies = listOf(FreaksListQuery.Technology(id = "11")),
+                    projects = listOf(FreaksListQuery.Project(id = "22"))
+                )
             val freaks = FreaksListQuery.Freaks(nodes = listOf(node))
             return FreaksListQuery.Data(freaks)
         }

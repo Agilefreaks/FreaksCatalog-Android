@@ -82,16 +82,10 @@ class FreaksViewModel(
     }
 
     fun onApplyFilterClicked() {
-        val skillsList: List<String> = if (getSelectedSkills().isNullOrEmpty()) {
-            getStringListOfAllSkills()
-        } else {
-            getSelectedSkills()
-        }
-        val projectsList: List<String> = if (getSelectedProjects().isNullOrEmpty()) {
-            getStringListOfAllProjects()
-        } else {
-            getSelectedProjects()
-        }
+        val skillsList: List<String> = getSelectedSkills()
+
+        val projectsList: List<String> = getSelectedProjects()
+
         _filteredFreaks.value = filterFreaks(skillsList, projectsList)
 
     }
@@ -108,43 +102,31 @@ class FreaksViewModel(
         }
     }
 
-    private fun getStringListOfAllSkills(): List<String> {
-        val selectedSkills: MutableList<String> = mutableListOf()
-        skills.value?.forEach {
-            selectedSkills.add(
-                it.id
-            )
-        }
-        return selectedSkills
-    }
-
-    private fun getStringListOfAllProjects(): List<String> {
-        val selectedProjects: MutableList<String> = mutableListOf()
-        projects.value?.forEach {
-            selectedProjects.add(
-                it.id
-            )
-        }
-        return selectedProjects
-    }
-
     private fun filterFreaks(
         selectedSkills: List<String>,
         selectedProjects: List<String>
     ): List<Freak> {
-        val filteredFreaksList1: MutableList<Freak> = mutableListOf()
-        val filteredFreaksList2: MutableList<Freak> = mutableListOf()
-        allFreaks.value?.forEach {
-            if (it.technologyIds.intersect(selectedSkills).isNotEmpty()) {
-                filteredFreaksList1.add(it)
+        var filteredFreaksBySkills: MutableList<Freak> = mutableListOf()
+        var filteredFreaksByProjects: MutableList<Freak> = mutableListOf()
+        if (selectedSkills.isNullOrEmpty()) {
+            filteredFreaksBySkills = allFreaks.value as MutableList<Freak>
+        } else {
+            allFreaks.value?.forEach {
+                if (it.skillsIds.intersect(selectedSkills).isNotEmpty()) {
+                    filteredFreaksBySkills.add(it)
+                }
             }
         }
-        allFreaks.value?.forEach {
-            if (it.projectIds.intersect(selectedProjects).isNotEmpty()) {
-                filteredFreaksList2.add(it)
+        if (selectedProjects.isNullOrEmpty()) {
+            filteredFreaksByProjects = allFreaks.value as MutableList<Freak>
+        } else {
+            allFreaks.value?.forEach {
+                if (it.projectIds.intersect(selectedProjects).isNotEmpty()) {
+                    filteredFreaksByProjects.add(it)
+                }
             }
         }
 
-        return filteredFreaksList1.intersect(filteredFreaksList2).toList()
+        return filteredFreaksBySkills.intersect(filteredFreaksByProjects).toList()
     }
 }
