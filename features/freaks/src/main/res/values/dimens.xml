@@ -27,8 +27,8 @@
     <dimen name="filter_title_text_size">16sp</dimen>
     <dimen name="filter_title_padding_bottom">10dp</dimen>
     <dimen name="recycler_filters_view_margin_bottom">15dp</dimen>
-    <dimen name="image_roundend_background_radius">10dp</dimen>
+    <dimen name="image_rounded_background_radius">10dp</dimen>
     <dimen name="image_rounded_background_stroke_width">5dp</dimen>
-    <dimen name="image_roundend_background_size">146dp</dimen>
+    <dimen name="image_rounded_background_size">146dp</dimen>
     <dimen name="background_elevation">10dp</dimen>
 </resources>

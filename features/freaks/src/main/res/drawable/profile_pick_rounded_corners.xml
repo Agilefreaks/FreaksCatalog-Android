@@ -5,5 +5,5 @@
         android:width="@dimen/image_rounded_background_stroke_width"
         android:color="@android:color/white" />
 
-    <corners android:radius="@dimen/image_roundend_background_radius" />
+    <corners android:radius="@dimen/image_rounded_background_radius" />
 </shape>

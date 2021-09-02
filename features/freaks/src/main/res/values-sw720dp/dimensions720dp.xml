@@ -14,6 +14,6 @@
     <dimen name="photo_margin_top">37dp</dimen>
     <dimen name="description_min_height">200dp</dimen>
     <dimen name="image_rounded_background_stroke_width">6dp</dimen>
-    <dimen name="image_roundend_background_size">250dp</dimen>
-    <dimen name="image_roundend_background_radius">15dp</dimen>
+    <dimen name="image_rounded_background_size">250dp</dimen>
+    <dimen name="image_rounded_background_radius">10dp</dimen>
 </resources>
