@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.agilefreaks.freaks_catalog.features.projects.details.DetailsViewModel" />
+            type="com.agilefreaks.freaks_catalog.features.projects.details.ProjectDetailsViewModel" />
     </data>
 
     <ScrollView

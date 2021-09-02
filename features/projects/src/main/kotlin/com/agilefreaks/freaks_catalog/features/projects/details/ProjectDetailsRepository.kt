@@ -24,8 +24,8 @@ class ProjectDetailsRepositoryImpl(private val dataSource: ProjectDetailsDataSou
         name = this?.name ?: "",
         description = this?.description ?: "",
         photo = this?.logoUrl?.uri as String ?: "",
-        freaks = buildFreaksNameList(this!!.freaks).joinToString(", "),
-        technology = buildTechnologiesList(this!!.technologies).joinToString (", ")
+        freaks = buildFreaksNameList(this.freaks).joinToString(", "),
+        technology = buildTechnologiesList(this.technologies).joinToString (", ")
     )
 
     private fun buildFreaksNameList(freaks: List<ProjectDetailsQuery.Freak>): List<String> =

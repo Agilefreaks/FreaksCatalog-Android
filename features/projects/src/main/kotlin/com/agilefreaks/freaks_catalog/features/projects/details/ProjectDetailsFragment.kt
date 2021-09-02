@@ -17,7 +17,7 @@ class ProjectDetailsFragment : Fragment() {
 
     private val args: ProjectDetailsFragmentArgs by navArgs()
 
-    private val viewModel: DetailsViewModel by viewModel()
+    private val viewModel: ProjectDetailsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

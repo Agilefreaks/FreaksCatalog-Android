@@ -7,6 +7,6 @@ val detailsFragmentModule = module {
     single<ProjectDetailsDataSource> {ProjectDetailsApolloDataSource() }
     single<ProjectDetailsRepository> {ProjectDetailsRepositoryImpl(get())}
     viewModel {
-        DetailsViewModel(get())
+        ProjectDetailsViewModel(get())
     }
 }
