@@ -1,4 +1,4 @@
-query TechnologiesList {
+query SkillsList {
     technologies {
         id
         name

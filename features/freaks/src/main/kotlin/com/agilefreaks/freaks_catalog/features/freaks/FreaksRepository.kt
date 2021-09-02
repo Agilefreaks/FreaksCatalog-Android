@@ -20,10 +20,10 @@ class FreaksRepositoryImpl(private val dataSource: FreaksDataSource) : FreaksRep
             id = this?.id ?: "",
             firstName = this?.firstName ?: "",
             photo = this?.photo?.uri?.toString() ?: "",
-            technologyId = this?.technologies?.map {
+            technologyIds = this?.technologies?.map {
                 it.id
             } ?: emptyList(),
-            projectId = this?.projects?.map {
+            projectIds = this?.projects?.map {
                 it.id
             } ?: emptyList()
         )

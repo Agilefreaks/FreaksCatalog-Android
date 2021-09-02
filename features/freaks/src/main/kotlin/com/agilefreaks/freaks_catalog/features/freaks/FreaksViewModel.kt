@@ -8,7 +8,7 @@ import com.agilefreaks.freaks_catalog.features.freaks.FreaksFragment.Companion.S
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterRepository
 import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
 import com.agilefreaks.freaks_catalog.features.freaks.model.Project
-import com.agilefreaks.freaks_catalog.features.freaks.model.Technology
+import com.agilefreaks.freaks_catalog.features.freaks.model.Skill
 import kotlinx.coroutines.launch
 
 class FreaksViewModel(
@@ -20,7 +20,7 @@ class FreaksViewModel(
             value = loadFreaks()
         }
     }
-    val allFreaks: LiveData<List<Freak>>
+    private val allFreaks: LiveData<List<Freak>>
         get() = _allFreaks
 
     private val _filteredFreaks = MutableLiveData<List<Freak>>().apply {
@@ -33,13 +33,13 @@ class FreaksViewModel(
 
     private suspend fun loadFreaks(): List<Freak> = freaksRepository.getFreaksFromApi()
 
-    private val _technologies = MutableLiveData<List<Technology>>().apply {
+    private val _skills = MutableLiveData<List<Skill>>().apply {
         viewModelScope.launch {
-            value = loadTechnologies()
+            value = loadSkills()
         }
     }
-    val technologies: LiveData<List<Technology>>
-        get() = _technologies
+    val skills: LiveData<List<Skill>>
+        get() = _skills
 
     private val _projects = MutableLiveData<List<Project>>().apply {
         viewModelScope.launch {
@@ -49,8 +49,7 @@ class FreaksViewModel(
     val projects: LiveData<List<Project>>
         get() = _projects
 
-    private suspend fun loadTechnologies(): List<Technology> =
-        filterRepository.getTechnologiesFromApi()
+    private suspend fun loadSkills(): List<Skill> = filterRepository.getSkillsFromApi()
 
     private suspend fun loadProjects(): List<Project> = filterRepository.getProjectsFromApi()
 
@@ -58,16 +57,16 @@ class FreaksViewModel(
 //        showFilterDialog.value = skilsList
 //    }
 
-    private fun getSelectedTechnologies(): List<String> {
-        val selectedTechnologies: MutableList<String> = mutableListOf()
-        technologies.value?.forEach {
+    private fun getSelectedSkills(): List<String> {
+        val selectedSkills: MutableList<String> = mutableListOf()
+        skills.value?.forEach {
             if (it.isChecked.get() == true) {
-                selectedTechnologies.add(
+                selectedSkills.add(
                     it.id
                 )
             }
         }
-        return selectedTechnologies
+        return selectedSkills
     }
 
     private fun getSelectedProjects(): List<String> {
@@ -83,29 +82,23 @@ class FreaksViewModel(
     }
 
     fun onApplyFilterClicked() {
-        val technologiesList: List<String> = if (getSelectedTechnologies().isNullOrEmpty()) {
-            getStringListOfAllTechnologies()
+        val skillsList: List<String> = if (getSelectedSkills().isNullOrEmpty()) {
+            getStringListOfAllSkills()
         } else {
-            getSelectedTechnologies()
+            getSelectedSkills()
         }
         val projectsList: List<String> = if (getSelectedProjects().isNullOrEmpty()) {
             getStringListOfAllProjects()
         } else {
             getSelectedProjects()
         }
-        if (technologiesList.containsAll(getStringListOfAllTechnologies()) && projectsList.containsAll(
-                getStringListOfAllProjects()
-            )
-        ) {
-            _filteredFreaks.value = allFreaks.value
-        } else {
-            _filteredFreaks.value = filterFreaks(technologiesList, projectsList)
-        }
+        _filteredFreaks.value = filterFreaks(skillsList, projectsList)
+
     }
 
     fun onResetButtonClicked(name: String) {
         if (name == SKILLS) {
-            technologies.value?.forEach {
+            skills.value?.forEach {
                 it.reset()
             }
         } else {
@@ -115,14 +108,14 @@ class FreaksViewModel(
         }
     }
 
-    private fun getStringListOfAllTechnologies(): List<String> {
-        val selectedTechnologies: MutableList<String> = mutableListOf()
-        technologies.value?.forEach {
-            selectedTechnologies.add(
+    private fun getStringListOfAllSkills(): List<String> {
+        val selectedSkills: MutableList<String> = mutableListOf()
+        skills.value?.forEach {
+            selectedSkills.add(
                 it.id
             )
         }
-        return selectedTechnologies
+        return selectedSkills
     }
 
     private fun getStringListOfAllProjects(): List<String> {
@@ -136,18 +129,18 @@ class FreaksViewModel(
     }
 
     private fun filterFreaks(
-        selectedTechnologies: List<String>,
+        selectedSkills: List<String>,
         selectedProjects: List<String>
     ): List<Freak> {
         val filteredFreaksList1: MutableList<Freak> = mutableListOf()
         val filteredFreaksList2: MutableList<Freak> = mutableListOf()
         allFreaks.value?.forEach {
-            if (it.technologyId.intersect(selectedTechnologies).isNotEmpty()) {
+            if (it.technologyIds.intersect(selectedSkills).isNotEmpty()) {
                 filteredFreaksList1.add(it)
             }
         }
         allFreaks.value?.forEach {
-            if (it.projectId.intersect(selectedProjects).isNotEmpty()) {
+            if (it.projectIds.intersect(selectedProjects).isNotEmpty()) {
                 filteredFreaksList2.add(it)
             }
         }

@@ -51,7 +51,7 @@ class FreaksFragment : Fragment() {
         val showProjectsButton: Button = viewBinding.projectsButton
 
         showSkillsButton.setOnClickListener {
-            showFilterModal(viewModel.technologies.value!!, SKILLS)
+            showFilterModal(viewModel.skills.value!!, SKILLS)
         }
         showProjectsButton.setOnClickListener {
             showFilterModal(viewModel.projects.value!!, PROJECTS)

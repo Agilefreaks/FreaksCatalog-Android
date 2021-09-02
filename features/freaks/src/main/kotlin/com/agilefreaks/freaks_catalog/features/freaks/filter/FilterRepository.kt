@@ -1,29 +1,29 @@
 package com.agilefreaks.freaks_catalog.features.freaks.filter
 
 import com.agilefreaks.freaks_catalog.features.freaks.ProjectsListQuery
-import com.agilefreaks.freaks_catalog.features.freaks.TechnologiesListQuery
+import com.agilefreaks.freaks_catalog.features.freaks.SkillsListQuery
 import com.agilefreaks.freaks_catalog.features.freaks.model.Project
-import com.agilefreaks.freaks_catalog.features.freaks.model.Technology
+import com.agilefreaks.freaks_catalog.features.freaks.model.Skill
 
 interface FilterRepository {
-    suspend fun getTechnologiesFromApi(): List<Technology>
+    suspend fun getSkillsFromApi(): List<Skill>
     suspend fun getProjectsFromApi(): List<Project>
 }
 
 class FilterRepositoryImpl(private val dataSource: FilterDataSource) : FilterRepository {
-    override suspend fun getTechnologiesFromApi(): List<Technology> =
+    override suspend fun getSkillsFromApi(): List<Skill> =
         mapTechnologies(dataSource.getTechnologies())
 
     override suspend fun getProjectsFromApi(): List<Project> =
         mapProjects(dataSource.getProjects())
 
-    private fun mapTechnologies(response: TechnologiesListQuery.Data?): List<Technology> =
+    private fun mapTechnologies(response: SkillsListQuery.Data?): List<Skill> =
         response?.technologies?.map {
-            it.toTechnology()
+            it.toSkill()
         } ?: emptyList()
 
-    private fun TechnologiesListQuery.Technology.toTechnology() =
-        Technology(
+    private fun SkillsListQuery.Technology.toSkill() =
+        Skill(
             id = this.id,
             name = this.name
         )

@@ -8,7 +8,7 @@ interface FilterItem {
     fun reset()
 }
 
-data class Technology(
+data class Skill(
     val id: String,
     override val name: String,
     override val isChecked: ObservableField<Boolean> = ObservableField(),
