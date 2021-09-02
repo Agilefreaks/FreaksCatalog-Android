@@ -14,7 +14,8 @@ class FilterBottomSheetDialog(
     private val list: List<FilterItem>,
     private val name: String,
     private val mContext: Context,
-    private val onApplyFilters: () -> Unit
+    private val onApplyFilters: () -> Unit,
+    private val onResetFilters: (String) -> Unit
 ) : BottomSheetDialog(mContext) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,18 +40,9 @@ class FilterBottomSheetDialog(
 
             this.cancel()
         }
-        return bottomSheetBinding.root
-    }
-
-    fun getSelectedItems(): List<FilterItem> {
-        val selectedItems: MutableList<FilterItem> = mutableListOf()
-        list.forEach {
-            if (it.isChecked.get() == true) {
-                selectedItems.add(
-                    it
-                )
-            }
+        bottomSheetBinding.reset.setOnClickListener {
+            onResetFilters(name)
         }
-        return selectedItems
+        return bottomSheetBinding.root
     }
 }
