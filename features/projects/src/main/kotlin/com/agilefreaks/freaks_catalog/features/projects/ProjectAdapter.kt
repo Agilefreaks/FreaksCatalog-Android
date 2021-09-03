@@ -25,7 +25,7 @@ class ProjectAdapter(private val projectsList: List<Project>, private val onItem
         RecyclerView.ViewHolder(binding.root) {
         fun bind(project: Project, onItemCLicked: (Project) -> Unit) {
             binding.project = project
-            binding.projectImage.setOnClickListener {onItemCLicked(project)}
+            binding.projectCardView.setOnClickListener {onItemCLicked(project)}
         }
     }
 }
