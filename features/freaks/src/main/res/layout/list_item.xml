@@ -39,6 +39,7 @@
                 android:id="@+id/gradient_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/gradient_top_margin"
                 android:background="@drawable/list_items_gradient" />
 
             <TextView
