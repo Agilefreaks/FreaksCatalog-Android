@@ -21,5 +21,4 @@ apollo {
 
 dependencies {
     implementation(project(BuildModules.Commons.UI))
-    testImplementation(project(mapOf("path" to ":features:freaks")))
 }
