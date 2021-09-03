@@ -50,7 +50,6 @@ class FreaksViewModel(
         get() = _projects
 
     private suspend fun loadSkills(): List<Skill> = filterRepository.getSkillsFromApi()
-
     private suspend fun loadProjects(): List<Project> = filterRepository.getProjectsFromApi()
 
 //    fun onSkillsFilterClicked() {
@@ -83,11 +82,9 @@ class FreaksViewModel(
 
     fun onApplyFilterClicked() {
         val skillsList: List<String> = getSelectedSkills()
-
         val projectsList: List<String> = getSelectedProjects()
 
         _filteredFreaks.value = filterFreaks(skillsList, projectsList)
-
     }
 
     fun onResetButtonClicked(name: String) {
@@ -106,11 +103,12 @@ class FreaksViewModel(
         selectedSkills: List<String>,
         selectedProjects: List<String>
     ): List<Freak> {
-        var filteredFreaksBySkills: MutableList<Freak> = mutableListOf()
-        var filteredFreaksByProjects: MutableList<Freak> = mutableListOf()
+        val filteredFreaksBySkills: MutableList<Freak>
+        val filteredFreaksByProjects: MutableList<Freak>
         if (selectedSkills.isNullOrEmpty()) {
             filteredFreaksBySkills = allFreaks.value as MutableList<Freak>
         } else {
+            filteredFreaksBySkills = mutableListOf()
             allFreaks.value?.forEach {
                 if (it.skillsIds.intersect(selectedSkills).isNotEmpty()) {
                     filteredFreaksBySkills.add(it)
@@ -120,13 +118,13 @@ class FreaksViewModel(
         if (selectedProjects.isNullOrEmpty()) {
             filteredFreaksByProjects = allFreaks.value as MutableList<Freak>
         } else {
+            filteredFreaksByProjects = mutableListOf()
             allFreaks.value?.forEach {
                 if (it.projectIds.intersect(selectedProjects).isNotEmpty()) {
                     filteredFreaksByProjects.add(it)
                 }
             }
         }
-
         return filteredFreaksBySkills.intersect(filteredFreaksByProjects).toList()
     }
 }
