@@ -32,6 +32,18 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <View
+                android:id="@+id/rounded_margin"
+                android:layout_width="@dimen/image_rounded_background_size"
+                android:layout_height="0dp"
+                android:background="@drawable/project_pic_rounded_corners"
+                android:elevation="@dimen/background_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/project_photo"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/project_photo"
+                app:layout_constraintStart_toStartOf="@id/project_photo"
+                app:layout_constraintTop_toTopOf="@+id/project_photo" />
+
             <ImageView
                 android:layout_width="@dimen/details_profile_photo"
                 android:layout_height="0dp"
@@ -101,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/freak_description_vertical"
                         android:id="@+id/skills"
-                        android:text="@{String.format(@string/skills,viewModel.project.technology)}"
+                        android:text="@{String.format(@string/technologies,viewModel.project.technology)}"
                         style="@style/DetailScreenTextStyle"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintTop_toBottomOf="@id/description"
