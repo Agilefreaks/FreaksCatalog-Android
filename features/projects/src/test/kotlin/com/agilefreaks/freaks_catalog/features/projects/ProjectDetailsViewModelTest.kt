@@ -21,7 +21,7 @@ class ProjectDetailsViewModelTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `loadProject will populate project with values from repository`() = runBlockingTest {
+    fun `loadProject will take the proper project from repository`() = runBlockingTest {
         val project = ProjectDetails(
             "1",
             "EPIX",
