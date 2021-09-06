@@ -89,9 +89,9 @@
                         android:id="@+id/description"
                         style="@style/DetailScreenTextStyle"
                         android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/title_top_margin"
-                        android:text="@{viewModel.project.description}"
+                        android:text="@{String.format(@string/description,viewModel.project.description)}"
                         app:layout_constraintEnd_toStartOf="@id/descriptionEnd"
                         app:layout_constraintStart_toStartOf="@id/titleStart"
                         app:layout_constraintTop_toTopOf="parent" />

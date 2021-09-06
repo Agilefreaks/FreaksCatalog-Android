@@ -2,5 +2,6 @@
     <string name="projects_title">PROJECTS</string>
     <string name="picture">Picture</string>
     <string name="skills">Skills: %1$s</string>
+    <string name="description">Description: %1$s</string>
     <string name="freaks">Freaks: %1$s</string>
 </resources>
