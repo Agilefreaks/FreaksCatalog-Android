@@ -11,8 +11,8 @@ interface ProjectDetailsDataSource {
 }
 
 class ProjectDetailsApolloDataSource : ProjectDetailsDataSource {
-    override suspend fun getProjectDetails(id: String): ProjectDetailsQuery.Data? =
+    override suspend fun getProjectDetails(projectId: String): ProjectDetailsQuery.Data? =
         withContext(Dispatchers.IO) {
-            apolloClient.query(ProjectDetailsQuery(id)).await().data
+            apolloClient.query(ProjectDetailsQuery(projectId)).await().data
         }
 }
