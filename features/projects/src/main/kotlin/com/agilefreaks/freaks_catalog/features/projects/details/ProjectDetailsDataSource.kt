@@ -7,12 +7,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 interface ProjectDetailsDataSource {
-    suspend fun getProjectDetails(): ProjectDetailsQuery.Data?
+    suspend fun getProjectDetails(id: String): ProjectDetailsQuery.Data?
 }
 
 class ProjectDetailsApolloDataSource : ProjectDetailsDataSource {
-    override suspend fun getProjectDetails(): ProjectDetailsQuery.Data? =
+    override suspend fun getProjectDetails(id: String): ProjectDetailsQuery.Data? =
         withContext(Dispatchers.IO) {
-            apolloClient.query(ProjectDetailsQuery()).await().data
+            apolloClient.query(ProjectDetailsQuery(id)).await().data
         }
 }
