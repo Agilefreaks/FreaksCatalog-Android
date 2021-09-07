@@ -11,7 +11,7 @@ https://www.apollographql.com/docs/android/essentials/get-started-kotlin/
 
 Graphql schema :
 apollo schema:download --endpoint="url" download_path
-apollo schema:download --endpoint="https://freaks-catalog.herokuapp.com/graphql" features/freaks/src/main/graphql/com.agilefreaks.freaks_catalog.features.freaks/schema.json
+apollo schema:download --endpoint="https://freaks-catalog.herokuapp.com/graphql" features/projects/src/main/graphql/com.agilefreaks.freaks_catalog.features.freaks/schema.json
 
 JS GraphQL
 https://jimkyndemeyer.github.io/js-graphql-intellij-plugin/docs/getting-started

@@ -8,5 +8,17 @@
     <fragment
         android:id="@+id/projects"
         android:name="com.agilefreaks.freaks_catalog.features.projects.ProjectsFragment"
-        android:label="@string/projects_title" />
+        android:label="@string/projects_title">
+        <action
+            android:id="@+id/action_projects_to_projectDetailsFragment"
+            app:destination="@id/projectDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectDetailsFragment"
+        android:name="com.agilefreaks.freaks_catalog.features.projects.details.ProjectDetailsFragment"
+        android:label="ProjectDetailsFragment" >
+        <argument
+            android:name="projectId"
+            app:argType="string"/>
+    </fragment>
 </navigation>
