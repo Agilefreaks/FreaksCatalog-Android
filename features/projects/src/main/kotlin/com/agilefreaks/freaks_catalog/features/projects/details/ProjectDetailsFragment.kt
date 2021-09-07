@@ -1,4 +1,4 @@
-package com.agilefreaks.freaks_catalog.features.freaks.details
+package com.agilefreaks.freaks_catalog.features.projects.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,16 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.agilefreaks.freaks_catalog.features.freaks.R
-import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreakDetailsBinding
+import com.agilefreaks.freaks_catalog.features.projects.R
+import com.agilefreaks.freaks_catalog.features.projects.databinding.FragmentProjectDetailsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FreakDetailsFragment : Fragment() {
-    private lateinit var viewBinding: FragmentFreakDetailsBinding
+class ProjectDetailsFragment : Fragment() {
+    private lateinit var viewBinding: FragmentProjectDetailsBinding
 
-    private val args: FreakDetailsFragmentArgs by navArgs()
+    private val args: ProjectDetailsFragmentArgs by navArgs()
 
-    private val viewModel: DetailsViewModel by viewModel()
+    private val viewModel: ProjectDetailsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +33,9 @@ class FreakDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         viewBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_freak_details, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_project_details, container, false)
 
-        viewBinding.freakDetailsViewModel = viewModel
+        viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = this
 
         return viewBinding.root
@@ -44,15 +44,13 @@ class FreakDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val freakId = args.freakId
-        viewModel.loadFreak(freakId)
+        val projectId = args.projectId
+        viewModel.loadProject(projectId)
     }
 
     private fun listenToEvents() {
-        viewModel.freak.observe(this, {
-            val freakName = it.firstName + " " + it.lastName
-
-            setAppBarTitle(freakName)
+        viewModel.project.observe(this, {
+            setAppBarTitle(it.name)
         })
     }
 

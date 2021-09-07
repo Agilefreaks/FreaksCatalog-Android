@@ -1,0 +1,16 @@
+query ProjectDetails($projectId: ID!) {
+  project(id: $projectId){
+    id
+    name
+    description
+    logoUrl{
+      uri
+    }
+    freaks{
+      firstName
+    }
+    technologies{
+      name
+    }
+  }
+}

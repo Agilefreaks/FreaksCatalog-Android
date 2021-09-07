@@ -5,7 +5,6 @@
     android:id="@+id/freaks_nav_graph"
     app:startDestination="@id/freaks"
     tools:ignore="UnusedIds,UnusedResources">
-
     <fragment
         android:id="@+id/freaks"
         android:name="com.agilefreaks.freaks_catalog.features.freaks.FreaksFragment"
@@ -16,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/freak_details"
-        android:name="com.agilefreaks.freaks_catalog.features.freaks.details.FreakDetailsFragment" >
+        android:name="com.agilefreaks.freaks_catalog.features.freaks.details.FreakDetailsFragment">
         <argument
             android:name="freakId"
             app:argType="string" />
