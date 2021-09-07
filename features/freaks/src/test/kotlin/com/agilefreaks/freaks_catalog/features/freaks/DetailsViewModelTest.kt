@@ -1,9 +1,9 @@
 package com.agilefreaks.freaks_catalog.features.freaks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.agilefreaks.freaks_catalog.features.freaks.DetailsViewModel
-import com.agilefreaks.freaks_catalog.features.freaks.FreakDetails
-import com.agilefreaks.freaks_catalog.features.freaks.repository.FreakDetailsRepository
+import com.agilefreaks.freaks_catalog.features.freaks.details.DetailsViewModel
+import com.agilefreaks.freaks_catalog.features.freaks.details.FreakDetailsRepository
+import com.agilefreaks.freaks_catalog.features.freaks.model.FreakDetails
 import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -34,7 +34,7 @@ class DetailsViewModelTest {
             "pasaj"
         )
         val viewModel = DetailsViewModel(freakDetailsRepository)
-        whenever(freakDetailsRepository.getFreakFromApi("1")).thenReturn(freak)
+        whenever(freakDetailsRepository.getFreakDetailsFromApi("1")).thenReturn(freak)
 
         viewModel.loadFreak("1")
 
