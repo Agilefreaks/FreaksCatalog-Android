@@ -1,6 +1,6 @@
 package com.agilefreaks.freaks_catalog
 
-import com.agilefreaks.freaks_catalog.features.freaks.details.projectDetailsFragmentModule
+import com.agilefreaks.freaks_catalog.features.freaks.details.projectDetailsModule
 import com.agilefreaks.freaks_catalog.features.freaks.freaksFragmentModule
 import com.agilefreaks.freaks_catalog.features.projects.projectsFragmentModule
 import com.agilefreaks.freaks_catalog.features.projects.details.detailsFragmentModule
@@ -23,7 +23,7 @@ class FreaksCatalogApp : SplitCompatApplication() {
             modules(freaksFragmentModule)
             modules(detailsFragmentModule)
             modules(projectsFragmentModule)
-            modules(projectDetailsFragmentModule)
+            modules(projectDetailsModule)
         }
     }
 }
