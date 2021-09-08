@@ -1,3 +1,4 @@
+
 package com.agilefreaks.freaks_catalog.features.freaks.details
 
 import com.agilefreaks.freaks_catalog.features.freaks.FreakDetailsQuery

@@ -1,6 +1,7 @@
 package com.agilefreaks.freaks_catalog
 
 import com.agilefreaks.freaks_catalog.features.freaks.details.detailsFragmentModule
+import com.agilefreaks.freaks_catalog.features.freaks.filter.filterFragmentModule
 import com.agilefreaks.freaks_catalog.features.freaks.freaksFragmentModule
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import org.koin.android.ext.koin.androidContext
@@ -20,6 +21,7 @@ class FreaksCatalogApp : SplitCompatApplication() {
             androidContext(applicationContext)
             modules(freaksFragmentModule)
             modules(detailsFragmentModule)
+            modules(filterFragmentModule)
         }
     }
 }

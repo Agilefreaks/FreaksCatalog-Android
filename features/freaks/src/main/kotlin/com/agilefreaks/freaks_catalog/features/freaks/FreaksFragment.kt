@@ -7,21 +7,15 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.agilefreaks.freaks_catalog.features.freaks.databinding.BottomSheetDialogBinding
 import com.agilefreaks.freaks_catalog.features.freaks.databinding.FragmentFreaksBinding
-import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterAdapter
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel
 import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -30,6 +24,23 @@ class FreaksFragment : Fragment() {
     private val viewModel: FreaksViewModel by viewModel()
     private val filterViewModel: FilterViewModel by viewModel()
     private lateinit var viewBinding: FragmentFreaksBinding
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        listenToEvents()
+    }
+
+    private fun listenToEvents() {
+        viewModel.filteredFreaks.observe(viewLifecycleOwner) { freaks ->
+            viewBinding.recycleView.adapter = FreakItemAdapter(freaks) {
+                onItemClicked(it.id)
+            }
+        }
+        viewModel.showFilterDialog.observe(viewLifecycleOwner) {
+            showFilterModal(it.second, it.first)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,31 +54,14 @@ class FreaksFragment : Fragment() {
         val isPortrait =
             this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-
         val layoutManager: RecyclerView.LayoutManager = when {
-            !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
             isPortrait && !isTablet() -> GridLayoutManager(context, DISPLAY_IN_TWO_COLUMNS)
+            !isPortrait && isTablet() -> GridLayoutManager(context, DISPLAY_IN_FOUR_COLUMNS)
             else -> GridLayoutManager(context, DISPLAY_IN_THREE_COLUMNS)
         }
 
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
-
-        val showSkillsButton: Button = viewBinding.skillsButton
-        val showProjectsButton: Button = viewBinding.projectsButton
-
-        showSkillsButton.setOnClickListener {
-            showFilterModal(filterViewModel.skills, SKILLS)
-        }
-        showProjectsButton.setOnClickListener {
-            showFilterModal(filterViewModel.projects, PROJECTS)
-        }
-
-        viewModel.freaks.observe(viewLifecycleOwner, { freaks ->
-            recyclerView.adapter = FreakItemAdapter(freaks) {
-                onItemClicked(it.id)
-            }
-        })
 
         return viewBinding.root
     }
@@ -92,9 +86,16 @@ class FreaksFragment : Fragment() {
         return diagonalInches >= MIN_TABLET_DISPLAY
     }
 
-    private fun showFilterModal(list: LiveData<List<FilterItem>>, name: String) {
-        val modal = setupFilterModal(list, name)
-        val dialog = BottomSheetDialog(requireContext())
+
+    private fun showFilterModal(
+        list: List<FilterItem>,
+        name: String
+    ) {
+        val dialog = FilterBottomSheetDialog(list, requireContext(),
+            { viewModel.onApplyFilterClicked() },
+            { viewModel.onResetButtonClicked(name) }
+        )
+        val modal = dialog.setupFilterModal()
         val isLandscape =
             this.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
         if (isLandscape) {
@@ -105,32 +106,12 @@ class FreaksFragment : Fragment() {
         dialog.show()
     }
 
-    private fun setupFilterModal(list: LiveData<List<FilterItem>>, name: String): View {
-        val inflater = LayoutInflater.from(requireContext())
-        val bottomSheetBinding = BottomSheetDialogBinding.inflate(inflater, null, false)
-        bottomSheetBinding.viewModel = filterViewModel
-        bottomSheetBinding.filterTitle.text = name
-
-        bottomSheetBinding.recyclerFiltersView.layoutManager =
-            LinearLayoutManager(requireContext())
-
-        list.observe(viewLifecycleOwner, {
-            val adapter = FilterAdapter()
-            adapter.submitList(it)
-            val recyclerFiltersView =
-                bottomSheetBinding.root.findViewById<RecyclerView>(R.id.recycler_filters_view)
-            recyclerFiltersView.adapter = adapter
-        })
-
-        return bottomSheetBinding.root
-    }
-
     companion object {
         private const val DISPLAY_IN_TWO_COLUMNS = 2
         private const val DISPLAY_IN_THREE_COLUMNS = 3
         private const val DISPLAY_IN_FOUR_COLUMNS = 4
         private const val MIN_TABLET_DISPLAY = 6.5
-        private const val SKILLS = "SKILLS"
-        private const val PROJECTS = "PROJECTS"
+        val SKILLS = "SKILLS"
+        const val PROJECTS = "PROJECTS"
     }
 }

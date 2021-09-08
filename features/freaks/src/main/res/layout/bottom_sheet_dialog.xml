@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:onClick="@{() -> viewModel.reset()}"
             android:padding="@dimen/reset_button_padding_bottom"
             android:text="@string/reset_button"
             android:textAlignment="center"
@@ -62,7 +61,6 @@
             android:layout_height="@dimen/apply_filters_button_height"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/variant_blue"
-            android:onClick="@{() -> viewModel.applyFilters()}"
             android:text="@string/apply_filters_button"
             android:textAllCaps="true"
             android:textColor="@android:color/white"

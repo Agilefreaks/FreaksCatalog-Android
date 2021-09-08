@@ -1,0 +1,6 @@
+query SkillsList {
+    technologies {
+        id
+        name
+    }
+}
