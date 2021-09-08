@@ -7,7 +7,6 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -25,6 +24,23 @@ class FreaksFragment : Fragment() {
     private val viewModel: FreaksViewModel by viewModel()
     private val filterViewModel: FilterViewModel by viewModel()
     private lateinit var viewBinding: FragmentFreaksBinding
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        listenToEvents()
+    }
+
+    private fun listenToEvents() {
+        viewModel.filteredFreaks.observe(viewLifecycleOwner) { freaks ->
+            viewBinding.recycleView.adapter = FreakItemAdapter(freaks) {
+                onItemClicked(it.id)
+            }
+        }
+        viewModel.showFilterDialog.observe(viewLifecycleOwner) {
+            showFilterModal(it.second, it.first)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,22 +62,6 @@ class FreaksFragment : Fragment() {
 
         val recyclerView = viewBinding.recycleView
         recyclerView.layoutManager = layoutManager
-
-        val showSkillsButton: Button = viewBinding.skillsButton
-        val showProjectsButton: Button = viewBinding.projectsButton
-
-        showSkillsButton.setOnClickListener {
-            showFilterModal(viewModel.skills.value!!, SKILLS)
-        }
-        showProjectsButton.setOnClickListener {
-            showFilterModal(viewModel.projects.value!!, PROJECTS)
-        }
-
-        viewModel.filteredFreaks.observe(viewLifecycleOwner) { freaks ->
-            recyclerView.adapter = FreakItemAdapter(freaks) {
-                onItemClicked(it.id)
-            }
-        }
 
         return viewBinding.root
     }
@@ -91,7 +91,7 @@ class FreaksFragment : Fragment() {
         list: List<FilterItem>,
         name: String
     ) {
-        val dialog = FilterBottomSheetDialog(list, name, requireContext(),
+        val dialog = FilterBottomSheetDialog(list, requireContext(),
             { viewModel.onApplyFilterClicked() },
             { viewModel.onResetButtonClicked(name) }
         )
@@ -111,7 +111,7 @@ class FreaksFragment : Fragment() {
         private const val DISPLAY_IN_THREE_COLUMNS = 3
         private const val DISPLAY_IN_FOUR_COLUMNS = 4
         private const val MIN_TABLET_DISPLAY = 6.5
-        const val SKILLS = "SKILLS"
+        val SKILLS = "SKILLS"
         const val PROJECTS = "PROJECTS"
     }
 }

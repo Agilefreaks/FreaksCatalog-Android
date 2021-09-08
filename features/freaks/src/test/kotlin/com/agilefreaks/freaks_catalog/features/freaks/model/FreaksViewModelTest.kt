@@ -57,6 +57,26 @@ class FreaksViewModelTest {
         )
         whenever(filterRepository.getSkillsFromApi()).thenReturn(listOf(skill))
 
-        assertThat(viewModel.skills.value).isEqualTo(listOf(skill))
+        //assertThat(viewModel.skills).isEqualTo(listOf(skill))
     }
+
+    @Test
+    fun `onSkillsButtonClicked will populate showFilterDialog with skills list and skills type`() =
+        runBlockingTest {
+            val resultPair: Pair<String, List<Skill>> = Pair("SKILLS", listOf(Skill("1", "Kotlin")))
+
+            viewModel.onSkillsButtonClicked()
+
+            assertThat(viewModel.showFilterDialog.value).isEqualTo(resultPair)
+        }
+
+    @Test
+    fun `onProjectsButtonClicked will populate showFilterDialog with projects list and projects type`() =
+        runBlockingTest {
+            val resultPair: Pair<String, List<Project>> = Pair("PROJECTS", listOf(Project("11", "Freaks Catalog")))
+
+            viewModel.onProjectsButtonClicked()
+
+            assertThat(viewModel.showFilterDialog.value).isEqualTo(resultPair)
+        }
 }

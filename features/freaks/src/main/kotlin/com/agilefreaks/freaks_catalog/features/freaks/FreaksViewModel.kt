@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.agilefreaks.freaks_catalog.features.freaks.FreaksFragment.Companion.PROJECTS
 import com.agilefreaks.freaks_catalog.features.freaks.FreaksFragment.Companion.SKILLS
 import com.agilefreaks.freaks_catalog.features.freaks.filter.FilterRepository
+import com.agilefreaks.freaks_catalog.features.freaks.model.FilterItem
 import com.agilefreaks.freaks_catalog.features.freaks.model.Freak
 import com.agilefreaks.freaks_catalog.features.freaks.model.Project
 import com.agilefreaks.freaks_catalog.features.freaks.model.Skill
@@ -15,6 +17,14 @@ class FreaksViewModel(
     private val freaksRepository: FreaksRepository,
     private val filterRepository: FilterRepository
 ) : ViewModel() {
+
+    init {
+        viewModelScope.launch {
+            skills = loadSkills()
+            projects = loadProjects()
+        }
+    }
+
     private val _allFreaks = MutableLiveData<List<Freak>>().apply {
         viewModelScope.launch {
             value = loadFreaks()
@@ -31,53 +41,31 @@ class FreaksViewModel(
     val filteredFreaks: LiveData<List<Freak>>
         get() = _filteredFreaks
 
+    private val _showFilterDialog = MutableLiveData<Pair<String, List<FilterItem>>>()
+    val showFilterDialog: LiveData<Pair<String, List<FilterItem>>>
+        get() = _showFilterDialog
+
+    private var skills = emptyList<Skill>()
+    private var projects = emptyList<Project>()
+
     private suspend fun loadFreaks(): List<Freak> = freaksRepository.getFreaksFromApi()
-
-    private val _skills = MutableLiveData<List<Skill>>().apply {
-        viewModelScope.launch {
-            value = loadSkills()
-        }
-    }
-    val skills: LiveData<List<Skill>>
-        get() = _skills
-
-    private val _projects = MutableLiveData<List<Project>>().apply {
-        viewModelScope.launch {
-            value = loadProjects()
-        }
-    }
-    val projects: LiveData<List<Project>>
-        get() = _projects
-
     private suspend fun loadSkills(): List<Skill> = filterRepository.getSkillsFromApi()
     private suspend fun loadProjects(): List<Project> = filterRepository.getProjectsFromApi()
 
-//    fun onSkillsFilterClicked() {
-//        showFilterDialog.value = skilsList
-//    }
+    fun onSkillsButtonClicked() {
+        val skillsPair: Pair<String, List<Skill>> = Pair(SKILLS, skills)
 
-    private fun getSelectedSkills(): List<String> {
-        val selectedSkills: MutableList<String> = mutableListOf()
-        skills.value?.forEach {
-            if (it.isChecked.get() == true) {
-                selectedSkills.add(
-                    it.id
-                )
-            }
-        }
-        return selectedSkills
+        _showFilterDialog.value = skillsPair
     }
 
-    private fun getSelectedProjects(): List<String> {
-        val selectedProjects: MutableList<String> = mutableListOf()
-        projects.value?.forEach {
-            if (it.isChecked.get() == true) {
-                selectedProjects.add(
-                    it.id
-                )
-            }
-        }
-        return selectedProjects
+    fun onProjectsButtonClicked() {
+        val projectsPair: Pair<String, List<Project>> = Pair(PROJECTS, projects)
+
+        _showFilterDialog.value = projectsPair
+    }
+
+    fun doSomething(name: String) {
+        print(name)
     }
 
     fun onApplyFilterClicked() {
@@ -89,14 +77,38 @@ class FreaksViewModel(
 
     fun onResetButtonClicked(name: String) {
         if (name == SKILLS) {
-            skills.value?.forEach {
+            skills.forEach {
                 it.reset()
             }
         } else {
-            projects.value?.forEach {
+            projects.forEach {
                 it.reset()
             }
         }
+    }
+
+    private fun getSelectedSkills(): List<String> {
+        val selectedSkills: MutableList<String> = mutableListOf()
+        skills.forEach {
+            if (it.isChecked.get() == true) {
+                selectedSkills.add(
+                    it.id
+                )
+            }
+        }
+        return selectedSkills
+    }
+
+    private fun getSelectedProjects(): List<String> {
+        val selectedProjects: MutableList<String> = mutableListOf()
+        projects.forEach {
+            if (it.isChecked.get() == true) {
+                selectedProjects.add(
+                    it.id
+                )
+            }
+        }
+        return selectedProjects
     }
 
     private fun filterFreaks(

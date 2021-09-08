@@ -4,6 +4,10 @@
     <data>
 
         <variable
+            name="filterName"
+            type="com.agilefreaks.freaks_catalog.features.freaks.FreaksFragment" />
+
+        <variable
             name="freaksViewModel"
             type="com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel" />
 
@@ -20,13 +24,14 @@
             android:id="@+id/linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <!--                android:onClick="@{() -> freaksViewModel.doSomething(filterName.Companion.SKILLS)}" -->
             <Button
                 android:id="@+id/skills_button"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> freaksViewModel.onSkillsButtonClicked()}"
                 android:text="@string/skills_button"
                 android:textAllCaps="false"
                 android:textColor="?android:attr/textColorPrimary" />
@@ -37,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> freaksViewModel.onProjectsButtonClicked()}"
                 android:text="@string/projects_button"
                 android:textAllCaps="false"
                 android:textColor="?android:attr/textColorPrimary" />

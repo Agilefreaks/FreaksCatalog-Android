@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.agilefreaks.freaks_catalog.features.freaks.filter.FilterViewModel" />
+            type="com.agilefreaks.freaks_catalog.features.freaks.FreaksViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
